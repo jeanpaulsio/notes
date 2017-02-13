@@ -8,7 +8,6 @@
 ## Programming to an interface, not an application
 * Write code that is less tightly coupled to itself in the first place
 
-
 ```ruby
 class Car
   def drive
