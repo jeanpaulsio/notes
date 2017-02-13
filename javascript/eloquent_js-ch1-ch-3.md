@@ -293,4 +293,22 @@ function isEven(num) {
 console.log(isEven(-11));
 ```
 
-3. Bean Counting:
+3. Counting: write a function called `countBs` that takes a string as its only argument and returns a number that indicates how many capital `B` characters exist in the string. Then write another function called `countChar` that takes a second argument to indicate which character to count. ReWrite `countBs` to use `countChar`
+
+```js
+function countChar(str, letter) {
+    counter = 0;
+    length = str.length;
+
+    for(var i = 0; i < length; i++){
+      if(str[i] == letter)
+        counter += 1;
+    }
+    return counter;
+}
+
+function countBs(str) {
+    return countChar(str, "B");
+}
+```
+
