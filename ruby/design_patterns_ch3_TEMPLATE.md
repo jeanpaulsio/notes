@@ -1,23 +1,3 @@
-# Overview of Patterns
-
-```ruby
-# page 44
-#  1. Template Method *** RAILS
-#  2. Strategy Object *** RAILS
-#  3. Observer Pattern
-#  4. Composite Pattern
-#  5. Iterator Pattern
-#  6. Command Pattern
-#  7. Adapter Pattern *** RAILS
-#  8. Proxy
-#  9. Decorator Pattern  *** RAILS
-#  10. Singleton
-#  11. Factory Method *** RAILS
-#  12. Abstract Factory
-#  13. Builder Pattern
-#  14. Interpreter
-```
-
 # Chapter 3 - Varying the Algorithm with the Template Method
 
 * Every pattern has a problem that it is trying to solve. Maybe your code wants to do exactly the same thing, except for at step 44. Sometimes step 44 wants to do this, sometimes it wants to do that.

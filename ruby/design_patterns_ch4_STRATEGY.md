@@ -1,24 +1,3 @@
-# Overview of Patterns
-
-```ruby
-# page 44
-#  1. Template Method *** RAILS
-#  2. Strategy Object *** RAILS
-#  3. Observer Pattern
-#  4. Composite Pattern
-#  5. Iterator Pattern
-#  6. Command Pattern
-#  7. Adapter Pattern *** RAILS
-#  8. Proxy
-#  9. Decorator Pattern  *** RAILS
-#  10. Singleton
-#  11. Factory Method *** RAILS
-#  12. Abstract Factory
-#  13. Builder Pattern
-#  14. Interpreter
-```
-
-
 # Chapter 4 (106) - Replacing the Algorithm with the Strategy
 * Maybe you want variance in your whole algorithm and not just a single step (like the template method fixes). you have a well defined job and a ton of ways to do it
 * The biggest problem with the _Template method_ is that it relies on inheritance: your subclasses are tangled up with their superclass

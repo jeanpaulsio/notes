@@ -1,24 +1,3 @@
-# Overview of Patterns
-
-```ruby
-# page 44
-#  1. Template Method *** RAILS
-#  2. Strategy Object *** RAILS
-#  3. Observer Pattern
-#  4. Composite Pattern
-#  5. Iterator Pattern
-#  6. Command Pattern
-#  7. Adapter Pattern *** RAILS
-#  8. Proxy
-#  9. Decorator Pattern  *** RAILS
-#  10. Singleton
-#  11. Factory Method *** RAILS
-#  12. Abstract Factory
-#  13. Builder Pattern
-#  14. Interpreter
-```
-
-
 # Chapter 5 (124) - Keeping Up with the Times with the Observer
 * Challenge of building a highly integrated system - where every part is aware of the state of the whole
 * For example - a spreadsheet where editing the contents of one cell changes the number in the grid, the column totals, alters the height of one of the bars in a bar chart, and enables a save button
