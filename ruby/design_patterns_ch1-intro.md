@@ -1,17 +1,17 @@
 # Overview of Patterns
 
 ```ruby
-#  1. Template Method *** RAILS
-#  2. Strategy Object *** RAILS
+#  1. Template Method         *** RAILS
+#  2. Strategy Object         *** RAILS
 #  3. Observer Pattern
 #  4. Composite Pattern
 #  5. Iterator Pattern
 #  6. Command Pattern
-#  7. Adapter Pattern *** RAILS
+#  7. Adapter Pattern         *** RAILS
 #  8. Proxy
-#  9. Decorator Pattern  *** RAILS
+#  9. Decorator Pattern       *** RAILS
 #  10. Singleton
-#  11. Factory Method *** RAILS
+#  11. Factory Method         *** RAILS
 #  12. Abstract Factory
 #  13. Builder Pattern
 #  14. Interpreter
