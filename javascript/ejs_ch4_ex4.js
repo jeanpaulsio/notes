@@ -3,45 +3,34 @@
 // only if they are the same value or are objects with the same properties
 // whose values are also equal when compared with a recursive call to deepEqual.
 
-function deepEqual(obj1, obj2) {
-  var result = true;
+function deepEqual(a, b) {
+  console.log(a);
+  console.log(b);
+  console.log("");
 
-  if (obj1 === obj2) { return true }
-  if (typeof obj1 != typeof obj2) { return false }
+  if (a === b) return true;
 
-  firstObject = typeof obj1 == "object" && obj1 != null;
-  secondObject = typeof obj2 == "object" && obj2 != null;
-
-  if (firstObject && secondObject) {
-    if (Object.keys(obj1).length != Object.keys(obj2).length) {
-      return false;
-    } else {
-      for (let item in obj1) {
-        if (!obj2[item]) {
-          return false;
-        } else {
-
-          deepEqual(obj1[item], obj2[item]);
-          console.log(obj1[item]);
-          console.log(obj2[item])
-          console.log("")
-        }
-      }
-    }
-  } else {
+  if (a == null || typeof a != "object" ||
+      b == null || typeof b != "object")
     return false;
+
+  var propsInA = 0, propsInB = 0;
+
+  for (var prop in a)
+    propsInA += 1;
+
+  for (var prop in b) {
+    propsInB += 1;
+    if (!(prop in a) || !deepEqual(a[prop], b[prop]))
+      return false;
   }
 
-  return result;
+  return propsInA == propsInB;
 }
 
 var obj = { here: { is: "an" }, object: 2 };
 
-// console.log(deepEqual(1, "1"));
+// console.log(deepEqual(obj, {here: 1, object: 2}));
 // → false
-// console.log(deepEqual(obj, obj));
-// → true
-console.log(deepEqual(obj, {here: 1, object: 2}));
+console.log(deepEqual(obj, {here: {is: "an"}, object: 32}));
 // → false
-// console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
-// → true
