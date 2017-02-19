@@ -175,3 +175,17 @@ console.log(color);
 var [a,,,,b] = ["red", "orange", "yellow", "green", "b"];
 console.log(b);
 
+// Promises
+// ------------------------------------------------
+
+var d = new Promise((resolve, reject) => {
+  if(true){
+    resolve('hello, newman')
+  } else {
+    reject('hello, jerry')
+  }
+});
+
+d.then(data => console.log("success: " + data));
+
+d.catch(error => console.error("error: " + error));
