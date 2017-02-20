@@ -168,3 +168,4 @@ console.log(reduce([1, 2, 3, 4], function(a, b){
 ```js
 [1, 2, 3, 4].reduce( (a, b) => {return a+ b}, 0 );
 ```
+
