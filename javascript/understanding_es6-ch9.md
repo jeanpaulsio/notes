@@ -112,7 +112,7 @@ let PersonClass = class PersonClass2 {
 
 ```js
 function createObject(classDef){
-  retrn new classDef();
+  return new classDef();
 }
 
 let obj = createObject( class {
