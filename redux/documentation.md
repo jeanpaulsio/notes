@@ -140,3 +140,82 @@ function todos(state = {}, action) {
   }
 }
 ```
+
+* THEN, we write another reducer that manages the complete state of our app by calling those two reducers for the corresponding state keys:
+
+```js
+function todoApp(state = {}, action) {
+  return {
+    todos: todos(state.todos, action),
+    visibilityFilter: visibilityFilter(state.visibilityFilter, action)
+  };
+}
+```
+
+* **this is the whole idea of redux**
+  - you describe how your state is updated over time in response to action objects
+  - 90% of the code you write is plain ol' JS (no use of Redux itself, it's APIs, or any magic)
+
+## Three Principles
+
+### 1. Single Source of Truth
+* __the state of your whole app is stored in an object tree within a single store__
+* this makes it easy to create universal apps!
+  - the state from your server can be serialized and hydrated into the client
+* a single state tree makes it easier to debug
+
+```js
+console.log(store.getState())
+
+/* Prints
+
+{
+  visibilityFilter: 'SHOW_ALL',
+  todos: [
+    {
+      text: 'Consider using redux',
+      completed: true
+    },
+    {
+      text: 'Keep all state in a single tree',
+      completed: false
+    }
+  ]
+}
+
+*/
+
+```
+
+### 2. State is read-only
+* __only way to change state is to emit an action describing what happened__
+* Views and Callbacks __NEVER__ write directly to the state
+* Actions *express an intent to transform the state*
+* changes are centralized and happen one by one in a strict order
+
+```js
+store.dispatch({
+  type: 'COMPLETE_TODO',
+  index: 1
+})
+
+store.dispatch({
+  type: 'SET_VISIBILITY_FILTER',
+  filter: 'SHOW_COMPLETED'
+})
+```
+
+### 3. Chnages are made with pure functions
+* __to specify how the state tree is transformed by actions, you write pure reduces__
+* reducers are pure functions that take
+  - previous state
+  - an action
+    + -> then returns the next s tate
+* you are **returning new state objects instead of mutating the previous one**
+* you can start with a single reducer
+  - as your app grows, you can split it off into smaller reducers that manage specific parts of the state tree
+* reducers are JUST FUNCTIONS
+  - you can control the order in which they are called, pass addt'l data
+  - you can even make *reusuable* reducers for common tasks
+
+
