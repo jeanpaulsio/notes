@@ -89,3 +89,11 @@ class FlexDimensionsBasics extends Component {
 AppRegistry.registerComponent('AwesomeProject', () => FlexDimensionsBasics);
 ```
 
+## Layout with Flexbox
+
+* A component can specify the layout of its children using **flexbox**
+* `flexDirection`, `alignItems`, `justifyContent`
+* Flexbox works the same way as it does in CSS **with a few exceptions**
+  - `flexDirection` defaults to `column` instead of `row`
+  - `flex` parameter only supports a single number
+*
