@@ -23,11 +23,10 @@ Now that that's all settled, let's structure our folders a little better. In par
 │   ├── actions
 │   │   └── index.js
 │   ├── components
-│   │   └── app.js
+│   │   └── App.js
 │   ├── reducers
 │   │   └── index.js
 │   ├── index.js
-├── index.js
 ```
 
 # File Setup
@@ -38,7 +37,7 @@ Now that that's all settled, let's structure our folders a little better. In par
 // empty
 ```
 
-`src > components > app.js`
+`src > components > App.js`
 
 ```
 import React, { Component } from 'react';
