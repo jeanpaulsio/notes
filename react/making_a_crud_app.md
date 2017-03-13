@@ -44,7 +44,7 @@ $ yarn add react-router-dom@next
 
 * Let's start out by setting up our `src > index.js` to pre-maturely import our `RouteConfig` (which will be in our routes.js)
 
-```
+```html
 # src > index.js
 
 import React from 'react';
@@ -70,7 +70,7 @@ ReactDOM.render(
 * For now, let's just test a couple things out to make sure we have an understanding of what the Router is doing
 * More information on `react-router` can be found at their [docs](https://reacttraining.com/react-router/web/example/basic)
 
-```
+```html
 # src > routes.js
 
 import React from 'react';
@@ -272,7 +272,7 @@ __Fetching data with Lifecycle Methods__
 * enter: **lifecycle methods**
   - we will be using `componentWillMount`
 
-```
+```html
 # src > components > PostsIndex.js
 
 import React, { Component } from 'react';
@@ -294,7 +294,7 @@ export default PostsIndex;
 * `componentWillMount` will call this method whenever our component is about to be rendered to the DOM for the first time
 * after we write this, let's make sure to hook up the routes so that navigating to `/` will render the `PostsIndex.js` component
 
-```
+```js
 # src > routes.js
 
 import PostsIndex from './components/PostsIndex'
@@ -566,6 +566,55 @@ export default connect(null, { fetchPosts })(PostsIndex);
 
 (just to make sure we're all up to speed)
 
+## Creating a POST request that our form will use
+
+* first, let's create an *action-creator* that will send a POST request to our back-end
+
+```js
+// src > actions > index.js
+
+CONST CREATE_POST = 'CREATE_POST'
+
+export function createPost(props) {
+  const request = axios.post(`${ROOT_URL}/posts`, props);
+
+  return {
+    type: CREATE_POST,
+    payload: request
+  }
+}
+```
+
+* this is just like any other action that we've made
+* note that we are using `axios.post` instead of `axios.get`
+* the next step would be to import this inside of our `PostsNew` component as such: `import { createPost } from '../actions/index';`
+
+## Hooking up createPost to PostsNew
+
+* we have an action called `createPost` and we want to put it inside of our component called `PostsNew`
+* Let's go through the process of doing this
+
+```html
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { createPost } from '../actions/index';
+
+class PostsNew extends Component {
+  ...
+  ...
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ createPost }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(PostsNew)
+
+```
+
+* Now let's move on to making the actual form
+
 ## Creating the Form for a new blog post
 
 * we will need validation to make sure that a user inputs:
@@ -576,7 +625,7 @@ export default connect(null, { fetchPosts })(PostsIndex);
 * we will use `Redux-Form` to help us with this
 
 ```bash
-$ npm install redux-form@4.1.3
+$ npm install redux-form
 ```
 
 __first we hook up redux-form to the reducer__
@@ -608,143 +657,63 @@ __now that redux-form is hooked into our reducer...__
 * let's hook up a form into PostsNew by importing reduxForm
 
 ```js
-import { reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 ```
 
-* at the bottom, we wrap our component the same way we do with connect
-
-```js
-export default reduxForm({
-  form: 'PostsNewForm',
-  fields: ['title', 'categories', 'content']
-})(PostsNew);
-```
-
-* we pass in `reduxForm` an object.
-* it will have a name under `form`
-* we then pass in the fields that we expect the form to have
-* when a user types in something to one of the inputs, we record it in the application state
-* so our state might look something like
-
-```
-  state === {
-    form: {
-      PostsNewForm: {
-        title: 'blah',
-        categories: 'blah',
-        content: 'blah blah blah'
-      }
-    }
-  }
-```
-
-* notice that the key in the object is both named `form` in the reducer and in our export statement
-
-__building the actual form__
-
-* so we told `reduxForm` that we have a few specific form fields
-* now we have to hook them into our form
-* `reduxForm` injects helpers for us into `this.props`
-* let's extract all the goodies that reduxForm gives to our props
-
-```js
-const { fields: { title, categories, content }, handleSubmit } = this.props
-```
-
-* note that the longhand of the destructured objects would look something like:
-
-```js
-const title = this.props.fields.title
-const categories = this.props.fields.categories
-```
-
-* then, we destructure each object onto every form element
+* each input component will be placed inside of a `Field` component like so:
 
 ```html
-  <input type="text" className="form-control" {...title} />
+<Field name="title" component="input" type="text" />
 ```
 
-* the full form will look like this inside of the return statement:
+__the form in all it's glory__
 
 ```html
-<form onSubmit={handleSubmit}>
-  <h3>Create a New Post</h3>
-  <div className="form-group">
-    <label>Title</label>
-    <input type="text" className="form-control form-control-lg" {...title} />
-  </div>
+render() {
+  const { handleSubmit } = this.props;
+  console.log(this.props);
+  return (
+    <form onSubmit={handleSubmit(createPost)}>
+      <h3>Create a New Post</h3>
+      <div className="form-group">
+        <label>Title</label>
+        <Field name="title" component="input" type="text" className="form-control" />
+      </div>
 
-  <div className="form-group">
-    <label>categories</label>
-    <input type="text" className="form-control form-control-lg" {...categories} />
-  </div>
+      <div className="form-group">
+        <label>categories</label>
+        <Field name="categories" component="input" type="text" className="form-control" />
+      </div>
 
-  <div className="form-group">
-    <label>content</label>
-    <textarea className="form-control form-control-lg" {...content} />
-  </div>
+      <div className="form-group">
+        <label>content</label>
+        <Field name="content" component="textarea" className="form-control" />
+      </div>
 
-  <button type="submit" className="btn btn-primary">Submit</button>
-</form>
-```
-
-__working with handleSubmit__
-
-* we need an action creator that receives the properties off of our form
-* now we are talking to our backend to create a POST request
-
-```js
-// src > actions > index.js
-
-const CREATE_POST = 'CREATE_POST';
-
-export function createPost(props) {
-  const request = axios.post(`${ROOT_URL}/posts`, props);
-
-  return {
-    type: CREATE_POST,
-    payload: request
-  }
+      <button type="submit" className="btn btn-primary">Submit</button>
+    </form>
+  );
 }
 ```
 
-* the reason that we are passing in `props` is that we are assuming that this action will be created with an object that is passed through to it that contains:
-  - title, categories, content
-* our request will then pass in the props object
+* here are a couple things to note:
+  - we destructure a `handleSubmit` from our props. redux-form gives this function to us
+  - we then pass the `handleSubmit` to the form's `onSubmit`
+  - we pass in our action-creator `createPost` to `handleSubmit`
+  - `createPost` will send a post request to our back end and we have it here in anticipation of that
+* at the bottom, we will decorate the form component and add onto our `connect` statement
 
-__getting our action creator into our handleSubmit__
-
-```
-# src > components > PostsNew
-
-...
-import { createPost } from '../actions/index'
-...
-
-```
-
-* but do we `connect` our action-creator to the redux-form???
-* previously, we imported `connect` and then passed in our action-creator into connect
-* we need to somehow merge `reduxForm` and `connect`
-* LUCKILY, reduxForm has the same functionality as connect
-* connect: (mapStateToProps, mapDispatchToProps)
-* reduxForm: (formConfig, mapStateToProps, mapDispatchToProps)
-* **with redux form we have one extra argument that is passed first**
-* our export statement in `PostsNew` should now look like this:
 
 ```js
-export default reduxForm({
-  form: 'PostsNewForm',
-  fields: ['title', 'categories', 'content']
-}, null, { createPost })(PostsNew);
+export default connect(null, mapDispatchToProps)(reduxForm({
+    form: 'PostsNewForm'
+})(PostsNew));
 ```
 
-* note that the `null` is because we have no `mapStateToProps`
-* now that we have linked them together, we can pass in `createPost` into our `handleSubmit` that redux-form gives us:
 
-```html
-<form onSubmit={handleSubmit(this.props.createPost)}>
-```
+* we pass in `reduxForm` an object.
+* it will have a name under `form`
+* notice that the key in the object is both named `form` in the reducer and in our export statement
 
 ## Form Validations
 
