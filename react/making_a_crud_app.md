@@ -586,6 +586,8 @@ export function createPost(props) {
 ```
 
 * this is just like any other action that we've made
+* the reason that we pass in `props` is because we expect to pass in `title`, `categories`, and `content`
+*
 * note that we are using `axios.post` instead of `axios.get`
 * the next step would be to import this inside of our `PostsNew` component as such: `import { createPost } from '../actions/index';`
 
@@ -718,4 +720,89 @@ export default connect(null, mapDispatchToProps)(reduxForm({
 ## Form Validations
 
 * we need to make sure we have some kind of form-validation before the form is submitted
-*
+* redux form also handles form validation
+* depending on what we return, `redux-form` marks the form as valid or invalid
+* [redux-form docs as of 3-12-17](http://redux-form.com/6.5.0/examples/syncValidation/)
+
+* First, let's write a couple validate functions that will be the parameters that determine whether or not an input field is valid. In this case, we are just going to validate that some text exists (and not something complex like a minimum character requirement)
+
+```js
+const validate = values => {
+  const errors = {};
+
+  if (!values.title) {
+    errors.title = "Title Required"
+  }
+  if (!values.categories) {
+    errors.categories = "Categories Required"
+  }
+  if (!values.content) {
+    errors.content = "Content Required"
+  }
+
+  return errors
+};
+```
+
+* Next, we make sure to wire this up to our props in our export statement:
+
+```js
+export default connect(null, mapDispatchToProps)(reduxForm({
+    form: 'PostsNewForm',
+    validate
+})(PostsNew));
+```
+
+* Then, we will write two components: one for text inputs and a second for text areas
+
+```js
+const FormInput = ({ input, label, type, meta: { touched, error } }) => (
+  <div className="form-group">
+    <label>{label}</label>
+
+    <input {...input} type={type} className="form-control" />
+    {touched && ((error && <span>{error}</span>))}
+  </div>
+)
+
+const FormTextArea = ({ input, label, type, meta: { touched, error } }) => (
+  <div className="form-group">
+    <label>{label}</label>
+
+    <textarea {...input} type={type} className="form-control" />
+    {touched && ((error && <span>{error}</span>))}
+  </div>
+)
+```
+
+* After this, we can return to our actual form. because we extracted the form-html logic inside components, we can do some pretty sweet refactoring
+
+__a couple things to note from our input and text area components above__
+
+* note that we are checking for `touched` and `error`. what these will do is check to see whether an input has been touched before screaming at the user with an error.
+* if the user has touched an input field and hasn't fulfilled the requirements for validation, an error will appear inside of a `<span>`
+
+__moving on to our form__
+
+```html
+<form onSubmit={handleSubmit(createPosts)}>
+
+  <Field name="title" component={FormInput} type="text" label="Title" />
+  <Field name="categories" component={FormInput} type="text" label="Categories" />
+  <Field name="content" component={FormTextArea} label="Content" />
+
+  <div className="form-group">
+    <button type="submit" className="btn btn-primary">Submit</button>
+  </div>
+</form>
+```
+
+* Now we have passed in our components as a prop to `Field`
+* we can easily add a cancel button by importing `{ Link }` from `react-router-dom` and adding a Link back to our home route: `<Link to="/" className="btn btn-warning">Cancel</Link>`
+
+## Navigating to home on submit
+
+* now we have to redirect back to a list of posts after a blog post is **submitted**
+* when a post is successfully created, we navigate back to the index route
+* we will do this by using `react-router`
+
