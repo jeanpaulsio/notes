@@ -59,4 +59,44 @@ npm install --save-dev babel-eslint eslint eslint-plugin-react eslint-plugin-rea
 }
 ```
 
+## Writing the redux boilerplate
 
+* hopping into our `src > App.js`
+* we're going to start by importing a couple things
+
+```js
+import React from 'react';
+import { View } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+```
+
+* then we wrap our view with the `Provider`
+
+__what does the provider do?__
+
+* the store is what actually holds the application state
+* the provider translates all of the data inside of our store and communicates that to our app
+* this is why we're importing from `react-redux`
+
+```html
+<Provider store={createStore}>
+  <View />
+</Provider>
+```
+
+* then we create a reducer and pass it to our `createStore`
+* we create a new directory for our reducers
+
+```js
+// src > reducers > index.js
+
+import { combineReducers } from 'redux';
+
+export default combineReducers({
+  libraries: () => []
+});
+```
+
+* we import `combineReducers` so that we can have multiple reducers in one place
+* we create one reducer with the key of `libraries`
