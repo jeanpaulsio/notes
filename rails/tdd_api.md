@@ -176,7 +176,7 @@ require 'rails_helper'
 RSpec.describe List, type: :model do
   # Association Test
   # Ensure List model has a one:many relationship with Items
-  it { should have_many(:items).dependendent(:destroy) }
+  it { should have_many(:items).dependent(:destroy) }
 
   # Validation Tests
   # ensure column names before saving
@@ -193,7 +193,7 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   # Association Test
   # ensure an item record belongs to a single List record
-  it { should belong_to(:todo) }
+  it { should belong_to(:list) }
 
   # Validation Test
   # ensure column names before saving
@@ -203,9 +203,91 @@ end
 ```
 
 
-* Now, let's watch our tests fail:
+Now, let's watch our tests fail:
 
 ```bash
 $ bundle exec rspec spec/models
+```
+
+Cool. Time to make our tests pass. Open up our models
+
+```ruby
+# models > list.rb
+
+class List < ApplicationRecord
+  has_many :items, dependent: :destroy
+
+  validates_presence_of :title, :completed
+end
+
+```
+
+```ruby
+# models > item.rb
+class Item < ApplicationRecord
+  belongs_to :list
+
+  validates_presence_of :name, :completed
+end
+
+```
+
+Simple enough!
+
+# Routing and Namespacing
+
+* Create a namespace for our `api` and a version number for our api
+* Our routes file will look something like this
+
+```ruby
+# config > routes.rb
+
+Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      resources :lists do
+        resources :items
+      end
+    end
+  end
+end
+
+```
+
+* When we run `rails routes` we can see what our routes will look like
+* The goal then is to have our controller directory look like this:
+
+```
+├── controllers
+│   ├── api
+│   │   ├── v1
+│   │   │   └── api_controller.rb
+│   │   │   └── lists_controller.rb
+│   │   │   └── items_controller.rb
+```
+
+Generate our `lists` and `items` controller
+
+```bash
+$ rails g controller api/v1/Lists
+$ rails g controller api/v1/Items
+$ rails g controller api/v1/Api
+```
+
+Let's make our `Lists` and `Items` controller inherit from our `ApiController`, though we won't be doing anything with this at this time
+
+# Request Specs
+
+We'll actually be deleting our `spec > controllers` folder and instead write **request specs** for our controllers.
+
+```bash
+$ mkdir spec/requests && touch spec/requests/{lists_spec.rb,items_spec.rb}
+```
+
+Let's also model some factories with test data
+
+
+```bash
+$ touch spec/factories/{lists.rb,items.rb}
 ```
 
