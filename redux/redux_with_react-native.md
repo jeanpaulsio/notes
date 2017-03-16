@@ -100,3 +100,15 @@ export default combineReducers({
 
 * we import `combineReducers` so that we can have multiple reducers in one place
 * we create one reducer with the key of `libraries`
+* then we wire it up to our `App`
+
+```html
+// ...
+import reducers from './reducers';
+
+// ...
+<Provider store={createStore(reducers)}>
+  <View />
+</Provider>
+```
+
