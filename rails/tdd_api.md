@@ -232,7 +232,7 @@ end
 class Item < ApplicationRecord
   belongs_to :list
 
-  validates_presence_of :name, :completed
+  validates_presence_of :name
   validates :completed, inclusion: { in: [true, false] }
 end
 
@@ -556,6 +556,303 @@ end
 class Api::V1::ApiController < ApplicationController
   include Response
   include ExceptionHandler
+end
+```
+
+### POST /api/v1/lists
+
+inside the spec requets
+
+```ruby
+  # Test suite for POST /api/v1/lists
+  describe 'POST /api/v1/lists' do
+    let(:valid_attributes) { { title: 'Hipster List', completed: true  } }
+    let(:invalid_attributes) { { title: nil } }
+
+    context 'when the request is valid' do
+      before { post '/api/v1/lists', params: valid_attributes }
+
+      it 'creates a list' do
+        expect(json['title']).to eq('Hipster List')
+      end
+
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+
+    context 'when the request is invalid' do
+      before { post '/api/v1/lists', params: invalid_attributes }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns a validation failure message' do
+        expect(response.body).to match(/Validation failed/)
+      end
+    end
+  end
+```
+
+back to the controller
+
+```ruby
+def create
+  @list = List.create!(list_params)
+  json_response(@list, :created)
+end
+
+# ...
+
+private
+
+  def list_params
+    params.permit(:title, :completed)
+  end
+```
+
+back to the exception handler
+
+```ruby
+rescue_from ActiveRecord::RecordInvalid do |e|
+  json_response({message: e.message}, :unprocessable_entity)
+end
+```
+
+### PUT /api/v1/lists/:id
+
+inside the specs
+
+```ruby
+  # Test suite for PUT /api/v1/lists/:id
+  describe 'PUT /api/v1/lists/:id' do
+    let(:valid_attributes) { { title: 'Hipster List Edited' } }
+
+    context 'when the record exists' do
+      before { put "/api/v1/lists/#{list_id}", params: valid_attributes }
+
+      it 'updates the record' do
+        expect(response.body).to be_empty
+      end
+
+      it 'returns the status code 204' do
+        expect(response).to have_http_status(204)
+      end
+    end
+  end
+```
+
+making them pass by writing the controller method
+
+```ruby
+  # PUT /api/v1/lists/:id
+  def update
+    @list.update(list_params)
+    head :no_content
+  end
+```
+
+### DELETE /api/v1/lists/:id
+
+inside the specs
+
+```ruby
+  # Test suite for DELETE /api/v1/lists/:id
+  describe 'DELETE /api/v1/lists/:id' do
+    before { delete "/api/v1/lists/#{list_id}" }
+
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
+    end
+  end
+```
+
+making the tests pass
+
+```ruby
+  # DELETE /api/v1/lists/:id
+  def destroy
+    @list.destroy
+    head :no_content
+  end
+```
+
+* our test suite should be completely green by now!
+
+# Request Specs for Items
+
+```ruby
+require 'rails_helper'
+
+RSpec.describe 'Items API' do
+  let!(:list) { create(:list) }
+  let!(:items) { create_list(:item, 20, list_id: list.id) }
+  let(:list_id) { list.id }
+  let(:id) { items.first.id }
+
+  describe 'GET /api/v1/lists/:list_id/items' do
+    before { get "/api/v1/lists/#{list_id}/items" }
+
+    context 'when list exists' do
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'returns all list items' do
+        expect(json.size).to eq(20)
+      end
+    end
+
+    context 'when list does not exists' do
+      let(:list_id) { 0 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find List/)
+      end
+    end
+  end
+
+  describe 'GET /api/v1/lists/:list_id/items/:id' do
+    before { get "/api/v1/lists/#{list_id}/items/#{id}" }
+
+    context 'when todo item exists' do
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'returns the item' do
+        expect(json['id']).to eq(id)
+      end
+    end
+
+    context 'when todo item does not exist' do
+      let(:id) { 0 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Item/)
+      end
+    end
+  end
+
+  describe 'POST /api/v1/lists/:list_id/items' do
+    let(:valid_attributes) { { name: "Hipster sentence", completed: false } }
+
+    context 'when request attributes are valid' do
+      before { post "/api/v1/lists/#{list_id}/items", params: valid_attributes }
+
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+
+    context 'when an invalid request' do
+      before { post "/api/v1/lists/#{list_id}/items", params: {} }
+
+      it 'returns a status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns a failure message' do
+        expect(response.body).to match(/Validation failed: Name can't be blank/)
+      end
+    end
+  end
+
+  describe 'PUT /api/v1/lists/:list_id/items/:id' do
+    let(:valid_attributes) { { name: 'Different hipster sentence' } }
+
+    before { put "/api/v1/lists/#{list_id}/items/#{id}", params: valid_attributes }
+
+    context 'when item exists' do
+      it 'returns status code 204' do
+        expect(response).to have_http_status(204)
+      end
+
+      it 'updates the item' do
+        updated_item = Item.find(id)
+        expect(updated_item.name).to match(/Different hipster sentence/)
+      end
+    end
+
+    context 'when the item does not exist' do
+      let(:id) { 0 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Item/)
+      end
+    end
+  end
+
+  describe 'DELETE /api/v1/lists/:list_id/items/:id' do
+    before { delete "/api/v1/lists/#{list_id}/items/#{id}" }
+
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
+    end
+  end
+end
+
+
+```
+
+# Items Controller
+
+```ruby
+class Api::V1::ItemsController < Api::V1::ApiController
+  before_action :set_list
+  before_action :set_list_item, only: [:show, :update, :destroy]
+
+  # GET /api/v1/lists/:list_id/items
+  def index
+    json_response(@list.items)
+  end
+
+  # GET /api/v1/lists/:list_id/items/:id
+  def show
+    json_response(@item)
+  end
+
+  # POST /api/v1/lists/:list_id/items
+  def create
+    @list.items.create!(item_params)
+    json_response(@list, :created)
+  end
+
+  def update
+    @item.update(item_params)
+    head :no_content
+  end
+
+  def destroy
+    @item.destroy
+    head :no_content
+  end
+
+  private
+    def item_params
+      params.permit(:name, :completed)
+    end
+
+    def set_list
+      @list = List.find(params[:list_id])
+    end
+
+    def set_list_item
+      @item = @list.items.find_by!(id: params[:id]) if @list
+    end
 end
 
 ```
