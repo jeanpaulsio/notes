@@ -291,3 +291,124 @@ Let's also model some factories with test data
 $ touch spec/factories/{lists.rb,items.rb}
 ```
 
+__our factories__
+
+```ruby
+# spec/factories/lists.rb
+
+FactoryGirl.define do
+  factory :list do
+    title { Faker::Hipster.sentence }
+    completed { Faker::Boolean.boolean }
+  end
+end
+
+
+# spec/factories/items.rb
+FactoryGirl.define do
+  factory :item do
+    name { Faker::Hipster.word }
+    completed { Faker::Boolean.boolean }
+    list_id nil
+  end
+end
+
+```
+
+## Request Specs for our API
+
+__List__
+
+* Let's write our first spec for the `GET` request for 'api/v1/lists' which is our index of list items
+
+```ruby
+# specs/requests/lists_spec.rb
+
+require 'rails_helper'
+
+RSpec.describe 'List API', type: :request do
+  # initialize test data
+  let!(:lists) { create_list(:list, 10) }
+  let(:list_id) { lists.first.id }
+
+  # Test suite for GET /api/v1/lists
+  describe 'GET /api/v1/lists' do
+    before { get '/api/v1/lists' }
+
+    it 'returns todos' do
+      # `json` is a custom helper that we need to build
+      expect(json).not_to be_empty
+    end
+
+    it 'returns status code 200' do
+      expect(response).to have_http_status(200)
+    end
+  end
+
+end
+```
+
+* next we write our json helper method
+* create a filer in a new folder: `spec/support/request_spec_helper.rb`
+
+```ruby
+# spec/support/request_spec_helper.rb
+
+module RequestSpecHelper
+  # Parsing JSON response to ruby hash
+  def json
+    JSON.parse(response.body)
+  end
+end
+```
+
+* Now we make it so that Rails will load our newly created `support` directory
+
+```ruby
+# spec/rails_helper.rb
+
+# spec/rails_helper.rb
+# [...]
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+# [...]
+RSpec.configuration do |config|
+  # [...]
+  config.include RequestSpecHelper, type: :request
+  # [...]
+end
+```
+
+## Making Tests Pass
+
+* let's get our tests to pass for the `GET` request of Lists
+
+```ruby
+class Api::V1::ListsController < ApiController
+  # GET /api/v1/lists
+  def index
+    @lists = List.all
+    json_response(@lists)
+  end
+
+end
+
+
+```
+
+* Now for the `json` helper method`
+
+```ruby
+# app/controllers/concerns/response.rb
+module Response
+  def json_response(object, status = :ok)
+    render json: object, status: status
+  end
+end
+
+```
+
+* Now we have to let our controllers know about this helper method:
+
+```ruby
+# app/controllers/appliction_controller
+```
