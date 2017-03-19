@@ -171,6 +171,8 @@ $ rails db:migrate
 __list_spec.rb__
 
 ```ruby
+# spec/models/list_spec.rb
+
 require 'rails_helper'
 
 RSpec.describe List, type: :model do
@@ -179,15 +181,16 @@ RSpec.describe List, type: :model do
   it { should have_many(:items).dependent(:destroy) }
 
   # Validation Tests
-  # ensure column names before saving
   it { should validate_presence_of(:title) }
-  it { should validate_presence_of(:completed) }
 end
+
 ```
 
 __item_spec.rb__
 
 ```ruby
+# spec/models/item_spec.rb
+
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
@@ -198,8 +201,8 @@ RSpec.describe Item, type: :model do
   # Validation Test
   # ensure column names before saving
   it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:completed) }
 end
+
 ```
 
 
@@ -212,27 +215,45 @@ $ bundle exec rspec spec/models
 Cool. Time to make our tests pass. Open up our models
 
 ```ruby
-# models > list.rb
+# app/models/list.rb
 
 class List < ApplicationRecord
   has_many :items, dependent: :destroy
 
-  validates_presence_of :title, :completed
+  validates_presence_of :title
+  validates :completed, inclusion: { in: [true, false] }
 end
 
 ```
 
 ```ruby
-# models > item.rb
+# app/models/item.rb
+
 class Item < ApplicationRecord
   belongs_to :list
 
   validates_presence_of :name, :completed
+  validates :completed, inclusion: { in: [true, false] }
 end
 
 ```
 
-Simple enough!
+Simple enough! - We should be __green__ with our model tests
+
+```bash
+$ rspec spec/models
+
+Item
+  should belong to list
+  should validate that :name cannot be empty/falsy
+
+List
+  should have many items dependent => destroy
+  should validate that :title cannot be empty/falsy
+
+Finished in 0.38818 seconds (files took 1.13 seconds to load)
+4 examples, 0 failures
+```
 
 # Routing and Namespacing
 
@@ -274,7 +295,24 @@ $ rails g controller api/v1/Items
 $ rails g controller api/v1/Api
 ```
 
-Let's make our `Lists` and `Items` controller inherit from our `ApiController`, though we won't be doing anything with this at this time
+Let's make our `Lists` and `Items` controller inherit from our `ApiController`
+
+```ruby
+# app/controllers/api/v1/lists_controller.rb
+
+class Api::V1::ListsController < Api::V1::ApiController
+end
+
+# app/controllers/api/v1/items_controller.rb
+
+class Api::V1::ItemsController < Api::V1::ApiController
+end
+
+# app/controllers/api/v1/api_controller.rb
+class Api::V1::ApiController < ApplicationController
+end
+
+```
 
 # Request Specs
 
@@ -298,7 +336,7 @@ __our factories__
 
 FactoryGirl.define do
   factory :list do
-    title { Faker::Hipster.sentence }
+    title { Faker::Hipster.word }
     completed { Faker::Boolean.boolean }
   end
 end
@@ -307,7 +345,7 @@ end
 # spec/factories/items.rb
 FactoryGirl.define do
   factory :item do
-    name { Faker::Hipster.word }
+    name { Faker::Hipster.sentence }
     completed { Faker::Boolean.boolean }
     list_id nil
   end
@@ -316,8 +354,7 @@ end
 ```
 
 ## Request Specs for our API
-
-__List__
+### GET /api/v1/lists
 
 * Let's write our first spec for the `GET` request for 'api/v1/lists' which is our index of list items
 
@@ -329,7 +366,6 @@ require 'rails_helper'
 RSpec.describe 'List API', type: :request do
   # initialize test data
   let!(:lists) { create_list(:list, 10) }
-  let(:list_id) { lists.first.id }
 
   # Test suite for GET /api/v1/lists
   describe 'GET /api/v1/lists' do
@@ -338,6 +374,7 @@ RSpec.describe 'List API', type: :request do
     it 'returns todos' do
       # `json` is a custom helper that we need to build
       expect(json).not_to be_empty
+      expect(json.size).to eq(10)
     end
 
     it 'returns status code 200' do
@@ -346,6 +383,7 @@ RSpec.describe 'List API', type: :request do
   end
 
 end
+
 ```
 
 * next we write our json helper method
@@ -367,7 +405,6 @@ end
 ```ruby
 # spec/rails_helper.rb
 
-# spec/rails_helper.rb
 # [...]
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 # [...]
@@ -383,15 +420,15 @@ end
 * let's get our tests to pass for the `GET` request of Lists
 
 ```ruby
-class Api::V1::ListsController < ApiController
+# app/controllers/api/v1/lists_controller.rb
+
+class Api::V1::ListsController < Api::V1::ApiController
   # GET /api/v1/lists
   def index
     @lists = List.all
     json_response(@lists)
   end
-
 end
-
 
 ```
 
@@ -399,6 +436,7 @@ end
 
 ```ruby
 # app/controllers/concerns/response.rb
+
 module Response
   def json_response(object, status = :ok)
     render json: object, status: status
@@ -410,5 +448,114 @@ end
 * Now we have to let our controllers know about this helper method:
 
 ```ruby
-# app/controllers/appliction_controller
+# app/controllers/api/v1/api_controller.rb
+
+class Api::V1::ApiController < ApplicationController
+  include Response
+end
+```
+
+__overview__
+
+* In order to make our first request specs to pass, we:
+* 1. wrote our `index` method.
+* 2. created a `json_response` helper method
+* 3. included the helper method inside of our ApiController
+
+### GET /api/v1/lists/:id
+
+* First we write the specs
+
+```ruby
+# spec/requests/list_spec.rb
+
+...
+  # Test suite for GET /api/v1/lists/:id
+  describe 'GET /api/v1/lists/:id' do
+    before { get "/api/v1/lists/#{list_id}" }
+
+    context 'when the record exists' do
+      it 'returns the todo' do
+        expect(json).not_to be_empty
+        expect(json['id']).to eq(list_id)
+      end
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'when the record does not exist' do
+      let(:list_id) { 404 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find List/)
+      end
+    end
+  end
+...
+
+```
+
+* Then we write the `show` method
+
+```ruby
+# app/controllers/api/v1/lists_controller.rb
+
+class Api::V1::ListsController < Api::V1::ApiController
+  before_action :set_list, only: [:show, :update, :destroy]
+
+  # GET /api/v1/lists
+  def index
+    @lists = List.all
+    json_response(@lists)
+  end
+
+  # GET /api/v1/lists/:id
+  def show
+    json_response(@list)
+  end
+
+  private
+
+    def set_list
+      @list = List.find(params[:id])
+    end
+end
+```
+
+* because we wrote a callback called `set_list`, we need to throw an exception when the Record is not found
+
+```ruby
+# app/controllers/concerns/exception_handler.rb
+
+module ExceptionHandler
+  extend ActiveSupport::Concern
+
+
+  included do
+
+    rescue_from ActiveRecord::RecordNotFound do |e|
+      json_response({ message: e.message}, :not_found)
+    end
+
+  end
+end
+```
+
+* Update the `api_controller` to include the newly created ExceptionHandler
+* this is the last that we'll be touching this file
+
+```ruby
+# apps/controllers/api/v1/api_controller.rb
+
+class Api::V1::ApiController < ApplicationController
+  include Response
+  include ExceptionHandler
+end
+
 ```
