@@ -12,15 +12,17 @@ Let's create a RESTful API using Rails 5 and TDD
 Let's first take a look at our endpoints. This will give us a good idea of the structure of our API
 
 ```
-GET     /lists
-POST    /lists
-GET     /lists/:id
-PUT     /lists/:id
-DELETE  /lists/:id
+GET     /api/v1/lists
+POST    /api/v1/lists
+GET     /api/v1/lists/:id
+PUT     /api/v1/lists/:id
+DELETE  /api/v1/lists/:id
 
-GET     /lists/:id/items
-PUT     /lists/:id/items
-DELETE  /lists/:id/items
+GET     /api/v1/lists/:list_id/items
+POST    /api/v1/lists/:list_id/items
+GET     /api/v1/lists/:list_id/items/:id
+PUT     /api/v1/lists/:list_id/items/:id
+DELETE  /api/v1/lists/:list_id/items/:id
 ```
 
 * We will have 2 models: `List` and `Item`
@@ -856,3 +858,67 @@ class Api::V1::ItemsController < Api::V1::ApiController
 end
 
 ```
+
+# Serializing API output
+
+* Active Model Serializers gives us a clean layer between the model and the controller
+* Normally we would use something like `jbuilder` but we have no views in our API-only Rails app
+
+```ruby
+# Gemfile
+
+gem 'active_model_serializers', '~> 0.10.5'
+
+```
+
+```bash
+$ bundle
+$ rails g serializer list
+$ rails g serializer item
+```
+
+* now we put the attributes that we want our API to spit out. for example, we can omit the timestamps here
+
+```ruby
+# app/serializers/list_serializer.rb
+class ListSerializer < ActiveModel::Serializer
+  attributes :id, :title, :completed
+end
+
+
+# app/serializers/item_serializer.rb
+class ItemSerializer < ActiveModel::Serializer
+  attributes :id, :name, :completed, :list_id
+end
+
+```
+
+* our output will now reflect what we serialize
+
+# Enabling CORS
+
+* Building a Public API means you want to enable Cross-Origin Resource Sharing (CORS)
+* This needs to be enabled if you want to make AJAX requests
+
+```ruby
+# Gemfile
+
+gem 'rack-cors', '~> 0.4.1'
+```
+
+* Now, open up: `config/application.rb`
+
+```ruby
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options, :delete]
+      end
+    end
+```
+
+this example will allow `get`, `post`, `options`, and `delete` requests
+
+
+# TODO: Add Rack-Attack and Authentication
