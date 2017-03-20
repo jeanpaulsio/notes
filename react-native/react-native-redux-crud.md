@@ -151,3 +151,15 @@ export default App;
 * All the form does it *show the form*
 * when a button is clicked or input is touched, we call an action creator
 
+### Getting all of our common components
+
+* Let's plop in our common components that we've previously made
+
+`src/components/common`
+
+## Redux Login Form (#108)
+
+Create a new file: `src/components/LoginForm.js`
+
+```
+```
