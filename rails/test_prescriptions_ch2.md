@@ -547,3 +547,21 @@ end
 
 ```
 
+* let's cover our bases and test the edge case where no tasks have been completed:
+
+```ruby
+  it "properly estimates a blank project" do
+    expect(project.completed_velocity).to eq(0)
+    expect(project.current_rate).to eq(0)
+    expect(project.projected_days_remaining.nan?).to be_truthy
+    expect(project).not_to be_on_schedule
+  end
+```
+
+```ruby
+def on_schedule?
+  return false if projected_days_remaining.nan?
+  (Date.today + projected_days_remaining) <= due_date
+end
+```
+
