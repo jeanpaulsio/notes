@@ -124,4 +124,13 @@ __A note on A/B Testing__
   - lifetime value of customer
 * **does this channel have enough customers to be valuable?**
 
-# Chapter 5
+# Chapter 5 - Critical Path
+* How do you decide what to work on?
+* It's **important** to define a traction goal. Are you going for *growth* or are you going for *profitablity*
+* Define a traction goal explicitlyz: i.e. "obtain x amount of signups in a month"
+* **lay out milestones**: set out specific milestones and figure out the *fewest number of steps* it takes to reach your end goal
+* Remember, it's important not to be biased for or against traction channels
+
+> It can be a competitive advantage (or at least a temporary one) if you can acquire customers in channels that others cannot, or refuse to try.
+
+
