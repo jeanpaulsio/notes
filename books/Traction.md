@@ -60,6 +60,11 @@ __Moving the needle__
 
 > startups take off because the founders make them take off ... The most commmon unscalable thing founders have to do at the start is to recruit users manually. Nearly all start-ups have to. You can't wait for users to come to you. You have to go out there and get them
 
+__Three Phases__
+1. making something people wants
+2. marketing something people want
+3. scaling your business
+
 # Chapter 3 - Bullseye
 
 ### Outer Ring: What's Possible
@@ -134,6 +139,26 @@ __A note on A/B Testing__
 > It can be a competitive advantage (or at least a temporary one) if you can acquire customers in channels that others cannot, or refuse to try.
 
 # Chapter 6 - Targeting Blogs
+
+__how Mint did it__
+Former head of marketing at Mint, Noah Kagan sent emails to bloggers with the subject, "Can I send you 500 dollars?" The thing is, personal bloggers have strong readerships but dont make money from their writing. This was a great way to inject their product into specific blogs where Noah knew that he would be targeting the right people.
+
+__taregeting blog tactics__
+
+* __search engines__ - search for things like "top blogs for x" or "best x blogs"
+* __youtube__ - search for your product keywords on youtube and you'll get the most popular videos in your industry. these youtubers might have blogs and it can be beneficial to establish a relationship with these people
+* __Delicious__ - Delicious allows you to use keywords to find links that others have saved
+* __Twitter__ - you can use tools like *Followerwonk* and *Klout* to determine top twitter accounts
+* __Social mentions__ - this site helps you determine sites that have the most frequent mentions for your keywords
+* __talk to people__ - you can ask people directly the kinds of content that they read online. then you can go ahead and target those kinds of sites
+
+Link sharing communities can also help you. Think reddit, Hackernews, Product Hunt, etc.
+
+## Summary
+* run tests on a variety of small blogs
+* sponsor small blogs, especially personal blogs
+* offer something unique and exclusive to your best targets on these blogs
+
 # Chapter 7 - Publicity
 # Chapter 8 - Unconventional PR
 # Chapter 9 - Search Engine Marketing
