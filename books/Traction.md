@@ -133,4 +133,22 @@ __A note on A/B Testing__
 
 > It can be a competitive advantage (or at least a temporary one) if you can acquire customers in channels that others cannot, or refuse to try.
 
-
+# Chapter 6 - Targeting Blogs
+# Chapter 7 - Publicity
+# Chapter 8 - Unconventional PR
+# Chapter 9 - Search Engine Marketing
+# Chapter 10 - Social and Display Ads
+# Chapter 11 - Offline Ads
+# Chapter 12 - Search Engine Optimization
+# Chapter 13 - Content Marketing
+# Chapter 14 - Email Marketing
+# Chapter 15 - Viral Marketing
+# Chapter 16 - Engineering as Marketing
+# Chapter 17 - Business Development
+# Chapter 18 - Sales
+# Chapter 19 - Affiliate Programs
+# Chapter 20 - Existing Platforms
+# Chapter 21 - Trade Shows
+# Chapter 22 - Offline Events
+# Chapter 23 - Speaking Engagements
+# Chapter 24 - Community Building
