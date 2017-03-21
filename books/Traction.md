@@ -141,6 +141,7 @@ __A note on A/B Testing__
 # Chapter 6 - Targeting Blogs
 
 __how Mint did it__
+
 Former head of marketing at Mint, Noah Kagan sent emails to bloggers with the subject, "Can I send you 500 dollars?" The thing is, personal bloggers have strong readerships but dont make money from their writing. This was a great way to inject their product into specific blogs where Noah knew that he would be targeting the right people.
 
 __taregeting blog tactics__
@@ -160,6 +161,9 @@ Link sharing communities can also help you. Think reddit, Hackernews, Product Hu
 * offer something unique and exclusive to your best targets on these blogs
 
 # Chapter 7 - Publicity
+* traditional media news outlets
+*
+
 # Chapter 8 - Unconventional PR
 # Chapter 9 - Search Engine Marketing
 # Chapter 10 - Social and Display Ads
