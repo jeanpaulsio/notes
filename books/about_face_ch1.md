@@ -52,3 +52,9 @@ Think of when you put a filter on a photo on instagram. Instagram does this very
 2. __Modeling:__ user models, personas, etc. helps developers and marketers understand the design rationale
 3. __Requirement Definition:__ scenario based design methods; focus on goals of user personas
 4. __Framework Definition:__ designers create the overall product concept; provide basic framework for product behavior, visual design and physical form.
+5. __Refinement:__ increasing focus on detail and implementationi
+6. __Development Support:__ align design and development goals to the realm of possibility
+
+> Reducing a product's definition to a list of features & functions ignores the real opportunity-orchestrating technological capability to serve human needs and goals
+
+
