@@ -2,7 +2,16 @@
 
 ```ruby
 # User Authentication
-gem 'devise', '~> 4.2', '>= 4.2.1'
-gem 'jwt',    '~> 1.5', '>= 1.5.6'
+gem 'devise'
+gem 'jwt',               '~> 1.5', '>= 1.5.6'
+gem 'devise_token_auth', '~> 0.1.40'
+gem 'omniauth',          '~> 1.6', '>= 1.6.1'
+```
+
+```bash
+$ bundle install
+$ rails generate devise:install
+$ rails generate devise User
+$ rails db:migrate
 ```
 

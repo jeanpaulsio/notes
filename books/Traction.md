@@ -162,7 +162,29 @@ Link sharing communities can also help you. Think reddit, Hackernews, Product Hu
 
 # Chapter 7 - Publicity
 * traditional media news outlets
-*
+* starting small can lead to big publicity:
+  - an article today in *TechCrunch* can lead to a feature in *The New York Times*
+
+__How do you get press?__
+
+*ans: understand internet-driven media*
+
+* understand that when a big media outlet writes about you, they are doing YOU a favor because there is only a fininite number of stories that they put out. On the flips ide, when a blog writes about you, you are doing THEM a favor because there is no limit to how much content they can push. these smaller blogs are trying to get as many views as they can because they're driven by ads
+* Find blogs that TechCrunch reads and target those blogs. then slowly climb the ladder
+  - by doing this, you no longer have to pitch to the bigger names like CNN and NBC directly
+
+__How do you get a reporters attention?__
+
+* milestones: raising money, launching a new product, breaking a usage barrier, a PR stunt, a big partnership, or a special industry report
+
+__Publicity Tactics__
+* contact reporters only when you have newsworthy milestones to share
+* okay so you have a solid story and want some news reporters to get their eyeballs on it. now what?
+* __draw as much attention to it as possible__
+  - submit the story to link-sharing sites like reddit and hackernews
+  - share it on social media and amplify with social ads
+  - email it to influencers in your industry for comment. some of these people will share it too
+  - ping blogs in your space and tell them that you have a story that's getting some buzz
 
 # Chapter 8 - Unconventional PR
 # Chapter 9 - Search Engine Marketing
