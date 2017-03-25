@@ -187,6 +187,32 @@ __Publicity Tactics__
   - ping blogs in your space and tell them that you have a story that's getting some buzz
 
 # Chapter 8 - Unconventional PR
+* PR stunts can generate press coverage and buzz
+  - a PR stunt = anything engineered to get media coverage
+  - you create a spectacle and get people to notice
+* Unconventional PR doesn't suffer from crowding that other popular traction channels face
+* __Be prepared for failure, not every idea will work__
+
+__Publicity Stunts__
+
+* an example that we can point to is the YouTube series that BlendTec created: *Will it blend?* - blending things like iPhones for PR coverage
+* the key is to be **creative**. do something **cheap**, **fun**, and **original**
+
+__Customer Appreciation__
+
+* do awesome things for your customers and good things will follow
+* the hope is that by doing awesome things for your customers, you'll get some publicity
+  - if you get no publicity, youll still get happy customers which might lead to some word-of-mouth mentions
+* doing something awesome for your customers doesn't have to be expensive, it can be hand written letters or homemade cookies, anything!
+
+> Good customer support is so rare that, if you simply try to make your customers happy, they are likely to spread the news of your awesome product on that basis alone
+
+__case studies__
+
+* Dollar Shave Club acquired more than 12k customers with a short video that cost 5k dollars
+* Blendtec increased their sales by 500% after starting the youtube series, "Will it blend"
+
+
 # Chapter 9 - Search Engine Marketing
 # Chapter 10 - Social and Display Ads
 # Chapter 11 - Offline Ads
