@@ -198,7 +198,7 @@ end
   <%= f.label :tasks %>
   <%= text_area_tag :"project[tasks]" %>
   <br>
-  <%= f.submit %>
+  <%= f.submit "Create Project" %>
 <% end %>
 
 ```
@@ -258,3 +258,334 @@ end
 * and now we're green!
 * when you create an action, you separate the initialization, execution, and saving
 * this is great for testing and there might come a time when you want to create an object without saving the result and hitting the database
+
+__Checking for string parsing features__
+
+```ruby
+# spec/actions/creates_project_spec.rb
+
+  describe "task string parsing" do
+    it "handles an empty string" do
+      creator = CreatesProject.new(name: "Test", task_string: "")
+      tasks   = creator.convert_string_to_tasks
+      expect(tasks.size).to eq(0)
+    end
+
+    it "handles a single string" do
+      creator = CreatesProject.new(name: "Test", task_string: "Start things")
+      tasks   = creator.convert_string_to_tasks
+      expect(tasks.size).to eq(1)
+      expect(tasks.map(&:title)).to eq(["Start things"])
+      expect(tasks.map(&:size)).to eq([1])
+    end
+
+    it "handles a single string with size" do
+      creator = CreatesProject.new(name: "Test", task_string: "Start things:3")
+      tasks   = creator.convert_string_to_tasks
+      expect(tasks.size).to eq(1)
+      expect(tasks.map(&:title)).to eq(["Start things"])
+      expect(tasks.map(&:size)).to eq([3])
+    end
+
+    it "handles multiple tasks" do
+      creator = CreatesProject.new(name: "Test", task_string: "Start things:3\nEnd things:2")
+      tasks   = creator.convert_string_to_tasks
+      expect(tasks.size).to eq(2)
+      expect(tasks.map(&:title)).to eq(["Start things", "End things"])
+      expect(tasks.map(&:size)).to eq([3, 2])
+    end
+
+    it "attaches tasks to the project" do
+      creator = CreatesProject.new(name: "Test", task_string: "Start things:3\nEnd things:2")
+      creator.create
+      expect(creator.project.tasks.size).to eq(2)
+      expect(creator.project).not_to be_a_new_record
+    end
+  end
+
+```
+
+* note the progression - an empty string parses to an empty list of tasks
+  - a single element has a default size
+  - then the size is set
+  - then multiple tasks are added separated by a `\n`
+
+__going green__
+
+```ruby
+# app/actions/creates_project.rb
+
+class CreatesProject
+  attr_accessor :name, :task_string, :project
+
+  def initialize(name: "", task_string: "")
+    @name        = name
+    @task_string = task_string
+  end
+
+  def build
+    self.project = Project.new(name: name)
+    project.tasks = convert_string_to_tasks
+    project
+  end
+
+  def convert_string_to_tasks
+    task_string.split("\n").map do |task_string|
+      title, size = task_string.split(":")
+      size = 1 if (size.blank? || size.to_i.zero?)
+      Task.new(title: title, size: size)
+    end
+  end
+
+  def create
+    build
+    project.save
+  end
+end
+```
+
+__mild refactoring__
+
+```ruby
+# spec/actions/creates_project_spec.rb
+
+  describe "task string parsing" do
+    let(:creator) { CreatesProject.new(name: "Test", task_string: task_string) }
+    let(:tasks) { creator.convert_string_to_tasks }
+
+    describe "with an empty string" do
+      let(:task_string) { "" }
+      specify { expect(tasks.size).to eq(0) }
+    end
+
+    describe "with a single string" do
+      let(:task_string) { "Start things" }
+      specify { expect(tasks.size).to eq(1) }
+      specify { expect(tasks.map(&:title)).to eq(["Start things"]) }
+      specify { expect(tasks.map(&:size)).to eq([1]) }
+    end
+
+    describe "with a single string and size" do
+      let(:task_string) { "Start things:3" }
+      specify { expect(tasks.size).to eq(1) }
+      specify { expect(tasks.map(&:title)).to eq(["Start things"]) }
+      specify { expect(tasks.map(&:size)).to eq([3]) }
+    end
+
+    describe "with multiple tasks" do
+      let(:task_string) { "Start things:3\nEnd things:2" }
+      specify { expect(tasks.size).to eq(2) }
+      specify { expect(tasks.map(&:title)).to eq(["Start things", "End things"]) }
+      specify { expect(tasks.map(&:size)).to eq([3, 2]) }
+    end
+
+    describe "attaching tasks to the project" do
+      let(:task_string) { "Start things:3\nEnd things:2" }
+      it "saves the project and tasks" do
+        creator.create
+        expect(creator.project.tasks.size).to eq(2)
+        expect(creator.project).not_to be_a_new_record
+      end
+    end
+```
+
+* now, individual test cases have their own `describe`
+* each uses their own `let` to define the `task_string`
+* this setups allows each test case to very clearly show what makes it different from other test cases
+
+## Who Controls the Controller?
+
+* the controller needs to do something in case the action object errors or does something unexpected
+* nothing the controller does is dependent on the logic of creating and saving projects
+
+__first controller spec__
+
+```ruby
+# spec/controllers/projects_controller_spec.rb
+
+RSpec.describe ProjectsController, type: :controller do
+  describe "POST create" do
+    it "creates a project" do
+      post :create, params: { project: { name: "Runway", tasks: "Start something:2" } }
+      expect(response).to redirect_to(projects_path)
+      expect(assigns(:action).name).to eq("Runway")
+    end
+  end
+end
+```
+
+```ruby
+# Gemfile
+gem 'rails-controller-testing'
+```
+
+
+* this test simluates a call to the controller method `create`
+* RSpec controller tests invoke the controller but do not invoke the view
+* the `post` call takes a symbol (`:create`, in this case) and a hash representing the parameter requests
+
+
+__going green__
+
+```ruby
+# app/controllers/projects_controller.rb
+
+def create
+  @action = CreatesProject.new(name: params[:project][:name], task_string: params[:project][:task])
+  @action.create
+  redirect_to projects_path
+end
+```
+
+__Testing for failure__
+
+```ruby
+# app/models/project.rb
+
+# ...
+validates :name, presence: true
+```
+
+...triggering the failure by creating a project with a blank name
+
+```ruby
+# spec/controllers/projects_controller_spec.rb
+
+it "goes back to the form on failure" do
+  post :create, params: { project: { name: "", tasks: "" } }
+  expect(response).to render_template(:new)
+  expect(assigns(:project)).to be_present
+end
+```
+
+__going green__
+
+```ruby
+# app/controllers/projects_controller.rb
+
+def create
+  @action = CreatesProject.new(
+    name: params[:project][:name],
+    task_string: params[:project][:tasks]
+  )
+  success = @action.create
+  if success
+    redirect_to projects_path
+  else
+    @project = @action.project
+    render :new
+  end
+end
+```
+
+## A test with a view
+
+* going back to our feature spec, we run our test suite again and get this error:
+
+```
+AbstractController::ActionNotFound:
+       The action 'index' could not be found for ProjectsController
+```
+
+so we add to our `projects_controller`
+
+```ruby
+def index
+  @projects = Project.all
+end
+```
+
+now our error says:
+
+```
+ActionController::UnknownFormat:
+       ProjectsController#index is missing a template for this request format and variant.
+```
+
+we create a file at `app/views/projects/index.html.erb` and now our error will say:
+
+```
+Failure/Error: expect(page).to have_content("Project Runway")
+       expected to find text "Project Runway" in ""
+```
+
+Now we're getting somewhere! Remember, we're asking Capybara to `have_content`
+
+__going green__
+
+```html
+<!-- app/views/projects/index.html.erb -->
+
+<h1>All Projects</h1>
+<table>
+  <thead>
+    <tr>
+      <td>Project Name</td>
+      <td>Total Project Size</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.total_size %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+```
+
+__our end-to-end spec finally passes!!__
+
+## Tightening our spec
+
+* we can make our end-to-end spec stronger by being a little more specific
+
+```ruby
+# spec/features/add_project_spec.rb
+
+require 'rails_helper'
+
+describe "adding projects" do
+  it "allows a user to create a project with tasks" do
+    visit new_project_path
+    fill_in "Name", with: "Project Runway"
+    fill_in "Tasks", with: "Task 1:3\nTask 2:5"
+    click_on("Create Project")
+    visit projects_path
+    @project = Project.find_by_name("Project Runway")
+    expect(page).to have_selector(
+      "#project_#{@project.id} .name", text: "Project Runway")
+    expect(page).to have_selector(
+      "#project_#{@project.id} .total-size", text: "8")
+  end
+end
+
+```
+
+* note that in the final two lines of our spec, we're forcing our text to be part of a certain area of our page
+* this specificity tightens up our test
+* now, a random "8" or "Project Runway" that appears anywhere on the page will make the test pass
+
+```html
+<!-- app/views/projects/index.html.erb -->
+
+<h1>All Projects</h1>
+<table>
+  <thead>
+    <tr>
+      <td>Project Name</td>
+      <td>Total Project Size</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr class="project-row" id="<%= dom_id(project) %>">
+        <td class="name"><%= project.name %></td>
+        <td class="total-size"><%= project.total_size %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+```
