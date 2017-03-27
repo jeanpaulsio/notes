@@ -214,14 +214,79 @@ __case studies__
 
 
 # Chapter 9 - Search Engine Marketing
+
+* Use search engine ads to test product positioning and messaging even before you fully build it
+* Use longer key words because they are less competitive and have lower search volumes
+* pay attention to ad quality scores
+
 # Chapter 10 - Social and Display Ads
+
+* Contact small sites directly for display ads. ask them to run your ads for a small fee. __study competitor ads to get good ideas for A/B testing of your own__
+* use social ads to build awareness of products and create demand
+* create compelling social content
+
+> THe goal with social ads should be to build an audience, engage with that audience over time, and eventually move them to convert to customers
+
 # Chapter 11 - Offline Ads
+
+* Run cheap tests by first targeting local markets. Any offline ad can be tested locally
+* Use __unique codes or web addresses__ to track the effectiveness of different offline ad campaigns
+
 # Chapter 12 - Search Engine Optimization
+
+* Find search terms that have enough search volume to move the needle for your company
+* Generate long-tail landing pages
+
 # Chapter 13 - Content Marketing
+
+* if you blog, dedicate at least 6 months to it
+* do things that **DONT SCALE** early on. its OKAY to reach out to individuals to share posts for example
+  - contact influential industry leaders
+  - writing about recent news events
+  - creating shareable infographics
+* produce __in-depth posts you cant find anywhere else__. you need to create quality content to succeed in this traction channel
+
 # Chapter 14 - Email Marketing
+
+* Personalize your email marketing messages
+* Build an email list of prospective customers whether you use this channel or not
+* Set up a series of automated emails
+
 # Chapter 15 - Viral Marketing
+
+__The viral loop__
+
+1. A customer is exposed to your product or service
+2. That customer tells a set of potential customers about your product or service
+3. These potential customers are exposed to your product or service, and some portion become customers themselves
+
+* Build a viral loop
+* You might already be viral in a sub-group of your customers. find that sub-group and focus on them
+* More than any other channel, test, test, test
+
 # Chapter 16 - Engineering as Marketing
+
+> Your team's engineering skills can get your startup traction directly by building tools and resources that reach more people
+
+* One example is codecademy's microsite, "codeyear.com" that asked for people's email addresses and sent them a free programming lesson every week in 2012
+
+__summary__
+
+* create a stand-alone, low-friction site to engage potential customers. these little microsites can go a long way
+* make them as simple as possible
+
 # Chapter 17 - Business Development
+
+* Business development is primarily focused on exchanging value through partnerships
+
+__Types of business development partnerships__
+
+* standard partnerships
+* joint ventures
+* licensing
+* distribution deals
+* supply parterships
+
 # Chapter 18 - Sales
 # Chapter 19 - Affiliate Programs
 # Chapter 20 - Existing Platforms
