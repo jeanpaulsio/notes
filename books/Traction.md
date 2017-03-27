@@ -288,9 +288,45 @@ __Types of business development partnerships__
 * supply parterships
 
 # Chapter 18 - Sales
+
+* Don't rule out cold calling. good first customers have a burning need to address a problem and are interested in your approach to solving this problem. sometimes cold calling is the only way to find them
+* build a repeatable business model
+* get the buyer to commit to time lines.
+* keep the customer's perspective in mind. talk to people who __need__ your product and understand their common concerns
+
 # Chapter 19 - Affiliate Programs
+
+> An affiliate program is an arrangement where you pay people or companies for performing certain actions like making a sale or getting a qualified lead
+
+* Your ability to use affiliate programs depends on how much you are willing to acquire a customer
+* The next place you should look for more affiliates is your customers. They already like you, and so there may be a lot of them willing to sell for you
+
 # Chapter 20 - Existing Platforms
+
+* Figure our where your existing customers are hanging out online. They could be on major platforms or niche platforms, etc. Then embark on a strategy to target these existing platforms
+* Create a feature to specifically fill a gap for that platform's users.
+* Focus on new and untapped platforms
+
 # Chapter 21 - Trade Shows
+
+* Investigate the efficacy of shows before committing. Attend shows this year that you might want to exhibit next year. Reach out to previous exhibitors
+* have an inbound and outbound strategy for your booth. do something proactive and creative. include a strong call to action on every item you give out
+
 # Chapter 22 - Offline Events
+
+* Sponsoring offline events like small meetups to large conferences can be a primary way to get traction.
+* Twilio sponsors hackathons, conferences, and meetups.
+* Having meetups alongside conferences or across many cities is another successful strategy to attract and REWARD prospective customers
+
 # Chapter 23 - Speaking Engagements
+
+* you have to get the attention of event organizers to land speaking engagements
+* remember that you are doing organizers a favor by presenting. event organizers need to fill time at their events
+* tell a story onstage. without a story, your audience will lose interest. tell a story about __why__ you're doing what you're doing
+
 # Chapter 24 - Community Building
+
+* Community building involves investing in the connections among your customers, fostering those relationships and helping them bring more people into your startup's circle
+* You know those people who don't shut up about how Yelp has helped them choose the best restaurant? And how they've submitted a couple of reviews themselves? Those people are called __community evangelists__. They are passionate customers who tell others about how awesome a product is
+* Cultivate and empower evangelists
+* set high standards from the start. focus on community quality early on and set strict standards that can be maintained as the community grows
