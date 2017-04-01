@@ -94,4 +94,4 @@ Usability tests are good at validating the following:
 * Naming: do section/button labels make sense? Do certain words resonate more
 * Organization: is information grouped into meaningful categories? Are items located in the places customers might look for them
 * First time use and discoverability: Are common items easy for new users to find? are instructions clear?
-* Effectiveness: can customers efficiently complete specific tasks. are they making missteps? where? how often?
+* Effectiveness: can customers efficiently complete specific tasks. are they making missteps? where? how often
