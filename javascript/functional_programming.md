@@ -203,3 +203,178 @@ result {
 
 # Closures
 
+* functions are not just functions
+* they are also closures
+* the function body has access to variables that are outside of the function body
+
+```js
+var me = 'bruce wayne'
+
+function greetMe() {
+  console.log('hello', me, '!')
+}
+
+greetMe()
+
+//  hello bruce wayne !
+```
+
+* note that we don't pass any arguments to the function `greetMe`
+* this is because javascript uses __closures__
+* we have access to the outer scope! cool
+
+# Currying
+
+* when a function doesn't take all of its arguments up front
+* you give the first argument, it returns another function. you call this with the second argument, etc
+
+uncurried:
+
+```js
+let dragon = (name, size, element) =>
+  name + ' is a ' +
+  size + ' dragon that breathes ' +
+  element + '!'
+
+console.log(dragon('fluffykins', 'tiny', 'lightning'))
+
+// fluffykins is a tiny dragon that breates lightning!
+```
+
+curried:
+
+```js
+let dragon =
+  name =>
+    size =>
+      element =>
+        name + ' is a ' +
+        size + ' dragon that breathes ' +
+        element + '!'
+
+console.log(dragon('fluffykins')('tiny')('lighting'))
+```
+
+* it's the same thing
+* note that it's a chain of functions
+* the idea is that your function can pass through the application and gradually receive arugments that it needs
+* we can break things up
+
+for instance, we can do:
+
+```js
+let dragon =
+  name =>
+    size =>
+      element =>
+        name + ' is a ' +
+        size + ' dragon that breathes ' +
+        element + '!'
+
+let fluffykinsDragon = dragon('fluffykins')
+let tinyDragon = fluffykinsDragon('tiny')
+
+console.log(tinyDragon('lightning'))
+```
+
+another example:
+
+```js
+
+let dragons = [
+  { name: 'fluffykins', element: 'lightning' },
+  { name: 'noomi',      element: 'lightning' },
+  { name: 'karo',       element: 'fire' },
+  { name: 'doomer',     element: 'timewarp' },
+]
+
+let hasElement =
+  (element, obj) => obj.element === element
+
+let lightningDragons =
+  dragons.filter(x => hasElement('lightning', x))
+
+console.log(lightningDragons)
+```
+
+With currying:
+
+```js
+
+import _ from 'lodash'
+
+let dragons = [
+  { name: 'fluffykins', element: 'lightning' },
+  { name: 'noomi',      element: 'lightning' },
+  { name: 'karo',       element: 'fire' },
+  { name: 'doomer',     element: 'timewarp' },
+]
+
+let hasElement =
+  _.curry((element, obj) => obj.element === element)
+
+let lightningDragons =
+  dragons.filter(x => hasElement('lightning'))
+
+console.log(lightningDragons)
+```
+
+# Recursion
+
+* when a function calls itself until it doesn't
+
+```js
+let countDownFrom = (num) => {
+  if (num === 0) return;
+  console.log(num)
+  countDownFrom(num-1)
+}
+
+countDownFrom(10)
+```
+
+
+```js
+let categories = [
+  { id: 'animals', 'parent': null },
+  { id: 'mammals', 'parent': 'animals' },
+  { id: 'cats', 'parent': 'mammals' },
+  { id: 'dogs', 'parent': 'mammals' },
+  { id: 'chihuahua', 'parent': 'dogs' },
+  { id: 'labrador', 'parent': 'dogs' },
+  { id: 'persian', 'parent': 'cats' },
+  { id: 'siamese', 'parent': 'cats' }
+]
+```
+
+converting output into a tree structure using recursion
+
+```js
+let categories = [
+  { id: 'animals', 'parent': null },
+  { id: 'mammals', 'parent': 'animals' },
+  { id: 'cats', 'parent': 'mammals' },
+  { id: 'dogs', 'parent': 'mammals' },
+  { id: 'chihuahua', 'parent': 'dogs' },
+  { id: 'labrador', 'parent': 'dogs' },
+  { id: 'persian', 'parent': 'cats' },
+  { id: 'siamese', 'parent': 'cats' }
+]
+
+let makeTree = (categories, parent) => {
+  let node = {}
+
+  categories
+    .filter(c => c.parent === parent)
+    .forEach(c => node[c.id] = makeTree(categories, c.id))
+
+
+  return node
+}
+
+console.log(
+  JSON.stringify(makeTree(categories, null), null, 2)
+)
+
+```
+
