@@ -25,6 +25,10 @@ A test suite passing shouldn't be dependent on if it runs in a particular order
 
 ## Fast
 
-
+The ability to go back and forth between running tests and writing code without breaking focus is crucial to being able to use TDD as a design tool
 
 ## Truthful
+
+A truthful test accurately reflects the underlying code. it passes when the underlying code works, and fails when it does not. easier said than done, obviously
+
+
