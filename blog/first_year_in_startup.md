@@ -22,15 +22,15 @@ Now I know what you're thinking, "Who in their right mind would be excited about
 
 ## Getting the ball rolling
 
-In retrospect, none of us knew what we were doing. We wanted to create this mobile app but none of us had ANY technical experience and we didn't know anybody who did. I had maybe written a couple lines of HTML back in 2005 when MySpace was still a thing. None of us had any concept of what an API was or why we might need one to build this app. We figured that the pieces will magically fall into place as soon as we get this protoype fully designed. That was my job.
+In retrospect, none of us knew what we were doing. We wanted to create this mobile app but none of us had ANY technical experience and we didn't know anybody who did. I had maybe written a couple lines of HTML back in 2005 when MySpace was still a thing. None of us had any concept of what an API was or why we might need one to build this app. We figured that the pieces will magically fall into place as soon as we get this prototype fully designed. That was my job.
 
 I want to preface this with a couple things. We had no users or customers at this point. We had done no research about who our potential customers might be. I don't know how many ways I can phrase this; we had zilch, zero, nada. All we had was our very own assumptions about how this app should work and why people are going to love it. We just started designing based on what we **thought** would be cool and what we **thought** would work. (As you might know, this isn't the best way to design good user experiences.)
 
 The app would work like this:
 
 1. A student opens the app and is presented with a map
-2. Tutors who are available for an immediate tutoring session show up on the map as lightbulbs
-3. A student can tap a lightbulb to book a tutoring session
+2. Tutors who are available for an immediate tutoring session show up on the map as light bulbs
+3. A student can tap a light bulb to book a tutoring session
 
 If this is confusing, think about how the Uber app works because we basically ripped it off. I'm currently laughing as I type this because I can see that we were way in over our heads. We did have good intentions, however. We wanted to innovate in this space. We just didn't know what we were doing. Fortunately for us, we didn't have the technological means to bring our baby to life.
 
@@ -57,7 +57,7 @@ Let me tell you this, it kicked our ass. We realized just how little we had actu
 
 ## Minimum Viable Product
 
-Its's now early May of 2016, a week after finishing the pre-accelerator program. We were equipped with Lean startup methodologies engrained in our heads and a positive attitude that we were heading in the right direction. We had eventually finished developing our iOS app that students could use to book tutors. From our web app, students and tutors were able to manager their bookings. We did it. After 8 long months of iterating on our design and software, we were ready for people to start using our app.
+It's now early May of 2016, a week after finishing the pre-accelerator program. We were equipped with Lean startup methodologies ingrained in our heads and a positive attitude that we were heading in the right direction. We had eventually finished developing our iOS app that students could use to book tutors. From our web app, students and tutors were able to manager their bookings. We did it. After 8 long months of iterating on our design and software, we were ready for people to start using our app.
 
 We "officially" launched and eventually got approval from the App Store. So how come people weren't flocking to our app? Sure, we had a handful of students and tutors that signed up but they weren't even booking sessions. As it turns out, posting a couple Craigslist ads and some flyers on bulletin boards at local colleges for a couple weeks will only get you so far.
 
