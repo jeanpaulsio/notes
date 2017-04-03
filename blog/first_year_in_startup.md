@@ -32,8 +32,6 @@ The app would work like this:
 2. Tutors who are available for an immediate tutoring session show up on the map as lightbulbs
 3. A student can tap a lightbulb to book a tutoring session
 
-***(some screenshots of our intial wireframes should go here that show the whole map and lightbulb thing)***
-
 If this is confusing, think about how the Uber app works because we basically ripped it off. I'm currently laughing as I type this because I can see that we were way in over our heads. We did have good intentions, however. We wanted to innovate in this space. We just didn't know what we were doing. Fortunately for us, we didn't have the technological means to bring our baby to life.
 
 ## Scrambling to Find Developers
