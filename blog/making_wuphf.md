@@ -1,3 +1,19 @@
+# Recreating WUPHF for 2017 - Part 1
+
+If you're like me, you've seen NBC's The Office more times than you'd like to admit. So naturally, as an entrepreneur, startup enthusiast, and web developer, I thought it would be cool to recreate my own version of WUPHF as I imagine it in 2017.
+
+## The Minimum Wuphfable Product
+
+To start out, I wanted to ship something as fast as possible so I made a quick list of requirements. For now, I would skip the concept of having a User model so that a visitor could send a Wuphf without having to sign up.
+
+A visitor can send a demo Wuphf to a friend. The demo Wuphf will consist of a message that they write out. This will trigger:
+
+* An email
+* A text messsage
+* A tweet
+
+
+
 * A lot of the logic lives in the `DemoWuphfsController#create`
 * The home page has a form so that users can send a demo wuphf out to friends
 * As you can see from the logic, if a form is successfully submitted, an email, text message, and tweet are sent out
