@@ -28,7 +28,7 @@ __Private Interfaces__
 * The public interface is a contract that articulates the responsibilities of your class
 * Public parts of a class are stable
 * Private parts of a class are changeable
-* When you beging designing an application: don't decide on a class and then try to figure out the class' responsibilities. Decide on messages and where to send them
+* When you begin designing an application: don't decide on a class and then try to figure out the class' responsibilities. Decide on messages and where to send them
 * Class-based approach: "I know I need this class, what should it do?"
 * Message-based: "I need to send this message, who should respond to it?"
 * You don't send messages because you have objects, you have objects because you send messages
