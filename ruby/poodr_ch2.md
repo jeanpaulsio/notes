@@ -27,7 +27,7 @@ class Gear
 
   def initialize(chainring, cog)
     @chainring = chainring
-    @cog = cog
+    @cog       = cog
   end
 
   def ratio
@@ -39,7 +39,7 @@ puts Gear.new(52,11).ratio
 puts Gear.new(30,27).ratio
 ```
 
-* We can instantiate a new gear by passing in `chainring` and `cog` paramters and calling the `#ratio` method on it as seen in the last two lines above
+* We can instantiate a new gear by passing in `chainring` and `cog` parameters and calling the `#ratio` method on it as seen in the last two lines above
 * But what happens when we need to change the code? Let's say you have to factor in the size of the wheel to calculate `ratio`
 * We then have to change the `Gear` class
 
@@ -48,9 +48,9 @@ class Gear
   attr_reader :chainring, :cog, :rim, :tire
   def initialize(chainring, cog, rim, tire)
     @chainring = chainring
-    @cog = cog
-    @rim = rim
-    @tire = tire
+    @cog       = cog
+    @rim       = rim
+    @tire      = tire
   end
 
   def ratio
@@ -66,14 +66,14 @@ puts Gear.new(52,11,26,1.5).gear_inches
 ```
 
 * This presents a problem though! - because now this line of code doesn't work: `puts Gear.new(52,11).ratio`
-* We aren't providing all of the arguments now because we added paramteres to `Gear#initialize`
+* We aren't providing all of the arguments now because we added parameters to `Gear#initialize`
 
 
 ## Why single responsibilty matters
 * _An application that is easy to change is like a box of building blocks; you can select just the pieces you need and assemble them in unanticipated ways_
 * _A class that has more than one responsibility is difficult to reuse_
 * _You increase your application's chance of breaking unexpectedly if you depend on classes that do too much_
-* Right now our `Gear` class does too much - it has multiple responsibilities and cna't be reused
+* Right now our `Gear` class does too much - it has multiple responsibilities and can't be reused
 
 __So how do you write code that embraces change?__
 ## Depend on Behavior, Not Data
@@ -94,11 +94,11 @@ GOOD:
 
 ```ruby
 attr_reader :chainring, :cog
-...
+
 def ratio
   chainring / cog.to_f
 end
-...
+
 ```
 
 * by implementing `chainring` and `cog` using the `attr_reader`, we are changing from _data_ to _behavior_
@@ -139,9 +139,9 @@ end
 # etc...
 ```
 
-* The problem here is that the `#diamters` method does more than one thing:
-* __-calculates diamter__
-* __-knows where to find rims and tires in the array__
+* The problem here is that the `#diameters` method does more than one thing:
+* __calculates diamter__
+* __knows where to find rims and tires in the array__
 * The data structure is complicated! The `#diameters` method depends on the arrays structure being very specific - i.e. it must be a 2-d array with two values at specific indexes
 * Thus, it is important to _separate structure from meaning_
 * You can use the Ruby `Struct` class to wrap a structure
@@ -191,8 +191,8 @@ __GOOD:__
 def diameters
   wheels.collect { |wheel| diameter(wheel) }
 end
-# second, calculate diameter of ONE wheel
 
+# second, calculate diameter of ONE wheel
 def diameter(wheel)
   wheel.rim + (wheel.tire * 2)
 end
