@@ -66,6 +66,7 @@ puts "My name is #{person.name} and I am #{person.age} years old"
 ```
 
 * this is not unlike creating a hash
+*
 
 ## Ruby Gems
 * gems are simply a packaging system for Ruby programs and libraries
@@ -83,5 +84,5 @@ gem 'nokogiri'
 gem 'rack'
 ```
 
-* this file specifies where the gems are to be downloaded from by default and then which t wo gems the current project depends upon
+* this file specifies where the gems are to be downloaded from by default and then which two gems the current project depends upon
 * if you run `bundle install` from the directory in which the Gemfile is present, Bundler will make sure that the right gems are installed
