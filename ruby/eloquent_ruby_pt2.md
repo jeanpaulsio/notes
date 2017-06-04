@@ -101,3 +101,6 @@ __Composing Methods for Humans__
 
 # Chapter 11 - Define Operators Respectfully
 
+> If you want to define binary operators that work across classes, you need to either make sure that both classes understand their responsibilities - or accept that your expressions will be sensitive to the order that you write them
+
+# Chapter 12 - Create Classes that Understand Equality
