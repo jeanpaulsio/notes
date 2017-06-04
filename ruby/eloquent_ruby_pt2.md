@@ -295,7 +295,120 @@ longer_doc = book.class.create_test_document(20000) # works
 * Class instance variables are sweet because we don't have to go through the pain of writing setter and getter methods. Ruby provides us with: `attr_writer`, `attr_reader`, and `attr_accessor`
 
 # Chapter 15 - Use Modules as Name Spaces
+
+This chapter will talk about using modules to organize your classes and constants and modules into a nice, human brain-friendly hierarchy
+
+* Classes are containers and factories
+* Modules are containers without the factory. You can't instantiate a module, but you can put things inside of it
+* Modules hold methods, constants, classes, and other modules
+
+```ruby
+module Rendering
+  class Font; end
+  class PaperSize; end
+end
+```
+
+* To get at the `Font` class, you would just call, `Rendering::Font`
+* Wrapping a module around your classes lets you group together related classes
+* By putting something like a `Font` class inside of a specific module, you're protecting it from collision of another class named `Font`
+* modules can also hold constraints
+
+```ruby
+module Rendering
+  DEFAULT_FONT = Font.new('default')
+  DEFAULT_PAPER_SIZE = PaperSize.new
+end
+```
+
+* Modules are also a great home for those pesky methods that just don't seem to fit anywhere else
+
+__Building Modules a little at a time__
+
+* it's possible to add more functionality to a module once it's defined
+
+```ruby
+# font.rb
+module Rendering
+  class Font; end
+
+  DEFAULT_FONT = Font.new('default')
+end
+
+#paper_size.rb
+module Rendering
+  class PaperSize; end
+
+  DEFAULT_PAPER_SIZE = PaperSize.new
+end
+
+#some_other_file.rb
+require 'font'
+require 'paper_size'
+
+# this is effectively calling ONE `Rendering` module
+```
+
+__Treat Modules like Objects (because they are)__
+
+* you can set a module to a variable
+
 # Chapter 16 - Use Modules as Mixins
+
+__including a module__
+* You can also insert of "mix in" modules into the inheritance tree of your classes!
+* Mixins allow you to share common code among otherwise unrelated classes
+* All you need to do is to `include SomeModuleName`
+* When you include a module into a class, the module's methods are magically available to the class
+
+__extending a module__
+* sometimes its the class itself - as opposed to the instances of the class - that needs help from a module
+* sometimes you want to pull in a module so that ALL the methods in the module become *class* methods
+
+Let us say you have this module called `Finders`
+
+```ruby
+module Finders
+  def find_by_name(name); end
+  def find_by_id(doc_id); end
+end
+```
+
+You want to get these two methods inside of your `Document` class, so you do this:
+
+```ruby
+class Document
+  class << self
+    include Finders
+  end
+end
+```
+
+What are we doing here?
+
+* we are including the module into the singleton class of Document
+* this is making the methods of `Finders` singleton methods
+* now, we are able to do something like this
+
+```ruby
+war_and_peace = Document.find_by_name('War and Peace')
+```
+
+There is a shortcut for this:
+
+```ruby
+class Document
+  extend Finders
+end
+```
+
+__the main difference between including and extending a module is that extending a module gives you class level methods__
+
+__In the wild__
+
+* methods aren't the only thing you can store in a mixin module
+* it's also common to stash constants in a module
+
 # Chapter 17 - Use Blocks to Iterate
 # Chapter 18 - Execute Around with a Block
 # Chapter 19 - Save Blocks to Execute Later
