@@ -104,3 +104,85 @@ __Composing Methods for Humans__
 > If you want to define binary operators that work across classes, you need to either make sure that both classes understand their responsibilities - or accept that your expressions will be sensitive to the order that you write them
 
 # Chapter 12 - Create Classes that Understand Equality
+
+There are a lot of different ways that Ruby objects can be equal
+
+* let's say you have a `Document` class but but your program is growing and you have a ton of instances of `Document`
+* so you create another classes called `DocumentIdentifier` to make it easier to locate a given document
+
+```ruby
+class DocumentIdentifier
+  attr_reader :folder, :names
+
+  def initialize(folder, name)
+    @folder = folder
+    @name   = name
+  end
+end
+```
+
+*Problem:*
+* You are not actually able to tell if one document identifier is equal to another
+
+__Double Equals for Everday use: ==__
+* the default implementation tests for object identity. it behaves exactly like `equal?`
+* it will only return true if the two objects are exactly the same object
+
+```ruby
+first = DocumentIdentifier.new('secret/plans', 'raygun.txt')
+second = DocumentIdentifier.new('secret/plans', 'raygun.txt')
+
+puts "they are equal" if first == second
+
+# returns nothing
+```
+
+*Solution:*
+
+```ruby
+def ==(other)
+  return true if other.equal?(self)
+  return false unless other.kind_of?(self.class)
+  folder == other.folder && name == other.name
+end
+```
+
+* now, you might be saying, we're using `kind_of?` which means that we have to worry about classes and subclasses. this isn't very ruby. hmphf!
+* not to worry, we can take advantage of Ruby's dynamic typing
+
+```ruby
+def ==(other)
+  return false unless other.respond_to?(:folder)
+  return false unless other.respond_to?(:name)
+  folder == other.folder && name == other.name
+end
+```
+
+__Well-behaved equality__
+* we still have a problem - `respond_to?` and `kind_of?` suffer from "different classes may have different points of view"
+* A lot of problems arise, such as asymmetrical equality and transitive equality
+  - at some point you have to ask yourself if an `==` operator is necessary
+
+__Triple Equals for case statements ===__
+* The `Regexp` class has a `===` method that does pattern matching when confronted with a string
+
+__Hash Tables and the eql? Method__
+
+```ruby
+hash = {}
+
+document = Document.new('cia', 'Roswell', 'story')
+first_id = DocumentIdentifier.new('public', 'CoverStory')
+
+hash[first_id] = document
+```
+
+... but if we try this...
+
+```ruby
+second_id = DocumentIdentifier.new('public', CoverStory)
+the_doc_again = hash[second_id]
+```
+
+* You will end up with `the_doc_again` set to `nil`
+
