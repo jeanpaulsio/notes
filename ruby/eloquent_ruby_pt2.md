@@ -186,3 +186,102 @@ the_doc_again = hash[second_id]
 
 * You will end up with `the_doc_again` set to `nil`
 
+# Chapter 13 - Get the Behavior You Need with Singleton and Class Methods
+
+> Much of programming is about building models of the world. We build classes to describe groups of similar things, and we have instances to represent the things themselves.
+
+* But what happens when your instance of the object does not want to follow the rules laid down by its class?
+* *singleton methods* allow you to produce objects with an independent streak, objects whose behavior is not completely controlled by their class
+* class methods are actually just singleton methods by another name
+
+Consider this stub from an earlier chapter:
+
+```ruby
+stub_printer = stub :available? => true, :render => nil
+stub_font    = stub :size => 14, :name => 'Courier'
+
+stub_printer.available? # always true
+stub_printer.render     # always nil
+
+puts stub_printer.class # Spec::Mocks::mock
+puts stub_font.class    # Spec::Mocks:mock
+```
+
+* both stubs are of the SAME class! absolutely mad
+* all four methods, `available?`, `render`, `size`, `name` are singleton methods (not to be confused with the Singleton design pattern)
+* a __singleton method__ is a method that is defined for exactly one object instance
+* you can hang a singleton method on just about any object at any time
+  - instead of saying `def method_name` you would define a singleton method by saying `def instance.method_name`
+
+```ruby
+hand_built_stub_printer = Object.new
+
+def hand_build_stub_printer.available?
+  true
+end
+
+def hand_build_stub_printer.render(content)
+  nil
+end
+```
+
+> Singleton methods are ordinary methods with the exception that they are STUCK TO A SINGLE OBJECT INSTANCE
+
+* Singleton methods override any regular, class defined methods
+
+__A hidden but real class__
+* the __singleton class__ sits between every object and its regular class
+* the singleton class starts out as just a methodless shell - making it pretty invisible
+* singleton classes are also known as *metaclasses* or *eigenclasses* - "singleton" is much less pretentious, though
+
+__Class Methods are Singletons in Disguise__
+
+```ruby
+my_object = Document.new('War and Peace', 'Tolstoy', 'All happy...')
+
+def my_object.explain
+  puts "self is #{self}"
+  puts "and its class is #{self.class}"
+end
+
+my_object.explain
+
+# self is #<Document:0xb7bc2ca0>
+# and its class is Document
+```
+
+* what if we defined the explain method on the Document class itself?
+
+```ruby
+my_object = Document
+
+def Document.explain
+  puts "self is #{self}"
+  puts "and its class is #{self.class}"
+end
+
+my_object.explain
+
+# self is Document
+# and its class is Class
+```
+
+* if you have many different ways that you might create an object, a set of well-named class methods is generally clearer than making the user supply all sorts of clever arguments to the `new` method
+  - think `Date`
+
+> Remember, when you define a class method, it is a method attached to a class. The instance of the class will not know anything about that method
+
+```ruby
+class Document
+  def self.create_test_document(length)
+    Document.new('test', 'test', 'test' * length)
+  end
+
+  # ...
+end
+
+book = Document.create_test_document(1000)          # works
+longer_doc = book.create_test_document(20000)       # doesn't work
+longer_doc = book.class.create_test_document(20000) # works
+```
+
