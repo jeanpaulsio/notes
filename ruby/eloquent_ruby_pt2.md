@@ -285,3 +285,17 @@ longer_doc = book.create_test_document(20000)       # doesn't work
 longer_doc = book.class.create_test_document(20000) # works
 ```
 
+# Chapter 14 - Use Class Instance Variables
+
+* The more controllable alternative to the class variable is the class instance variable
+* Class variables can cause a headache because of the way that they are resolved
+* Class variables are resolved by looking up the inheritance chain first. Though you might declare a class variable in a sub class, it might be set and overridden in its parent class first
+* Class variables wander from class to class and this is something that we don't want
+* The solution - Class instance variables
+* Class instance variables are sweet because we don't have to go through the pain of writing setter and getter methods. Ruby provides us with: `attr_writer`, `attr_reader`, and `attr_accessor`
+
+# Chapter 15 - Use Modules as Name Spaces
+# Chapter 16 - Use Modules as Mixins
+# Chapter 17 - Use Blocks to Iterate
+# Chapter 18 - Execute Around with a Block
+# Chapter 19 - Save Blocks to Execute Later
