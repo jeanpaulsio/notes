@@ -56,3 +56,72 @@ __connecting to a tcp server directly__
 * its possible to connect directly to a remote service at the TCP level and talk to them in their raw format
 * we can use the net/telnet library to connect to a website and retrieve a web page using HTTP protocol directly
 
+```ruby
+require 'net/telnet'
+
+server = Net::Telnet::new('Host' => 'www.rubyinside.com',
+                          'Port' => 80,
+                          'Telnetmode' => false)
+
+server.cmd("GET /test.txt HTTP/1.1\nHost: www.rubyinside.com\n") do |response|
+  puts response
+end
+
+
+=begin
+HTTP/1.1 200 OK
+Date: Sat, 03 Jun 2017 23:19:11 GMT
+Server: Apache/2.2.22 (Ubuntu)
+Last-Modified: Sun, 15 Oct 2006 01:24:13 GMT
+ETag: "1210ab-1d-41fcf61012940"
+Accept-Ranges: bytes
+Content-Length: 29
+Vary: Accept-Encoding
+Content-Type: text/plain
+X-Pad: avoid browser bug
+
+Hello Beginning Ruby reader!
+=end
+```
+
+* what's happening here?
+  - Net::Telnet connects to rubyinside.com on port 80
+  - Then, it issues these commands: "GET /test.txt HTTP1.1" on the host rubyinside.com
+  - these commands are part of the HTTP protocol
+
+## Servers and Clients
+Clients connect to servers. Servers process information and manage connections and data being received from and sent to the clients
+
+
+__UDP Client and Server__
+
+* we can create a basic client/server system using UDP. Remember that UDP has no concept of connections and so it doesn't make sure that messages are successfully passed. TCP/IP is like making a phone call whereas UDP is like sending a postcard
+
+Server:
+
+```ruby
+require 'socket'
+
+s = UDPSocket.new
+s.bind(nil, 1234)
+5.times do
+  text, sender = s.recvfrom(16)
+  puts text
+end
+```
+
+* this uses the _socket_ library and binds a server to port 1234 on the local machine
+
+Client:
+
+```ruby
+require 'socket'
+
+s = UDPSocket.new
+s.send("hello", 0, "localhost", 1234)
+
+```
+
+* this code creates a UDP socket. instead of listening for data, it sends the string "hello" to the UDP server on localhost at port 1234
+* if you run the client and the server together, "hello" should appear where the server.rb file is running
+* congrats, you have successfully sent data across a network
