@@ -410,5 +410,32 @@ __In the wild__
 * it's also common to stash constants in a module
 
 # Chapter 17 - Use Blocks to Iterate
+
+```ruby
+def do_something
+  yield if block_given?
+end
+
+do_something { puts "i did something" }
+```
+
+* When you tack on a block onto the end of a method call (above), Ruby will package up the block like a secret argument
+* this secret argument is then passed on to the method
+* inside of the method, we can detect whether your caller has actually passed a block by calling `block_given?`
+* if the block is given, the method will fire off the block using `yield`
+* we can do all of this with arguments, too
+
+```ruby
+def do_something_with_args
+  yield("hello world") if block_given?
+end
+
+do_something_with_args do |msg|
+  puts "the message is #{msg}"
+end
+```
+
+* we can include the `Enumerable` mixin to plop in a ton of iteration methods
+
 # Chapter 18 - Execute Around with a Block
 # Chapter 19 - Save Blocks to Execute Later
