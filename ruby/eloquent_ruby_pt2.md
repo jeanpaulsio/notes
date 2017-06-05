@@ -543,3 +543,25 @@ end
 ```
 
 # Chapter 19 - Save Blocks to Execute Later
+
+Here we will use code blocks to deliver the right code to the right context
+
+__Explicit Blocks__
+
+* previously, we have used `block_supplied?` and `yield` to implicitly pass a code block to our methods
+* if you add a parameter prefixed with an ampersand to the end of your parameter list, Ruby will turn any block passed into the method into a parameter
+* after you have captured a block with an explicit parameter, you can run it by calling the `call` method
+
+```ruby
+def run_that_block(&that_block)
+  puts "About to then the block"
+  that_block.call if that_block
+  puts "Done running the block"
+end
+```
+
+* when you have an explicit code block parameter, you can hold onto the block and store a reference to it like you would with any other object
+* this means that you can execute the block later!
+* essentially, the result is that you end up with an object that has a single method `call` containing some code
+
+
