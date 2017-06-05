@@ -438,4 +438,108 @@ end
 * we can include the `Enumerable` mixin to plop in a ton of iteration methods
 
 # Chapter 18 - Execute Around with a Block
+
+Code blocks make great iterators but we can do more than just run through a collection one element at a time:
+* deliver code when its needed
+* get data into and out of your code blocks
+
+__Logging to Debug__
+* logging is a technique not often talked about, but essential for debugging
+* this application stores documents in a database, but database interactions are not always successful so we can sprinkle in some logging
+
+```ruby
+class SomeApplication
+  def initialize(logger)
+    @logger = logger
+  end
+
+  def do_something
+    begin
+      @logger.debug('Starting Document load')
+      @doc = Document.load('resume.txt')
+      @logger.debug('Completed Document load')
+    rescue
+      @logger.error('Load Failed')
+    end
+
+    # do something interesting with the document
+
+    begin
+      @logger.debug('Starting Document save')
+      @doc.save
+      @logger.debug('Completed Document Save')
+    rescue
+      @logger.error('Save Failed')
+    end
+  end
+end
+```
+
+Only problem is that this code is pretty ugly...
+
+Solution? Delivering code where it's needed is exactly what code blocks do well. We can HIDE all of the logging nonsense in a method that takes a code block
+
+```ruby
+def do_something
+  with_logging('load') { @doc = Document.load('resume.txt') }
+
+  # do something interesting with the document
+
+  with_logging('save') { @doc.save }
+end
+
+def with_logging(description)
+  begin
+    @logger.debug("Starting #{description}")
+    yield
+    @logger.debug("Completed #{description}")
+  rescue
+    @logging.error("#{description} Failed")
+    raise
+  end
+end
+```
+
+* WOW! So much more dry
+
+__Execute Around__
+
+* "bury the details in a method that takes a block"
+* this is called executing around
+* __when do you implement this?__
+* use this pattern when you have something that needs to happen before or after some operation
+* instead of building intention-obscuring code, build a method that takes a code block
+
+__Setting up objects with an initialization block__
+
+* execute around can also help you get your objects initialized
+* for example, you can have the `initialize` method take a block that calls the `new` Document instance
+
+```ruby
+class Document
+  attr_accessor :title, :author, :content
+
+  def initialize(title, author, content='')
+    @title   = title
+    @author  = author
+    @content = content
+
+    yield self if block_given?
+
+  end
+
+  # rest of class omitted
+end
+```
+
+* doing this allows an application that creates a new document to isolate the code that initializes the new document in the block:
+
+```ruby
+new_doc = Document.new('US Constitution', 'Madison', '') do |d|
+  d.content << 'We the people'
+  d.content << 'In order to form a more perfect union'
+  d.content << 'provide for the common defense'
+end
+```
+
 # Chapter 19 - Save Blocks to Execute Later
