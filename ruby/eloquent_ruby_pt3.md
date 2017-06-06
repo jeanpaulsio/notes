@@ -492,3 +492,148 @@ Takeaways:
 * since class definitions are executable, you can insert logic in your class definitions, logic that will determine exactly what the class will look like!
 
 # Chapter 26 - Create classes that modify their subclasses
+
+Previously, we built classes that say, "Gee, I'm running Ruby 1.8 so I should define the method *this* way; otherwise I would define it *that* way"
+
+Let's model our `Document` model differently. A real life Document might have paragraphs, fonts - fonts with different styles, etc
+
+
+```ruby
+class Paragraph
+  attr_accessor :font_name, :font_size, :font_emphasis
+  attr_accessor :text
+
+  def initialize(font_name, font_size, font_emphasis, text="")
+    @font_name = font_name
+    @font_size = font_size
+    @font_emphasis = font_emphasis
+    @text = text
+  end
+
+  def to_s
+    @text
+  end
+
+  # ...
+end
+
+class StructuredDocument
+  attr_accessor :title, :author, :paragraphs
+
+  def initialize(title, author)
+    @title = title
+    @author = author
+    @paragraphs = []
+    yield self if block_given?
+  end
+
+  def <<(paragraph)
+    @paragraphs << paragraph
+  end
+
+  def content
+    @paragraphs.inject('') { |text, paragraph| "#{text}\n#{paragraph}" }
+  end
+end
+```
+
+* Here, the new `StructuredDocument` class is mostly just a collection of paragraphs
+* Each paragraph consists of some text, a font name, a font size, and an emphasis
+* We're *now* able to create a resume like this
+
+```ruby
+russ_cv = StructuredDocument.new('Resume', 'RO') do |cv|
+  cv << Paragraph.new(:nimbus, 14, :bold, 'Russ Olsen')
+end
+```
+
+
+__Subclassing__
+
+```ruby
+class Resume < StructuredDocument
+  def name(text)
+    paragraph = Paragraph.new(:nimbus, 14, :bold, text)
+    self << paragraph
+  end
+
+  def address(text)
+    paragraph = Paragraph.new(:nimbus, 12, :italic, text)
+    self << paragraph
+  end
+
+  # ...
+end
+```
+
+Now we can build a resume easier...
+
+```ruby
+russ_cv = Resume.new('russ', 'resume') do |cv|
+  cv.name('Russ Olsen')
+  cv.address('1313 Mockingbird Lane')
+  # ...
+end
+```
+
+* The only problem thus far is the amount of repetitive code!
+* All of our helper methods look the same
+* THe method to add name and an address is *very* similar
+
+__Class methods that build instance methods__
+
+* Remember that you can change any Ruby class at any time
+* Remember that Ruby class definitions are executed
+
+Goal: Ruby needs to create a method that says "The Instruction class needs to have a method called `introduction` that will add a new paragraph rendered in the italic version of Arial at 18 point font"
+
+
+```ruby
+class Instructions < StructuredDocument
+  paragraph_type(
+    :introduction,
+    :font_name => :arial,
+    :font_size => 18,
+    :font_emphasis => :italic
+  )
+
+  # ...
+end
+```
+
+Onto the `StructuredDocument` - Here we want the superclass to create a method on the fly for the `Instructions` subclass
+
+
+```ruby
+class StructuredDocument
+  def self.paragraph_type(paragraph_name, options)
+    name     = options[:font_name]     || :arial
+    size     = options[:font_size]     || 12
+    emphasis = options[:font_emphasis] || :normal
+
+    code = %Q{
+      def #{paragraph_name}(text)
+        p = Paragraph.new(:#{name}, #{size}, :#{emphasis}, text)
+        self << p
+      end
+    }
+
+    class_eval(code)
+  end
+
+  # ...
+end
+```
+
+Combined with our `Instructions` subclass, we'll generate a method that looks like this
+
+```ruby
+def introduction(text)
+  p = Paragraph.new(:arial, 18, italics, text)
+  self << p
+end
+```
+
+* Note that the new method ends up on the StructuredDocument **subclass** (i.e. `Instructions`) and not on the class itself
+
+__Better method creation with define_method__
