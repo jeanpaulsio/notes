@@ -291,7 +291,7 @@ class FormLetter < Document
 end
 ```
 
-* Here, `method_missing` deduces what it should do from the name of t he method being called
+* Here, `method_missing` deduces what it should do from the name of the method being called
 * if the method looks like: `method_<<some word>>`, then the `method_missing` will extract the word from the method name and convert it to all uppercase and then call `replace_word`
 * if we don't follow the `method_<<some word>>` format and call a method that doesn't exist, we will get a `NameException`
 * essentially by providing a certain convention for a naming format, we are allowing users to make up method names
@@ -303,5 +303,92 @@ __Wrapping up__
 we can use `method_missing` to create an infinite amount of virtual methods, magic methods, that don't actually exist as distinct blocks of source code
 
 # Chapter 24 - Update existing classes with monkey patching
+
+> Ruby's open classes means that you can change the behavior of any class at any time. You can add new methods. You can replace the code behind an existing method. You can even delete methods altogether.
+
+__Wide-Open Classes__
+
+Let's say we start out with a bare bones `Document` class:
+
+```ruby
+class Document
+  attr_accessor :title, :author, :content
+
+  def initialize(title, author, content)
+    @title   = title
+    @author  = author
+    @content = content
+  end
+end
+```
+
+Okay... so, nothing special here just yet. But what if we wrote another class with the same name
+
+```ruby
+class Document
+  def words
+    @content.split
+  end
+
+  def word_count
+    words.size
+  end
+end
+```
+
+What we're doing here is __not__ overriding the first class. We are actually extending the functionality of `Document` by adding two methods to it
+
+__Fixing a Broken Class__
+
+* Remember that the last defined method wins
+* If you re-open a class and define a method that already exists, the new definition will overwrite the old
+* You might do something like this if you don't have direct access to an original method
+* Modifying an existing class on t he fly goes by the name of __monkey patching__
+* We've done some *monkey patching* by redefining some Devise methods on rails projects
+* We also monkey patch when we redefine methods like `to_s`
+
+__Renaming Methods with alias_method__
+
+* `alias_method` copies a method implementation, giving it a new name along the way
+* with the `alias_method` we can create a couple of methods that do the exact same thing
+
+```ruby
+class Document
+  # ...
+
+  def word_count
+    words.size
+  end
+
+  alias_method :number_of_words, :word_count
+  alias_method :size_in_words,   :word_count
+```
+
+* This is more useful when we want to keep an original copy of a method that we are overriding
+
+```ruby
+class String
+
+  alias_method :old_addition, :+
+
+  def +(other)
+    # new method definition for addition
+  end
+end
+```
+
+__Do anything to any class, anytime__
+
+* we can do some crazy stuff when we re-open a class
+* we can make private methods public
+* we can make public methods private
+* we can even remove methods
+
+```ruby
+class Document
+  remove_method :word_count
+end
+```
+
 # Chapter 25 - Create self-modifying classes
 # Chapter 26 - Create classes that modify their subclasses
