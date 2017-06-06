@@ -390,5 +390,105 @@ class Document
 end
 ```
 
+Bottom Line: a lot of Rails' source code using monkey patching to add additional functionality to Ruby's main classes
+
 # Chapter 25 - Create self-modifying classes
+
+__how do classes get defined?__
+
+Check this out:
+
+```ruby
+class MostlyEmpty
+  puts "hey, i'm empty"
+end
+```
+
+* If we run this code, we'll actually get, "hey, i'm empty" outputted to the screen without initializing an instance of `MostlyEmpty`
+* This happens because when the Ruby interpreter hits a class declaration, it executes the code between `class` and `end`
+
+Check this out:
+
+```ruby
+class MostlyEmpty
+  puts "The value of self is #{self}"
+end
+```
+
+* we can also use this trick to see *when* methods get defined
+
+```ruby
+class LessEmpty
+  p instance_methods(false)
+
+  def do_something
+    puts "I'm doing something"
+  end
+
+  p instance_methods(false)
+end
+
+# []
+# [:do_something]
+```
+
+* the output tells us that at the top, there are no methods defined yet. at the bottom, `instance_methods` has shoveled the method `:do_something`
+* passing `false` to `instance_methods` just means that we don't want to see any of the inherited methods
+
+__putting logic in your classes__
+
+* being able to embed code in your classes means that your classes can make run-time decisions about what methods to define and all the code that those methods will contain
+
+```ruby
+class Document
+  # ...
+
+  def save(path)
+    # ...
+  end
+
+  if ENCRYPTION_ENABLED
+    def encrypt(string)
+      string.tr('a-zA-Z', 'm-za-1m-ZA-L')
+    end
+  else
+    def encrypt(string)
+      string
+    end
+  end
+end
+```
+
+* Code that is executed inside of a class definition has something in common with class methods: they both execute with `self` set to the class
+* this suggests that we can use class methods to make the same kind of structural changes that we have done so far with class-level logic
+
+```ruby
+ENCRYPTION_ENABLED = true
+
+class Document
+ # ...
+
+ def self.enable_encryption(enabled)
+  if enabled
+    def encrypt_string(string)
+      string.tr('a-zA-Z', 'm-za-1m-ZA-L')
+    end
+  else
+    def encrypt_string(string)
+      string
+    end
+  end
+ end
+
+ enable_encryption(ENCRYPTION_ENABLED)
+end
+```
+
+* a handy side effect of this implementation is that we can toggle encryption off and on by calling the class method from the outside: `Document.enable_encryption(false)`
+
+Takeaways:
+
+* Ruby classes __are executable__
+* since class definitions are executable, you can insert logic in your class definitions, logic that will determine exactly what the class will look like!
+
 # Chapter 26 - Create classes that modify their subclasses
