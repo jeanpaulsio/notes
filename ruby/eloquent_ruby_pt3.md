@@ -175,6 +175,63 @@ __Staying out of trouble__
 Generally, you should rely on Ruby's default error handling if you can. What happens when you overwrite the `method_missing` method and you aren't careful? Let's say you misspell a method - calling `method_missing` will end up in an infinite recursive loop!
 
 # Chapter 22 - Use method_missing for delegation
+
+> In the programming world, delegation is the idea that an object might secretly use another object to get part of the job done.
+
+* we can actually use `method_missing` to delegate functionality
+* there are some dangers to doing this, however
+
+__the promise and pain of delegation__
+
+* instead of copying and pasting method logic, you can supply the first object with a reference to the second object. every time you need to do something, you call the right method on the other object. delegation
+
+__delegating without method_missing__
+
+```ruby
+class SuperSecretDocument
+  def initialize(original_document, time_limit)
+    @original_document = original_document
+    @time_limit        = time_limit
+  end
+
+  # ...
+
+  def check_for_expiration
+    raise 'Document no longer available' if time_expired?
+  end
+
+  def content
+    check_for_expiration
+    # ...
+  end
+
+  def title
+    check_for_expiration
+    # ...
+  end
+
+  # ...
+end
+```
+
+* The problem with this is that as the program grows, you're going to have to call `check_for_expiration` EVERY freaking time!
+
+__using method_missing to delegate__
+
+* think about what would happen if we called one of these methods and they didn't exist. our program would call method_missing anyway!
+* instead of using `method_missing` to log a message or raise an exception, we can delegate to the real document
+
+```ruby
+# ...
+
+def method_missing(method_name, *args)
+  check_for_expiration
+  # ...
+end
+```
+
+* The benefit of using `method_missing` is that as the class doesn't need to grow as we add methods to the Document class
+
 # Chapter 23 - Use method_missing to build flexible APIs
 # Chapter 24 - Update existing classes with monkey patching
 # Chapter 25 - Create self-modifying classes
