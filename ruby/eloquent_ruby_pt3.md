@@ -1,0 +1,181 @@
+# Part III - Metaprogramming
+
+# Chapter 20 - Use hooks to keep your program informed
+> You can write Ruby programs that know when a new class is created, when a method gets called, and even with the application is about to exit.
+
+* A Ruby hook is some way to specify the code to be executed when something specific happens
+* Sometimes this happens by supplying a block
+* Sometimes this happens by overriding a method
+* We can use hooks to find out that a class has gained a new subclass or that a module has been included, or that your program is getting ready to terminate, etc
+
+__waking up to a new subclass__
+
+* remember that a hook is code that gets called to tell you that something is about to happen - or something has already happened
+
+Let's write an example that tells you when a class gains a subclass
+
+```ruby
+class SimpleBaseClass
+  def self.inherited(new_subclass)
+    puts "Hey #{new_subclass} is now a subclass of #{self}"
+  end
+end
+```
+
+To see the inherited method in action, we just create a subclass
+
+```ruby
+class ChildClassOne < SimpleBaseClass
+end
+```
+
+* To stay informed of the appearance of a new subclass, you define a class-level method called `inherited`
+* As soon as `ChildClassOne` is created, the `inherited` message is fired!
+* This is an example of a hook
+
+__What would we ever do with this? Why would this ever be useful?__
+* Imagine you have a ton of documents stored in many different file formats: txt, yml, xml, etc
+* since we have a number of formats, it seems wise to separate the file-reading code from the `Document` class
+* This way, we don't have a ton of code that is written just to convert formats, thus cluttering the `Document` class
+* Instead, we write a series of `Reader` classes where each reader class understands a single format and knows how to turn a file in that format INTO a `Document` instance
+
+```ruby
+class PlainTextReader < DocumentReader
+  def self.can_read?(path)
+    /.*\.txt/ =~ path
+  end
+
+  def initialize(path)
+    @path = path
+  end
+
+  def read(path)
+    File.open(path) do |f|
+      title = f.readline.chomp
+      author = f.readline.chomp
+      content = f.read.chomp
+      Document.new(title, author, content)
+    end
+  end
+end
+```
+
+* Similar readers are then created for YAML and XML files
+
+```ruby
+class YAMLReader < DocumentReader
+  def self.can_read?(path)
+    //.*\.yml/ =~ path/
+  end
+
+  def initialize(path)
+    @path = path
+  end
+
+  def read(path)
+    # ...
+  end
+end
+
+class XMLReader < DocumentReader
+  def self.can_read?(path)
+    //.*\.xml/ =~ path/
+  end
+
+  def initialize(path)
+    @path = path
+  end
+
+  def read(path)
+    # ...
+  end
+end
+```
+
+* Here we have the superclass `DocumentReader`
+
+```ruby
+class DocumentReader
+  class << self
+    attr_reader :reader_classes
+  end
+
+  @reader_classes = []
+
+  def self.read(path)
+    reader = reader_for(path)
+    return nil unless reader
+    reader.read(path)
+  end
+
+  def self.reader_for(path)
+    reader_class = DocumentReader.reader_classes.find do |klass|
+      klass.can_read?(path)
+    end
+
+    return reader_class.new(path) if reader_class
+    nil
+  end
+
+  def self.inherited(subclass)
+    DocumentReader.reader_classes << subclass
+  end
+end
+```
+
+* __Every time you define a new DocumentReader subclass, the DocumentReader inherited hook will go off and add the new class to the running list of readers__
+* The list of reader classes is exactly what the code needs when it is time to find the correct reader for a file
+* This completely automates maintenance!
+* The equivalent to `inherited` for a module is the method called `included`
+
+__Bottom Line__
+* Ruby hooks allow you to get some code to execute at key moments in the life of  your Ruby application
+* Hooks are dedicated to letting your code know what is going on
+
+# Chapter 21 - Use method_missing for flexible error handling
+
+* `method_missing` is a feature of Ruby that helps you handle a particular error condition when someone has called a condition that does not exist
+* first we will talk about __how ruby calls a method__ and what happens when the method being called doesn't actually exist
+* the quick answer is that Ruby will throw an exception. But what is happening behind the scenes?
+
+When Ruby fails to find a method, it actually calls a second method: `method_missing` - which by default generates the exception
+
+We can even override the `method_missing`
+
+```ruby
+class RepeatBackToMe
+  def method_missing(method_name, *args)
+    puts "Hey you just called the #{method_name} method"
+    puts "With these arguments: #{args.join(' ')}"
+    puts "But this method doesn't exist!"
+  end
+end
+
+repeat = RepeatBackToMe.new
+repeat.some_method
+```
+
+__Coping with Constants__
+
+Methods aren't the only thing that can go missing in a Ruby program. Ruby also gives us `const_missing`
+* `const_missing` only takes a single argument, a symbol containing the name of the missing constant
+* `const_missing` needs to be a class method
+
+```ruby
+class Document
+  def self.const_Missing(const_name)
+    msg = %Q{#{const_name} doesn't exist}
+    raise msg
+  end
+end
+```
+
+__Staying out of trouble__
+
+Generally, you should rely on Ruby's default error handling if you can. What happens when you overwrite the `method_missing` method and you aren't careful? Let's say you misspell a method - calling `method_missing` will end up in an infinite recursive loop!
+
+# Chapter 22 - Use method_missing for delegation
+# Chapter 23 - Use method_missing to build flexible APIs
+# Chapter 24 - Update existing classes with monkey patching
+# Chapter 25 - Create self-modifying classes
+# Chapter 26 - Create classes that modify their subclasses
