@@ -233,6 +233,75 @@ end
 * The benefit of using `method_missing` is that as the class doesn't need to grow as we add methods to the Document class
 
 # Chapter 23 - Use method_missing to build flexible APIs
+
+```ruby
+class FormLetter < Document
+  def replace_word(old_word, new_word)
+    @content.gsub!(old_word, "#{new_word}")
+  end
+end
+
+offer_letter = FormLetter.new("Special Offer", "Acme Inc", %q{
+  Dear Mr. LASTNAME
+
+  Are you troubled ....
+
+  FIRSTNAME, we look forward to hearing from you.
+  })
+
+offer_letter.replace_word('FIRSTNAME', 'JP')
+offer_letter.replace_word('LASTNAME', 'Sio')
+
+```
+
+* we notice that we can break down the methods even more, resulting in...
+
+```ruby
+def replace_firstname(new_first_name)
+  @content.gsub('FIRSTNAME', new_first_name)
+end
+
+# etc...
+```
+
+* but doing this becomes a full time job, especially when we have to write methods for every replaceable variable that we think of
+
+__magic methods from method_missing__
+
+* instead of having to write all of these methods out, we can just use `method_missing`
+* we have to anticipate the kind of method that the user is going to call, and therefore have to have a specific structure to which we name our methods
+
+```ruby
+class FormLetter < Document
+  def replace_word(old_word, new_word)
+    @content.gsub!(old_word, "#{new_word}")
+  end
+
+  def method_missing(name, *args)
+    string_name = name.to_s
+    return super unless string_name =~ /^replace_\w+/
+    old_word = extract_old_word(string_name)
+    replace_word(old_word, args.first)
+  end
+
+  def extract_old_word(name)
+    name_parts = name.split('_')
+    name_parts[1].upcase
+  end
+end
+```
+
+* Here, `method_missing` deduces what it should do from the name of t he method being called
+* if the method looks like: `method_<<some word>>`, then the `method_missing` will extract the word from the method name and convert it to all uppercase and then call `replace_word`
+* if we don't follow the `method_<<some word>>` format and call a method that doesn't exist, we will get a `NameException`
+* essentially by providing a certain convention for a naming format, we are allowing users to make up method names
+* these are sometimes called __magic methods__
+* we just have to make sure we are careful with the convention that we make up so that we can avoid naming conflicts
+
+__Wrapping up__
+
+we can use `method_missing` to create an infinite amount of virtual methods, magic methods, that don't actually exist as distinct blocks of source code
+
 # Chapter 24 - Update existing classes with monkey patching
 # Chapter 25 - Create self-modifying classes
 # Chapter 26 - Create classes that modify their subclasses
