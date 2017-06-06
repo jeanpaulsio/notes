@@ -637,3 +637,39 @@ end
 * Note that the new method ends up on the StructuredDocument **subclass** (i.e. `Instructions`) and not on the class itself
 
 __Better method creation with define_method__
+
+* though our code above works, we generally try to avoid the "evaluate some code on the fly"-type methods. Enter `define_method`
+* to use `define_method`, you call it with the name of the new method and a block
+* the parameters of the block become the parameters of the new method
+
+
+```ruby
+define_method(paragraph_name) do |text|
+  paragraph = Paragraph.new(name, size, emphasis, text)
+  self << paragraph
+end
+```
+
+> Remember, if you can do it to a class, you can do it from the superclass
+
+__in the wild__
+
+* you might not realize it, but Active Record uses subclass-changing methods
+
+```ruby
+class Automobile < ActiveRecord::Base
+  has_one :manufacturer
+end
+
+my_Car = Automobile.find(:first)
+```
+
+* This means that you can say `my_car.manufacturer` to get to the object that represents the car's manufacturer
+
+__When should you use metaprogramming?__
+
+* if you can solve a problem without metaprogramming, do that
+* do you need to share the same method between several classes?
+  - _you're probably better off putting the method in a superclass or a mixin module_
+* useful, simple solutions to straightforward problems have a nice eloquence
+* there are also somethings that can't be done WITHOUT meta programming
