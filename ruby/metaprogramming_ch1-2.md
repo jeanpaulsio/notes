@@ -25,3 +25,17 @@ my_object = Greeting.new("Hello")
 my_object.class       # Greeting
 ```
 
+* we can even ask the class for its instance methods
+
+```ruby
+my_object.instance_methods(false)    # [:welcome]
+```
+
+* ... and the instance variables
+
+```ruby
+my_object.instance_variables         # [:@text]
+```
+
+What if you wanted to add instance methods next to `welcome` on the `Greeting` class at runtime? Why would you even want to do that?
+
