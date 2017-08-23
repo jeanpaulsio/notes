@@ -23,3 +23,9 @@
 
 # Interpolation
 ## Animate Colors
+1. cwm create new Animated.Value
+2. inside render, create a variable called `interpolateColor` and set it to the animated value that calls a function `.interpolate`
+3. `interpolate` is a function that takes an object with keys `inputRange` and `outputRange`
+4. create another variable for our styles and set `backgroundColor` to `interpolateColor`
+5. change View to Animated.View and apply style
+6. cDM Animated.timing, toValue is the upperlimit of the `inputRange`. choose a duration and call start()
