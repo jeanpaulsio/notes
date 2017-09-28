@@ -12,9 +12,8 @@
 #  9. Decorator Pattern       *** RAILS
 #  10. Singleton
 #  11. Factory Method         *** RAILS
-#  12. Abstract Factory
-#  13. Builder Pattern
-#  14. Interpreter
+#  12. Builder Pattern
+#  13. Interpreter
 ```
 
 
@@ -189,4 +188,3 @@ end
 * Don't build something that you think you'll need in the future. Period.
 * If you wait until you really need a feature, you are likely to have a better understanding of what you need to do and how you should go about doing it
 * Your code will work better only if if focuses on t he job it needs to do right NOW
-
