@@ -25,3 +25,5 @@
 
 ## Wrapping up
 
+* we are solving the same problem that the template method solves except instead of teasing out the variable parts of your algorithm and pushing them down into subclasses, we are implementing each version of the algorithm as a separate object
+* Thus, to vary the algorithm, we just supply different strategies to the context
