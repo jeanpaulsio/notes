@@ -3,7 +3,7 @@
 * Imagine that we have some complex algorithm that needs some variance right in the middle. What do we do?
 * Let's imagine a program for a report generator
 
-*see `lib/1_report_generator.rb`*
+*see `1_report_generator.rb`*
 
 * This is great for a report generator that only generates HTML. BUt what happens when we want to generate a different format?
 * The key here is to separate things that stay the same from the things that will be different
@@ -16,7 +16,7 @@
 
 > Define an abstract base class with a master method that performs the basic steps but leaves the details of each step to a subclass. With this approach, we have one subclass for each output format
 
-*see `lib/2_report_generator.rb`*
+*see `2_report_generator.rb`*
 
 ## Discovering the Template Method Pattern
 
