@@ -1,4 +1,4 @@
-# Component base class
+# Interface Component
 class Task
   attr_reader :name
 
@@ -6,12 +6,10 @@ class Task
     @name = name
   end
 
-  def time_required
-    0.0
-  end
+  def time_required; end
 end
 
-# Leaf class
+# Leaf class - building block
 class AddDryIngredientsTask < Task
   def initialize
     super('Add dry ingredients')
@@ -22,7 +20,7 @@ class AddDryIngredientsTask < Task
   end
 end
 
-# Leaf class
+# Leaf class - building block
 class MixTask < Task
   def initialize
     super('Mix that batter up!')
@@ -33,7 +31,18 @@ class MixTask < Task
   end
 end
 
-# Composite Base
+# Leaf class- building block
+class FillPanTask < Task
+  def initialize
+    super('Fill the pan up good!')
+  end
+
+  def time_required
+    2.0
+  end
+end
+
+# Composite Base - Manages children
 class CompositeTask < Task
   def initialize(name)
     super(name)
@@ -69,11 +78,14 @@ class MakeCakeTask < CompositeTask
   def initialize
     super('Make cake')
     add_sub_task(MakeBatterTask.new)
-    # add_sub_task(FillPanTask.new)
+    add_sub_task(FillPanTask.new)
     # etc ...
     # these can be made up of composites
   end
 end
 
+make_batter = MakeBatterTask.new
+puts "Making the batter takes #{make_batter.time_required} seconds."
+
 make_me_a_cake = MakeCakeTask.new
-puts make_me_a_cake.time_required
+puts "Making the cake takes #{make_me_a_cake.time_required} seconds."
