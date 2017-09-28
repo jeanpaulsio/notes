@@ -50,7 +50,7 @@ class CompositeTask < Task
 
   def time_required
     time = 0.0
-    @sub_tasks.each { |task| task += task.time_required }
+    @sub_tasks.each { |task| time += task.time_required }
     time
   end
 end
@@ -74,3 +74,6 @@ class MakeCakeTask < CompositeTask
     # these can be made up of composites
   end
 end
+
+make_me_a_cake = MakeCakeTask.new
+puts make_me_a_cake.time_required
