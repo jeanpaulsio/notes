@@ -43,4 +43,40 @@ class SomeClass
 end
 ```
 
+## A First Try at a Ruby Singleton
+
+*see `1_logger.rb`*
+
+* Let's write a logging class that keeps track of the comings and goings of our program
+* This is a **non-singleton** class
+* To use this logger we have to pass around a single instance of it
+
+
+## Managing the single instance
+
+* The whole point of the *Singleton* pattern is to avoid passing an object like the logger all over the place
+* Instead, you want to make the `SimpleLogger` class responsible for managing its single instance
+* Let's turn this into a Singleton
+
+*see `2_logger.rb`*
+
+* Now we can call the `instance` method of the `SimpleLogger` class any number of times and get back the same logger object
+* We can even get the singleton logger from anywhere in our code and use it to write out messages
+
+```ruby
+SimpleLogger.instance.info('Computer wins chess game')
+SimpleLogger.instance.warning('Hardware failure predicted')
+SimpleLogger.instance.error('SNAFU')
+```
+
+## Making sure there's only one
+
+* We still need to ensure that the one and only singleton is the sole instance of the singleton class
+* How do we secure `SimpleLogger` from any promiscuous instantiation? One line:
+
+```ruby
+  private_class_method :new
+```
+
+* This makes the `new` method private
 
