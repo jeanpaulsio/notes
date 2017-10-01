@@ -17,7 +17,7 @@ An object has a dependency when it knows:
 
 # Writing Loosely Coupled Code
 
-__Inject Dependencies__
+## Inject Dependencies
 
 *see `1_inject_dependencies.rb`*
 
@@ -31,31 +31,42 @@ __Inject Dependencies__
 * `Gear` needs access to an object that can respond to `diameter` - a duck type
 * We can use a technique called **dependency injection** to move the creation of a new `Wheel` instance outside of the class
 
-__Isolate Dependencies__
+## Isolate Dependencies
 
 *see `2_isolate_dependencies.rb`*
 
-### Isolate Instance Creation
+__Isolate Instance Creation__
 
 * Sometimes you can't break all unnecessary dependencies, but you can isolate them
 * The first technique moves `Wheel.new` from `gear_inches` and into `Gear`'s `initialize` method
 * The next alternative isolates the creation of a `Wheel` into its own `wheel` method
 
-### Isolate Vulnerable External Messages
+__Isolate Vulnerable External Messages__
 
 * `gear_inches` depends on `Gear` responding to `wheel` and `wheel` responding to `diameter`
 * by creating a different `diameter` method to hold `wheel.diameter`, we remove the dependency within `gear_inches`
 
-__Remove Argument-Order Dependencies__
+## Remove Argument-Order Dependencies
 
 *see `3_remove_arg_orer_dependencies.rb`*
 
-### Use Hashes for Initialization Arguments
+__Use Hashes for Initialization Arguments__
 
 * arguments of our `initialize` method must be passed in the correct order. we can pass an object instead to remove this dependency
 
-### Explicitly Define Defaults
+__Explicitly Define Defaults__
 
 * we can use the `fetch` method to set defaults when using a hashes in our `initialize` method
 * `fetch` expects the key you're fetching to be in the hash and supplies several options for handling missing keys
 * `fetch` will only set the default if the key is not found in the hash
+
+___
+
+# Managing Dependency Direction
+
+* All examples thus far have shown `Gear` depending on `Wheel` or `diameter` - but the code could have easily been written so that `Wheel` depends on `Gear` or `ratio`
+
+## Choosing Dependency Direction
+
+> Depend on things that change less often
+
