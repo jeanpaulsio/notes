@@ -131,3 +131,93 @@ end
 
 __Method 1: Set up the same state before each test__
 
+* Minitest provides a `setup` hook that is run before each test
+* Below, this method will instantiate a new `@worker` instance variable before the start of each test
+* As the class under test grows more complex, you may need to create more and more specialized edge case object instances to test more extensively
+
+```ruby
+class PersonTest < Minitest::Test
+  def setup
+    @worker = Person.new(first_name: 'Peter')
+  end
+
+  def test_person_is_valid
+    assert @worker.valid?
+  end
+end
+```
+
+__Method 2: Configure different state before each test__
+
+* `Minitest::Spec` users can replace `setup` by using `before` blocks
+* We can create scopes
+
+```ruby
+describe Person do
+  before do
+    @worker = Person.new(first_name: 'Peter')
+  end
+
+  it 'should be valid' do
+    expect(@worker).must_be :valid?
+  end
+
+  describe 'working relationships' do
+    before do
+      @boss = Person.new(first_name: 'Elaine')
+      @worker.manager = @boss
+    end
+
+    it 'should have a manger' do
+      expect(@boss.team).must_include @worker
+    end
+  end
+end
+```
+
+__Method 3: Using a memoized helper method__
+
+* Remember that using `let` in a spec lets us create lazy initializers
+* Memoization means that the initialization blocks will only ever be called once within each test
+* Caching the result of the first invocation saves processing time while also allowing the helper function to behave in many ways like a basic variable assignment
+* Calls to `let` can be placed within a `describe` block at any nesting level
+
+```ruby
+describe Person do
+  let(:worker) { Person.new(first_name: 'Peter', manager: manager) }
+  let(:manager) { nil }
+
+  it 'must be valid' do
+    expect(worker).must_be :valid?
+  end
+
+  describe 'with a manager' do
+    let(:manager) { Person.new(first_name: 'Elaine') }
+
+    it 'should be a member of the managers team' do
+      expect(manager.team).must_include(worker)
+    end
+  end
+end
+```
+
+__Method 4: Create data objects within the test__
+
+* Take the following code snippet - most examples would refactor the creation of this into a `setup` method - but that isn't as readable.
+* Though DRY is important, sometimes readability is more important
+* Using `Object.new` might not be sexy in your tests, but it might be **more readable**
+
+```ruby
+class PersonTest < Minitest::Test
+  def test_person_is_valid
+    worker = Person.new(first_name: 'Peter')
+    assert worker.valid?
+  end
+
+  def test_person_should_have_a_first_name
+    worker = Person.new(f_name: 'Peter')
+    assert worker.invalid?
+  end
+end
+```
+___
