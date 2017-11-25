@@ -24,7 +24,7 @@ This book has __four__ parts
 3. Assembling building blocks into practical models
 4. Dealing with situations that arise in complex systems
 
-* Every software program relates to some activity or interest of its user. The subject area to whic hthe user applies the program is the **domain** of the software.
+* Every software program relates to some activity or interest of its user. The subject area to which the user applies the program is the **domain** of the software.
 * To developer software that is valuably involved in user's activities, a dev team must bring to bear a body of knowledge related to those activities.
 
 
@@ -32,7 +32,7 @@ This book has __four__ parts
 
 * The heart of software is its ability to solve domain-related problems for its user.
 * When the domain is complex, this is a difficult task
-* __Yet these are not the priorities on most software projects__. Most talented devs do not have much interest in learrning about the specific domain in which they are working, must less making am ajor commitment to expand their domain-modeling skills.
+* __Yet these are not the priorities on most software projects__. Most talented devs do not have much interest in learrning about the specific domain in which they are working, must less making a major commitment to expand their domain-modeling skills.
 * Technical people like working on technical things.
 
 > Domain work is messy and demands a lot of complciated new kknowledge that doesn't seem to add to a computer scientist's capabilities.
