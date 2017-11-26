@@ -28,3 +28,4 @@ __All projects leak knowledge__
 
 * Domain experts are usually not aware of how complex their mental processes are. They fill in knowledge with what they consider to be common sense. __Software can't do this__
 * It is with knowledge crunching in close collaboration with software experts that the rules are clarified, fleshed out, and reconciled
+* With this kind of collaboration, you can design better software. The example that was given talks about implementing a *Strategy* pattern in the context of overbooking cargo shipments
