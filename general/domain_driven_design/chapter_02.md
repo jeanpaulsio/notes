@@ -10,3 +10,31 @@
 
 * An example of this - pointing to Whiz Tutor - the idea of coupons vs. referals
 * A sort of back and forth is required to find common language. Then, as a developer, you can go back and update class diagrams and rename classes and methods in the code - or even change the behavior
+
+> Commit the team to exercising that (ubiquitous) language relentlessly in all communication within the team and in the code. Use the same language in diagrams, writing, and especially speech. 
+
+## Example - Page 27 - Cargo Router
+
+* This example shows what happens when the dev responds back to the domain expert using a ton of jargon. 
+
+## Modeling out loud
+
+* It isn't easy to establish a common language. It requires hard work. Think about taking a foreign language class where you're not allowed to speak English
+
+There's one of those charts - venn diagram thingies
+
+- technical aspects / tech terms || UBIQUITOUS LANGUAGE || business terms devs don't understand
+
+## Documents and Diagrams
+
+* Diagrams shouldn't be the end all
+* They are a means of communication and explanation - they facilitate brainstorming
+* They represent skeletons of an idea
+
+## Explanatory Models
+
+> The thrust of this book is that one model should underlie implementation, design, and team communication. 
+
+Model as in, not the object model
+
+
