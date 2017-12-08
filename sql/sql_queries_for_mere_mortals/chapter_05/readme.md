@@ -8,4 +8,30 @@
 * using expresions with `SELECT`
 * Null
 
+The type of data you have stored in a column can have an important impact on your queries and expressions
+
+---
+
+__What is an expression__
+
+* To get more than simple columns, you need an expression
+* An expression is some form of operation involving numbers, character strings, or dates and times
+* You can use expressions to widen or narrow the scope of information you retrieve from the database
+
+You can answer questions like this by using expressions:
+
+* What is the total amount of each line item?
+* Show me the start and end time and duration of each class
+* SHow the difference between the handicap score and the raw score
+
+
+__What type of data are you trying to express?__
+
+Character, National Character, Binary, Exact Numeric, Approx Numeric, Boolean, Datetime, Interval
+
+__Changing Data Types__
+
+* You must make sure that when you write an expression, the data types of the columns and literals are compaitble with the operation you are requesting.
+
+
 
