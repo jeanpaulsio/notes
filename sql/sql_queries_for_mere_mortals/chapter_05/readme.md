@@ -31,7 +31,14 @@ Character, National Character, Binary, Exact Numeric, Approx Numeric, Boolean, D
 
 __Changing Data Types__
 
-* You must make sure that when you write an expression, the data types of the columns and literals are compaitble with the operation you are requesting.
+* You must make sure that when you write an expression, the data types of the columns and literals are compatible with the operation you are requesting.
+* You can use the `CAST` function to convert a value from string to integer if there is a number in the column you're trying to do an expression with
+* The `CAST` function __converts a literal value or the value of a column into a specfic data type__.
+* Basically, use `CAST` to make sure you're working with compatible data types
+
+## Specifying Explicit Values
+
+
 
 
 
