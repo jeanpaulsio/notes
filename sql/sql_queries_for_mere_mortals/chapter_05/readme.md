@@ -38,7 +38,96 @@ __Changing Data Types__
 
 ## Specifying Explicit Values
 
+```sql
+SELECT VendWebPage, VendName
+FROM Vendors
+```
+
+* You can enhance the clarity of information by defining a character string that provides supplementary descriptive text and then adding it to the `SELECT` clause
+
+```sql
+SELECT VendWebPage, 'is the website for', VendName
+FROM Vendors
+```
+
+A Row will look like this:
+
+```
+www.viescas.com  |  is the website for  |  John Viescas Consulting
+```
 
 
+## Types of Expressions
+
+You will generally use the following three types of expressions when working with SQL statements
+
+1. Concatenation
+2. Mathematical
+3. Date and Time Arithmetic
+
+__Concatenation__
+
+* Two pipe bars `||` is the Sql concat operator
+
+Expression: `CompanyName || ' is based in ' || City`
+Result: `DataTex Consulting Group is based in Seattle`
+
+* Note that you can use Column references without surrounding them by single quotes
+* You can use a column reference in any type of expression
+* You shouldn't rely on your db to quietly do conversions for you. 
+
+> To concatenate a character string literal or a value of a character column with a date literal or the value of a numeric date column, use the `CAST` function to convert the numeric or date value to a character string
+
+Expression:
+```
+EntStageName || ' was signed with our agency on ' || CAST(DateEntered as CHARACTER(10))
+```
+
+Result:
+```
+Modern Dance was signed with our agency on 1995-05-16
+```
+
+* You can also use `CAST` to concat a numeric literal or value of a numeric column to a character data type
+
+Expression:
+```
+ProductName || ' sells for ' || CAST(RetailPrice AS CHARACTER(8))
+```
+
+Result:
+```
+Trek 9000 Mountain Bike sells for 1200.00
+```
+
+__Mathmematical Expressions__
+
+```
+ABS
+MOD
+LN      # logarithm
+EXP     # returns value of ln raised to the power of the expression
+POWER
+SQRT
+FLOOR
+CEIL
+CEILING
+WIDTH_BUCKET
+```
+
+__Date and Time Arithmetic__
+
+* The SQL standard can only subtract a DATE from a DATE or add a DATE to an INTERVAL
+* When you subtract a date from another date, you are calculating the interval between two dates
+
+```
+'2012-05-16' - 5
+'2012-11-14' + 12
+ReviewDate + 90
+EstimateDate - DaysRequired
+'2012-07-22' - '2012-06-13'
+```
+
+## Using Expressions in a SELECT clause
 
 
