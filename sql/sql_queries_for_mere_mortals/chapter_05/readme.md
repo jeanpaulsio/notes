@@ -150,7 +150,30 @@ FROM Employees
 ```
 
 ```
+SELECT CONCAT(EmpFirstName, ' ', EmpLastName),
+	     CONCAT('Phone Number: ', EmpPhoneNumber)
+FROM Employees
+```
+
+```
 Mary Thompson  |  Phone Number: 555-2516
 ```
 
+> Show me a list of all our vendors and trheir identification numbers
 
+```sql
+SELECT CONCAT('The ID Number for ', VendName, ' is ', CAST(VendorId as CHARACTER))
+FROM Vendors
+```
+
+```
+The ID Number for Shinoman, Incorporated is 1
+```
+
+Carefully consider when you use `CONCAT` because it might convolute your result set
+
+__Naming The Expression__
+
+* When you use an expression in a `SELECT` clause, the reuslt set includes a new column that displays the result of the operation defined in the expression
+* This new column is known as a calculated or derived column
+* You can provided a name for the *derived* column by using `AS`
