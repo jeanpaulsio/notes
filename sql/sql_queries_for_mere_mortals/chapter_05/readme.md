@@ -130,4 +130,27 @@ EstimateDate - DaysRequired
 
 ## Using Expressions in a SELECT clause
 
+* you'll use expressions to:
+
+1. create a calculated column in a query
+2. search for a sepcific column value
+3. filter the rows in a result set
+4. connect two tables in a JOIN operation
+
+__Working with a Concatenation Expression__
+
+* you can use concat expressions only to enhance the readability of the information contained in the result set of a SELECT statement
+
+> Show me a current list of our employees and their phone numbers
+
+```sql
+SELECT EmpFirstName || ' ' || EmpLastName,
+  'Phone Number: ' || EmpPhoneNumber
+FROM Employees
+```
+
+```
+Mary Thompson  |  Phone Number: 555-2516
+```
+
 
