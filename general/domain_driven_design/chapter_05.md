@@ -22,3 +22,46 @@
 
 It is with these three things that good Domain Driven software is comprised of
 These are the building blocks
+
+## Associations
+
+> A model that shows an association between a customer and a sales rep corresponds to two things
+
+1. abstracts a relationship deemed relevent by a developer between two real people
+2. corresponds to an object pointer between to Objects, or an encapsulation of a database lookup, or some comparable implementation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var element = document.getElementsByClassName=("recsGamepad__button--like");
+element[0].click();
+
+for (var i = 1; i <= 5; i++) {
+    setTimeout(function(x) { return function() { console.log(x); }; }(i), 1000*i);
+    // 1 2 3 4 5
+}
+
+
+
