@@ -1,27 +1,41 @@
 # Chapter 5 - A Model Expressed In Software
 
-> Connecting model and implementation has to be done at the detail level
+Function Programming vs. OOP
 
-* This discussion starts with the issues of designing and streamlining associations
-* Associations between objects are simple to conceive and draw but implementing them is a different story
-* There are _three_ distinct patterns when it comes to OO modeling -
+__OO__
+* An OO application is made up of classes but __defined__ by its messages
+* Design is concerned with the messages that are passed between objects
 
-1. entities
-2. value objects
-3. services
+https://stackoverflow.com/questions/3562272/what-is-the-difference-between-message-passing-and-method-invocation
 
-"does an object represent something with continuity and identity - something that is tracked through different states or even across different implementations? or is it an attribute that describes something else."
+https://www.quora.com/What-is-the-difference-between-message-passing-versus-calling-a-function-method-invocation
 
-* this is the basic distinction between an __Entity__ and __Value Object__. 
+* In a dynamically typed language like Ruby, message passes are disguised as method invocations
+* Whiz Tutor at a high level: 
+* You might have a few instances of certain objects
+  - Tutor
+  - Student
+  - Booking
+  - Schedule
+* `Student.request_booking`
+* `Tutor.check_availability` - instance of Tutor sends `check_availability`
+* A class defines behavior and objects hold state
+* Call methods in objects and pass them other objects
+* Objects update their own state, perhaps other objects
+* We care about data and behavior
+* We can interface with instance variables and pass messages that understand what those instance variables mean
 
-"then there are those aspects of the domain that are more clearly expressed as actions or operations, rather than as objects"
+__FP__
 
-* it is best to express these as _services_
-* "a service is something that is done for the client on request"
-* finally, we have the cooncept of _modules_
+* surprise, surprise, all about functions
+* given some input, we are returned with output
+* we separate data and behavior - unlike objects that combine them
+* we don't have classes - just simple data structures like arrays and hashes
+* we write tiny methods that do a single thing and compose a bunch of these tiny methods to do one large thing
+* the difference here is that these methods aren't messages that are passed between instances of objects
+* __so you create all of these tiny functions and remember that we don't have instances of objects__
+* FP is all about starting with one data set, applying transformations, and generating a new dataset --> big distinction betweeen the two paradigms is immutability. With OOP, the state of instances of objects can be changed through the passing of messages. In order to find out  the value of something, you'll have to see if a certain message was passed. This isn't necessarily the case with FP because you set variables to equal the "after" state
 
-It is with these three things that good Domain Driven software is comprised of
-These are the building blocks
 
 ## Associations
 
