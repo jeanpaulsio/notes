@@ -46,6 +46,8 @@ __Repositories__
 Defining terms - googling:
 https://stackoverflow.com/questions/8550124/what-is-the-difference-between-dao-and-repository-patterns
 
+https://stackoverflow.com/questions/19935773/dao-repositories-and-services-in-ddd
+
 DAO (data access object) vs Repository
 
 > DAO would be considered closer to the database, often table-centric. Repository would be considered closer to the Domain, dealing only in Aggregate Roots. A Repository could be implemented using DAO's, but you wouldn't do the opposite.
