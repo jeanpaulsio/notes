@@ -134,4 +134,66 @@ Write tests that explicitly assert what `mix_in` does and this can serve as your
 
 # Conceptual Contours
 
+> breaking down classes and methods can **pointlessly** complicate the client, forcing objects to understand how tiny pieces fit together. worse, a concept can be lost completely
+
+* this is one reason that repeated refactoring leads to **suppleness** 
+* the "conceptual contours" emerge as the code is adapted to newly understood concepts or requirements
+
+> decompose design elements into cohesive units, taking into consideration your intuition of the important divisions in the domain [...] The goal is a simple set of interfaces that combine logically to make sensible statements in the uniquitious language, and without the distraction and maintenance burden of irrelevant options
+
+# Standalone Classes
+
+> Interdependencies make models and designs hard to understand. They also make them hard to test and maintain. [...] Every association is, of course, a dependency. [...] With one dependency, you have to think about two classes at the same time. [...] With two dependencies, you ahve to think about each of the three classes, the nature of the class' relationship to each of them, and any relationship they might have to each other. etc
+
+> Both modules and aggregates are aimed at limiting the web of interdependencies
+
+> In an important subset, the number of dependencies can be reduced to zero, resulting in a class that can be fully understood all by itself, along with a few primitives and basic library concepts
+
+> Low coupling is fundamental to the object design. WHen you can, go all the way. Eliminate all other concepts from the picture. Then the class will be completely self-contained and can be studied and understood alone. 
+
+* in our example, we can decouple `Paint` and `PigmentColor` into two separate classes
+
+# (Finally) Closure of Operations
+
+* obviously, you can't live without dependencies
+
+> Where it fits, define an operation whose return type is the same as the type of its arguments. If the implementer has state that is used in the computation, then the implementer is effectively an argument of the operation, so the arguments and return value should be of the same type as the implementer. Such an operation is closed under the set of instances of that type. A closed operation provides a high-level interface without introducing any dependency on other concepts
+
+* applied to the operations of a value object
+
+`"1" + "1" = "11"`
+
+`1 + 1 = 2`
+
+* if your input arguments are of class `Paint` ... be sure that your return value is of class `Paint` ...
+
+
+**IMPORTANT SHIT ALERT**
+
+> these patterns presented in this chapter illustrate a general style of design and a way of thinking about design. Making software obvious, predictable, and communicative makes abstraction and encapsulation effective. Models can be factored so that the objects are simple to use and understand yet still rich, high-level interfaces.
+
+---
+
+# Declarative Design
+
+Definition: Indicates a way to write a program, or some part of a program, as a kind of executable specification. A very precise description of properties actually controls the software.
+
+## Domain-Specific Languages 
+
+* this is kind of interesting. client code is written in a programming langauge **tailored** to a particular model of a particular domain
+* then the program is compiled into a conventional OO language
+
+---
+
+> Once your design has intention-revealing interfaces, side-effect free functions, and assertions, you are edging into declarative territory
+
+---
+
+# Angles of attack
+
+> This chapter has presented a raft of techniques to clarify the intent of code, to make the consequences of using it transparent, and to decouple model elements. Even so, this kind of design is difficult. You can't just look at an enormous system and say, "Let's make this supple"
+
+1. Carve off subdomains. Don't tackle the whole design at once
+2. "Draw on established formalisms when you can" wtf does this even mean dude. something about math
+
 
