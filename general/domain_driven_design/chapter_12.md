@@ -251,3 +251,8 @@ but
 
 > the only requirement is taht the pattern should say something conceptual about
 > the domainl, not just be a technical solution to a technical problem
+
+# Picks 
+
+- JP: 
+- John: [Github + Slack Integration](https://slack.github.com/)
