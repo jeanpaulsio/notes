@@ -89,7 +89,7 @@ Whiz Tutor: When working on messaging, focus on that subdomain specifically. How
 
 ## Picks
 - JP:
-- John:
+- John: [Focus App](https://heyfocus.com/) - Lock yourself out from certian websites for set intervals. I bought it for $20 bucks like a year ago. Been way worth it. Pomodoro in general works really well for me. 
 
 ## Close
 - Leave a review wherever you are listening, recommend the show to a friend.
