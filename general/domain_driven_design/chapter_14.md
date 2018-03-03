@@ -107,6 +107,44 @@ HAMMER OUT THAT FUCKIN UBIQUITOUS LANGUAGE: this translates to...
 
 ## Context Map
 
+* an individual bounded context doesn't provide a global view
+* the context of other models might be vague
+
+> People on other teams won't be very aware of the CONTEXT bounds and will unknowingly make changes that blur the edges or complicate interconnections
+
+* you can use a "context map" to alleviate this problem
+* a context map is in the overlap between project management and software design
+
+Therefore:
+
+> identify each model in play on the project and define its bounded context. this includes the implicit models of the non-boject-oriented subsystems. name each Bounded Context and make the names part of the ubiquitous language
+
+> the map does not have to be documented in any particular form
+
+* can literally be a UML - like diagram
+* can be plain text
+* all that matters is that its shared and understood by everyone
+* it must provide clear names for each bounded context
+
+### Example - 2 Contexts in a cargo shipping application
+
+* Feature: automatic routing of cargos at booking time
+* Routing service: when `Route Specification` is passed, `Itinerary` is returned
+* `Itinerary` will satisfy the `Route Specification`
+* use of two bounded contexts - each of which had its own conceptual organization of shipping operations
+* Fuck this example
+* so many diagrams to follow, lot of mumbo jumbo.
+* we'll come up with our own example on the spot
+* the important thing is that large teams should know where the boundaries of the "bounded contexts" are
+* clear boundaries and an established ubiq. language lets large teams work independently
+* image a large react application - easily susceptible to multiple people writing the same helper functions that do the same thing
+* some teams are more comfortable with actual visible maps, some will be fine with just communicating with each other. 
+
+---
+
+Relationships between Bounded Contexts
 
 
-Page: 304 / 347
+
+
+Page: 312 / 347
