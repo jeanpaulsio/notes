@@ -210,6 +210,12 @@ For each service we define, we need an adapter that supports the service's inter
 
 ## Separate Ways
 
+> In many circumstances, integration provides no significant benefit. If two functional parts do not call upon each other's functionality, or require interactions between objects that are touched bh both, or share data during their operations, then integration, even through a translation layer, may not be necessary. Just because features are related in a use case does not mean they must be integrated.
+
+---
+
+## Choosing Your Model Context Strategy
 
 
-Page: 327 / 347
+
+Page: 337 / 347
