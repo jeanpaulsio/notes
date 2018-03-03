@@ -138,13 +138,54 @@ Therefore:
 * the important thing is that large teams should know where the boundaries of the "bounded contexts" are
 * clear boundaries and an established ubiq. language lets large teams work independently
 * image a large react application - easily susceptible to multiple people writing the same helper functions that do the same thing
-* some teams are more comfortable with actual visible maps, some will be fine with just communicating with each other. 
+* some teams are more comfortable with actual visible maps, some will be fine with just communicating with each other.
+
+example:
+
+* even on projects that aren't so large - a develope who is new to a project needs to know what the bounded contexts are
+* you might be writing helper functions / methods that already exist
+* you might be extending modules and classes past their intended context
 
 ---
 
-Relationships between Bounded Contexts
+## Shared Kernal
+
+* part of the context that is shared
+* in the example of the `Charge` object - there might actually be some "shared" stuff in there
+
+> Designate some subset of the domain model that two teams agree to share. This explicitly shared stuff has special status, and shouldn't be changed without consultation with the other team
+
+---
+
+These sections begins to talk about how teams can work together. there are a few patterns to follow:
+
+## Customer / Supplier Dev Teams
+
+* pattern: one subsystem feeds another 
+* the downstream component performs analysis or other functions that feed back "upstream"
+* downstream needs things from upstream; but upstream is not responsible for the downstream deliverables
+
+Therefore:
+
+> establish a clear customer / supplier relationship between the two teams. in planning sessions, make the downstream team play the customer role to the upstream team. negotiate and budget tasks for downstream requirements so that everyone understands the commitment and schedule.
+
+* during iteration, the downstream team members need to be available to the upstream devs to answer questions and help resolve problems
+
+2 crucial elements to this pattern:
+
+1. relationship must be of customer and supplier, with the implication that the customer's needs are paramount
+2. there must be an automated test suite that allows the upstream team to change its code without fear of breaking the downstream
 
 
+* this reminds me of working on a full stack app - 
+* backend Rails API = upstream
+* frontend React Native = downstream
+
+BOUNDED CONTEXTS - what belongs in the front end? what belongs in the back end? this is where my brain goes for this section
+
+---
+
+Conformist
 
 
-Page: 312 / 347
+Page: 319 / 347
