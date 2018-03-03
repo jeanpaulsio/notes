@@ -185,7 +185,31 @@ BOUNDED CONTEXTS - what belongs in the front end? what belongs in the back end? 
 
 ---
 
-Conformist
+What happens when an new system has to be integrated with an old system that has it's own existing models?
+
+## Anticorruption Layer
+
+* need to provide a translation between the parts that adhere to the different models, so that the models are not corrupted with undigested elements of foreign models
+
+Therefore:
+
+> create an isolating layer to provide clients with functionality in terms of their own domain model. the layer talks to the other system through its existing interface, requiring little or no modification to the other system. internally, the layer translates in both directions as necessary between the two models
+
+* this is an anticorruption layer
+* usually aset of SERVICES 
+* occasionally can take the form of an entity
+* see - adapter pattern
+
+An adapter is a wrapper that allows a client to use a different protocol than that understood by the implementer of the behavior. when a client sends a message to an adapter, it is converted to a semantically equivalent message and sent to the adaptee
+
+For each service we define, we need an adapter that supports the service's interface and knows how to make equivalent requests of the other system or its facade
+
+* this reminds me of using a Ruby gem that isn't rails specific. you plop in a set of methods with the gem > create a service object that you can interface with in your controllers > intention revealing interaces > hide implementation
+
+---
+
+## Separate Ways
 
 
-Page: 319 / 347
+
+Page: 327 / 347
