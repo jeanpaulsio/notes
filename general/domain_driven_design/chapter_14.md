@@ -72,7 +72,41 @@ Therefore:
 
 * modules organize the elements within one model; they don't necessarily communicate an intention to separate contexts
 
+How can you recognize when context is breaking down?
+
+* think about the `Charge` object example. Two different teams might be talking about the "same thing" when they really mean something else. this is dangerous.
+* teams may step on each other's code
+
+---
+
+## Continuous Integration
+
+> When a number of people are working in the same BOUNDED CONTEXT, there is a strong tendency for the model to fragment. [...] Breaking down the system into even-smaller CONTEXTS eventually loses a valuable level of integration and coherency.
+
+Problems:
+
+* sometimes devs dont understand the intent of an object so they change it in a way that makes in unusable for its original purpose
+* sometimes devs dont realize that concepts are already embodied in another part of a model, so they duplicate concepts
+
+Solution:
+
+* increase communication and reduce complexity
+* aka Continuous Integration
+
+Continuous integration happens at two levels in DDD
+
+1. integration of model concepts
+2. integration of implementation
+
+HAMMER OUT THAT FUCKIN UBIQUITOUS LANGUAGE: this translates to...
+
+1. automated test suites
+2. constant exercise of ubiq. language
+
+---
+
+## Context Map
 
 
 
-Page: 300 / 347
+Page: 304 / 347
