@@ -216,6 +216,15 @@ For each service we define, we need an adapter that supports the service's inter
 
 ## Choosing Your Model Context Strategy
 
+Some tips:
 
+1. teams should make decisions about where to define bounded contexts and what sort of relationships to have between them
+2. Be interested in more than the parts of the system that you are changing. be mindful of of the parts of the system that you might be stepping on and not realizing
 
-Page: 337 / 347
+--- when your project is already under way ---
+
+* define bounded contexts according to the way things are now
+* context map should reflect the true practice of the teams, no the *ideal* organization you might decide on by following the guideliness described in this chapter
+
+---
+
