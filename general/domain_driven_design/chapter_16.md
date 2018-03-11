@@ -43,4 +43,27 @@ Model Driven Design -> Responsibility Layers -> [names enter] Ubiq. language
 
 ## Evolving Order
 
-386 / 415
+Problem: to avoid anarachy in large scale project,s some technical architecture patterns become extremely limiting in that they prevent devs from creating designs and models that work well for the specifics of the problem.
+
+> Architectures can straitjacket a project with up-front design assumptions and take too much pwer away from the devs / designers of particular parts of the application. Soon, devs will dumb down the application to fit the structure, or they will subvert it and have no structure at all, bringing back the problems of uncoordinated development
+
+Therefore:
+
+* basically, don't let this happen
+* let the "structure" evolve with the app
+* you don't have to follow it to a T - so much that it cripples you. duh. 
+* don't use a large scale structure if you don't have to
+
+> An ill-fitting structure is worse than none, it is best not to shoot for comprehensiveness, but rather to find a minimal set that solves the problems that have emerged. less is more
+
+Here's a little disclaimer from the author:
+
+> Little has been published on structuring the domain layer (in reference to large scale structure). Some approaches weaken the OO paradigm, such as those that break down the domain by application task or by use case. This whole area is still underdeveloped. I've observed a few general patterns of large-scale structure that have emerged on various projects. I'll discuss four in this chapter.
+
+---
+
+## System Metaphor
+
+
+
+388 / 415
