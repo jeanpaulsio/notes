@@ -60,10 +60,61 @@ Here's a little disclaimer from the author:
 
 > Little has been published on structuring the domain layer (in reference to large scale structure). Some approaches weaken the OO paradigm, such as those that break down the domain by application task or by use case. This whole area is still underdeveloped. I've observed a few general patterns of large-scale structure that have emerged on various projects. I'll discuss four in this chapter.
 
-1. System Metaphor
-2. Responsibility Layers
-3. Knowledge Level
-4. Pluggable Component Framework
+# 1. System Metaphor
+
+> Software design tends to be very abstract and hard to grasp. Developers and users alike need tangible ways to understand the system and share a view of the system as a whole
+
+* sometimes a metaphor comes along that can convey the central theme of a whole design
+* this metaphor enters the ubiq language
+* everyone goes on their merry way
+* the metaphor shapes the system
+* it should be loose and easily understood
+
+LOL
+
+> unfortunately, few projects have found really useful metaphors and people have tried to push the idea into domains where it is counterproductive
+
+* so much for coming up with an example. 
+* this is a silly section. why talk about it if its rarely ever useful? 
+* in fact, Evans doesn't even give an example for this. No cargo shipping. No accounting example. Nothing. 
+
+# 2. Responsibility Layers
+
+He kicks off this chapter with some bolded advice:
+
+> When each individual object has handcrafted responsibilities, there are no guidelines, no uniformity, and no ability to handle large swaths of the domain together. To give a coherence to a large model, it is useful to impose some structure on the assignment of those responsibilities
+
+* split the domain into layers
+* somehow this occurs naturally
+
+Hopefully this clears things up because i still don't get it:
+
+> layers are partitions of a system in which the members of each partition are aware of and are able to use the service layers "below" - but unaware of and independent of the layers "above"
+
+* i guess this is like classical inheritance? 
+* this is so unclear, im so confused. whats the benefit of only using layers below? what do you even separate into layers? 
+
+Here's his bolded advice:
+
+Therefore:
+
+> Look at the conceptual dependencies in your model and the varying rates and sources of change of different parts of your domain. If you identify natural strata in the domain, cast them as broad abstract responsibilities. These responsibilites should tell a story of the high level purpose and design of your system. Refactor the model so that the responsibilities should tell a story of the high level purpose and design of your system. Refactor the model so that the responsibilities of each domain object, aggregate, and module fit neatly within the responsibility of one layer
+
+* even Evans says this shit is fucking ambiguous. and hopes to clear this up with some examples....
+
+__Example: In depth: layering a shipping system__
+
+* fuckin sweet, more cargo shipping
+
+
+# 3. Knowledge Level
+
+
+
+#4. Pluggable Component Framework
+
+
+
 
 ---
 
@@ -78,4 +129,4 @@ Here's a little disclaimer from the author:
 
 
 
-388 / 412
+392 / 412
