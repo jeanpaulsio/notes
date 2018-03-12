@@ -60,10 +60,22 @@ Here's a little disclaimer from the author:
 
 > Little has been published on structuring the domain layer (in reference to large scale structure). Some approaches weaken the OO paradigm, such as those that break down the domain by application task or by use case. This whole area is still underdeveloped. I've observed a few general patterns of large-scale structure that have emerged on various projects. I'll discuss four in this chapter.
 
+1. System Metaphor
+2. Responsibility Layers
+3. Knowledge Level
+4. Pluggable Component Framework
+
 ---
 
-## System Metaphor
+# Refactoring towards a fitting structure
+
+* minimalism: don't attempt to be comprehensive. a minimal loose structure can provide enough guidelines
+* communication and self discipline: structure must be understood by the entire team. ubiq. language
+* restructuring = supple design: every time the structure changes, the entire system should be changed to reflect that structure change
+* distillation lightens the load: continuous distillation?
 
 
 
-388 / 415
+
+
+388 / 412
