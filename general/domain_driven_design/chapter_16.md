@@ -80,19 +80,19 @@ LOL
 
 # 2. Responsibility Layers
 
-He kicks off this chapter with some bolded advice:
+He kicks off this section with some bolded advice:
 
 > When each individual object has handcrafted responsibilities, there are no guidelines, no uniformity, and no ability to handle large swaths of the domain together. To give a coherence to a large model, it is useful to impose some structure on the assignment of those responsibilities
 
 * split the domain into layers
 * somehow this occurs naturally
+* layers represent different responsibility
+* these layers are more broad  than typically assigned to individual objects.
+* more broad than Modules and Aggregates
 
 Hopefully this clears things up because i still don't get it:
 
 > layers are partitions of a system in which the members of each partition are aware of and are able to use the service layers "below" - but unaware of and independent of the layers "above"
-
-* i guess this is like classical inheritance? 
-* this is so unclear, im so confused. whats the benefit of only using layers below? what do you even separate into layers? 
 
 Here's his bolded advice:
 
@@ -104,8 +104,63 @@ Therefore:
 
 __Example: In depth: layering a shipping system__
 
-* fuckin sweet, more cargo shipping
+* let's revisit this cargo shipping app
+* at this point we can assume that a model driven design is applied to the core design of this app
+* let's also assume we have this problem of coordinating how all the parts fit together
+* as a reminder, here are some models - as displayed in UML that don't translate well on an audio format:
 
+  - customer
+  - cargo
+  - route specification
+  - itinerary
+  - router
+  - transport log
+
+> It is quite reasonable to discuss transport schedules (scheduled voyages of ships and trains) without referring to the cargoes abroad those transports. It is harder to talk about tracking a cargo without referring to the transport carrying it. The conceptual dependencies are clear. The team can readily distinguish between two layers: "Operations" and the substrate of those operations, "Capability"
+
+__Operational Responsibilities__
+
+> activities of the company, past, current, and planned are collected into the Operations layer.
+
+* holds the `Cargo` object
+* holds `Route Specification`
+* holds `Itinerary`
+
+__Capability Responsibilities__
+
+* reflects the resources the company draws upon in order to carry out operations
+* i.e. `Transit Leg` - ships are scheduled to run and have a certain capacity to carry cargo, which may or may not be fully utilized
+
+---
+
+Lets say the team runs across the issue of having part of the model not fit into these layers 
+
+Well -- thank god we can just make more layers
+
+For example, the `Router` doesn't fit into current `operational` realities. Therefore, the team decides on another layer:
+
+__Decision Support Responsibilities__
+
+> this layer of software provides the user with tools for planning and decision making, and it could potentially automate some decisions
+
+* rerouting `Cargo`
+* `Router` service that helps a booking agent choose the best way to send a `Cargo`
+
+---
+
+Bottom line: think about the different kinds of responsibilities in your app. Then use these to categorize your domain
+
+Some useful characteristics to look out for:
+
+1. storytelling: layers should communicate the basic realitities or priorities of the domain. 
+2. conceptual dependency: concepts in the upper layers should have meaning against the back drop of the lower layers
+3. conceptual contours: if objects of different layers should have different rates of change or different sources of change, the layer accomodates the shearing between them
+
+---
+
+__Potential vs Operation__
+
+* 
 
 # 3. Knowledge Level
 
@@ -129,4 +184,4 @@ __Example: In depth: layering a shipping system__
 
 
 
-392 / 412
+399 / 412
