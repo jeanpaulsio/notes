@@ -1,18 +1,3 @@
-# At a glance
-
-> Developers need to be able to understand the role of an individual part in the whole without delving into the details of the whole.
-
-> Large scale structure is a *language* that lets you discuss and understand the system in broad strokes.
-
-# Evolving Order
-
-* free for all design = bad
-* leads to a structure no one can make sense of as a collective whole
-* on the opposite end of the spectrum, strict up-front design can make too many assumptions
-* strict design is like a strait jacket for devs
-
-> Let this conceptual large-scale structure evolve with the application, possibly changing to a completely different type of structure along the way [...]. Large-scale structure should be applied when a structure can be found that greatly clarifies the system without forcing unnatural constraints on model development. Because an ill- fitting structure is worse than none
-
 4 patterns that emerge on projects:
 
 # 1. System Metaphor
@@ -68,12 +53,8 @@ Solution:
 
 > They would impose a structure on the design. The entire simulator would be viewed as a series of layers related to aspects of the communication system. The bottom layer would represent the physical infrastructure, the basic ability to transmit bits from one node to another. Then there would be a packet routing layer that brought together the concerns of how a particular data stream would be directed. Other layers would identify other conceptual levels of the problem. These layers would outline their story of the system. 
 
-Still dont really understand this but:
-
 > These layers were not modules. They were an overarching set of rules that constrained the boundaries and relationships of any particular module or object throughout the design, even at interfaces with other systems.
 
-* Okay, I don't get this shit. I'm not quite sure what this "layered" stuff is supposed to mean
-* but let's discuss it and try to digest it.
 * As a result of this new layered system, people knew where to find stuff
 * People were able to work independently on this large system on different parts.
 
