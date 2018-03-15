@@ -1,3 +1,51 @@
+# At a glance
+
+> Developers need to be able to understand the role of an individual part in the whole without delving into the details of the whole.
+
+> Large scale structure is a *language* that lets you discuss and understand the system in broad strokes.
+
+# Evolving Order
+
+* free for all design = bad
+* leads to a structure no one can make sense of as a collective whole
+* on the opposite end of the spectrum, strict up-front design can make too many assumptions
+* strict design is like a strait jacket for devs
+
+> Let this conceptual large-scale structure evolve with the application, possibly changing to a completely different type of structure along the way [...]. Large-scale structure should be applied when a structure can be found that greatly clarifies the system without forcing unnatural constraints on model development. Because an ill- fitting structure is worse than none
+
+4 patterns that emerge on projects:
+
+# 1. System Metaphor
+
+> When a concrete analogy to the system emerges that captures the imagination of team members and seems to lead thinking in a useful direction, adopt it as a large-scale structure. [...] But because all metaphors are inexact, continually reexamine the metaphor for overextension or inaptness, and be ready to drop it if it gets in the way.
+
+# 2. Responsibility Layers
+
+* typically, OO-design has it so that objects have a narrow set of related responsibility
+* there are typically no guidelines here
+* can be useful to impose structure on the assignment of these responsibilites
+
+> If you identify natural strata in the domain, cast them as broad abstract responsibilities. These responsibilities should tell a story of the high-level purpose and design of your system. Refactor the model so that the responsibilities of each domain object, aggregate, and module fit neatly within the responsibility of one layer.
+
+# 3. Knowledge Level
+
+*  groups of objects that describe how other groups of objects should behave
+*  general models don't serve the customer's needs
+*  fully customized models don't serve the customer's needs
+*  you might end up with classes  that have the same data and behavior
+
+> Create a distinct set of objects that can be used to describe and constrain the structure and behavior of the basic model. Keep these concerns separate as two “levels,” one very concrete, the other reflecting rules and knowledge that a user or super-user is able to customize.
+
+# 4. Pluggable Component Framework
+
+* when a model is deep and distilled, a pluggable component framework might come into play
+* usually comes into play **after** a few applications have already been implemented in the same domain
+
+> Distill an abstract core of interfaces and interactions and create a framework that allows diverse implementations of those interfaces to be freely substituted. Likewise, allow any application to use those components, so long as it operates strictly through the interfaces of the abstract core.
+
+
+----
+
 # Chapter 16 - Large-Scale Structure
 
 John: Welcome to Iteration: a weekly podcast about development and design through the lens of amazing books, chapter-by-chapter
