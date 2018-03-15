@@ -1,33 +1,9 @@
 4 patterns that emerge on projects:
 
 # 1. System Metaphor
-
-> When a concrete analogy to the system emerges that captures the imagination of team members and seems to lead thinking in a useful direction, adopt it as a large-scale structure. [...] But because all metaphors are inexact, continually reexamine the metaphor for overextension or inaptness, and be ready to drop it if it gets in the way.
-
 # 2. Responsibility Layers
-
-* typically, OO-design has it so that objects have a narrow set of related responsibility
-* there are typically no guidelines here
-* can be useful to impose structure on the assignment of these responsibilites
-
-> If you identify natural strata in the domain, cast them as broad abstract responsibilities. These responsibilities should tell a story of the high-level purpose and design of your system. Refactor the model so that the responsibilities of each domain object, aggregate, and module fit neatly within the responsibility of one layer.
-
 # 3. Knowledge Level
-
-*  groups of objects that describe how other groups of objects should behave
-*  general models don't serve the customer's needs
-*  fully customized models don't serve the customer's needs
-*  you might end up with classes  that have the same data and behavior
-
-> Create a distinct set of objects that can be used to describe and constrain the structure and behavior of the basic model. Keep these concerns separate as two “levels,” one very concrete, the other reflecting rules and knowledge that a user or super-user is able to customize.
-
 # 4. Pluggable Component Framework
-
-* when a model is deep and distilled, a pluggable component framework might come into play
-* usually comes into play **after** a few applications have already been implemented in the same domain
-
-> Distill an abstract core of interfaces and interactions and create a framework that allows diverse implementations of those interfaces to be freely substituted. Likewise, allow any application to use those components, so long as it operates strictly through the interfaces of the abstract core.
-
 
 ----
 
@@ -106,8 +82,12 @@ LOL
 * so much for coming up with an example. 
 * this is a silly section. why talk about it if its rarely ever useful? 
 * in fact, Evans doesn't even give an example for this. No cargo shipping. No accounting example. Nothing. 
+* needless to say - coming up with a **System metaphor** might not be a great idea
 
-# 2. Responsibility Layers
+> When a concrete analogy to the system emerges that captures the imagination of team members and seems to lead thinking in a useful direction, adopt it as a large-scale structure. [...] But because all metaphors are inexact, continually reexamine the metaphor for overextension or inaptness, and be ready to drop it if it gets in the way.
+
+
+# 2. Responsibility Layers -> Layering = Categories
 
 He kicks off this section with some bolded advice:
 
@@ -119,17 +99,11 @@ He kicks off this section with some bolded advice:
 * these layers are more broad  than typically assigned to individual objects.
 * more broad than Modules and Aggregates
 
-Hopefully this clears things up because i still don't get it:
-
 > layers are partitions of a system in which the members of each partition are aware of and are able to use the service layers "below" - but unaware of and independent of the layers "above"
-
-Here's his bolded advice:
 
 Therefore:
 
 > Look at the conceptual dependencies in your model and the varying rates and sources of change of different parts of your domain. If you identify natural strata in the domain, cast them as broad abstract responsibilities. These responsibilites should tell a story of the high level purpose and design of your system. Refactor the model so that the responsibilities should tell a story of the high level purpose and design of your system. Refactor the model so that the responsibilities of each domain object, aggregate, and module fit neatly within the responsibility of one layer
-
-* even Evans says this shit is fucking ambiguous. and hopes to clear this up with some examples....
 
 __Example: In depth: layering a shipping system__
 
@@ -189,13 +163,37 @@ Some useful characteristics to look out for:
 
 __Potential vs Operation__
 
-* 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # 3. Knowledge Level
+*  groups of objects that describe how other groups of objects should behave
+*  general models don't serve the customer's needs
+*  fully customized models don't serve the customer's needs
+*  you might end up with classes  that have the same data and behavior
+
+> Create a distinct set of objects that can be used to describe and constrain the structure and behavior of the basic model. Keep these concerns separate as two “levels,” one very concrete, the other reflecting rules and knowledge that a user or super-user is able to customize.
 
 
 
 #4. Pluggable Component Framework
+* when a model is deep and distilled, a pluggable component framework might come into play
+* usually comes into play **after** a few applications have already been implemented in the same domain
+
+> Distill an abstract core of interfaces and interactions and create a framework that allows diverse implementations of those interfaces to be freely substituted. Likewise, allow any application to use those components, so long as it operates strictly through the interfaces of the abstract core.
 
 
 
@@ -207,9 +205,7 @@ __Potential vs Operation__
 * minimalism: don't attempt to be comprehensive. a minimal loose structure can provide enough guidelines
 * communication and self discipline: structure must be understood by the entire team. ubiq. language
 * restructuring = supple design: every time the structure changes, the entire system should be changed to reflect that structure change
-* distillation lightens the load: continuous distillation?
-
-
+* distillation lightens the load: continuous distillation is key
 
 
 
