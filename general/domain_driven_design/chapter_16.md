@@ -178,16 +178,26 @@ Quote from evans:
 *  fully customized models don't serve the customer's needs
 *  you might end up with classes  that have the same data and behavior
 
+* here is a metaphor for this - think of a company's structure:
+* at the top you have C-level execs
+* then you have managers
+* then you have direct reports to those managers
+* each person reports to their higher up according to their **role**. for example, a graphic designer wouldn't be reporting to the CTO for a UX question
+
 > Create a distinct set of objects that can be used to describe and constrain the structure and behavior of the basic model. Keep these concerns separate as two “levels,” one very concrete, the other reflecting rules and knowledge that a user or super-user is able to customize.
 
+__Why is this important?__
+
+This lets us avoid having objects that have too much responsibility - or do too many things. Remember, we want classes with a **single responsibility**
 
 
 #4. Pluggable Component Framework
 * when a model is deep and distilled, a pluggable component framework might come into play
-* usually comes into play **after** a few applications have already been implemented in the same domain
+* basically the **bounded contexts** that you define become like "pluggable components" that you can plop in and replace when need be
+* HOWEVER - the problem with this is that interfaces should be defined beforehand and this requires intense knowledge of the domain
+* and we all know that DDD is about iteration. this goes back to the idea of large scale structure being like a strait jacket
 
 > Distill an abstract core of interfaces and interactions and create a framework that allows diverse implementations of those interfaces to be freely substituted. Likewise, allow any application to use those components, so long as it operates strictly through the interfaces of the abstract core.
-
 
 
 
@@ -202,4 +212,3 @@ Quote from evans:
 
 
 
-402 / 412
