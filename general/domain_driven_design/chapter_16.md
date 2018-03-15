@@ -136,11 +136,11 @@ __Capability Responsibilities__
 
 ---
 
-Lets say the team runs across the issue of having part of the model not fit into these layers 
+* Lets say the team runs across the issue of having part of the model not fit into these layers 
 
-Well -- thank god we can just make more layers
+* Well -- thank god we can just make more layers
 
-For example, the `Router` doesn't fit into current `operational` realities. Therefore, the team decides on another layer:
+* For example, the `Router` doesn't fit into current `operational` realities. Therefore, the team decides on another layer:
 
 __Decision Support Responsibilities__
 
@@ -155,29 +155,22 @@ Bottom line: think about the different kinds of responsibilities in your app. Th
 
 Some useful characteristics to look out for:
 
-1. storytelling: layers should communicate the basic realitities or priorities of the domain. 
-2. conceptual dependency: concepts in the upper layers should have meaning against the back drop of the lower layers
-3. conceptual contours: if objects of different layers should have different rates of change or different sources of change, the layer accomodates the shearing between them
+__Big takeaway from this section = storytelling__
+
+> finding good responsibility layers is a matter of understanding the problem domain and experimenting
+
+* layers should communicate the basic realitities or priorities of the domain.
+* know that layers will get switched out, merged, split, redefined, etc
+* maybe we can come up with an example on the spot?
+* in my opinion, it's hard because ive never worked on a large scale project
+
+    http://dddcommunity.org/uncategorized/ch16_17/
+
+Quote from evans:
+
+> "Yes, you get pressed into these things. You don’t seek large-scale structure in a 6-object model. But when you have a 600-object model, you desperately need ways of understanding it as a whole. All the strategic design techniques help with this problem, but the large-scale structure directly addresses it."
 
 ---
-
-__Potential vs Operation__
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # 3. Knowledge Level
 *  groups of objects that describe how other groups of objects should behave
@@ -209,4 +202,4 @@ __Potential vs Operation__
 
 
 
-399 / 412
+402 / 412
