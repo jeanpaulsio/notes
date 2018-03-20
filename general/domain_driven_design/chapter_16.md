@@ -211,4 +211,6 @@ This lets us avoid having objects that have too much responsibility - or do too 
 * distillation lightens the load: continuous distillation is key
 
 
-
+# Picks 
+- John: [IFTTT](https://ifttt.com/) - Connect any two services on the web
+- JP: [tmux](https://github.com/tmux/tmux)
