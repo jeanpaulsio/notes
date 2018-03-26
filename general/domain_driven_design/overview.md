@@ -1,3 +1,11 @@
+John: Welcome to Iteration: a weekly podcast about development and design through the lens of amazing books, chapter-by-chapter
+
+__Introductions__
+
+Today we will discuss: _________
+
+---
+
 # Overview! Things that stood out + light summary
 
 ## Definitions
@@ -70,3 +78,8 @@ __assertions__: State post-conditions of operations and invariants of classes an
 
 __Standalone classes__: Low coupling is fundamental to object design. When you can, go all the way.
 
+
+
+Picks:
+
+JP: frontend masters or action-cable-signaling-server 😅
