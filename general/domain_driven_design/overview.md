@@ -2,7 +2,31 @@ John: Welcome to Iteration: a weekly podcast about development and design throug
 
 __Introductions__
 
-Today we will discuss: _________
+## Chapter 17 // Brining the Strategy Together
+
+Chapter 17 // Brining the Strategy Together
+
+- Combining Large structures with distilation. 
+- contexts, distillation, and structure
+- Seperating out the core domain. 
+- Cleaarly define the generic subdomains 
+- Have layers: ie. Operation, Policy, Service, Reporting 
+
+
+## Emergent Structure 
+
+## Formulas for good design
+
+- Strategic design requires minimalism and humility
+- Developers are generalisits - Let them be! 
+- Beware the master plan 
+
+
+Architects - city masterplan example
+
+> ". in practice master plans fail—because they create totalitarian order, not organic order. They are too rigid; they cannot easily adapt to the natural and unpredictable changes...  ....The attempt to steer such a course is rather like filling in the colors in a child’s coloring book . . . . At best, the order which results from such a process is banal. . .  ." —From The Oregon Experiment, pp. 16–28
+
+# BOOK OVERVIEW
 
 ---
 
@@ -11,7 +35,6 @@ Today we will discuss: _________
 ## Definitions
 
 __domain__: a sphere of knowledge, influence, or activity. subject area to whic hthe user applies a program is the domain of the software
-
 
 __model__: system of abstractions that describes selected aspects of a domain
 
@@ -32,6 +55,10 @@ DDD === approach to development where we:
 > Explicitly define the context within which a model applies. Explicitly set boundaries in terms of team organization, usage within specific parts of the application, and physical manifestations such as code bases and database schemas.
 
 > Relentlessly exercise the ubiquitous language to hammer out a shared view of the model as the concepts evolve in different people's heads
+
+### John: Refine Language Refine your code
+
+### John: Continuous Learning (Read the book)
 
 ---
 
@@ -78,8 +105,13 @@ __assertions__: State post-conditions of operations and invariants of classes an
 
 __Standalone classes__: Low coupling is fundamental to object design. When you can, go all the way.
 
+### John: Objects Objects Objects - Give it a noun - Policy / Strategy / Service Objects 
+
+### John: Core Domain / Domain Statment VS Generic Domains 
 
 
 Picks:
 
 JP: frontend masters or action-cable-signaling-server 😅
+John: Github as a collaboration tool.
+Isssues / Projects / Milestones / Custom Labels 
