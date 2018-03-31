@@ -1,3 +1,12 @@
+4 patterns that emerge on projects:
+
+# 1. System Metaphor
+# 2. Responsibility Layers
+# 3. Knowledge Level
+# 4. Pluggable Component Framework
+
+----
+
 # Chapter 16 - Large-Scale Structure
 
 John: Welcome to Iteration: a weekly podcast about development and design through the lens of amazing books, chapter-by-chapter
@@ -20,12 +29,8 @@ Solution:
 
 > They would impose a structure on the design. The entire simulator would be viewed as a series of layers related to aspects of the communication system. The bottom layer would represent the physical infrastructure, the basic ability to transmit bits from one node to another. Then there would be a packet routing layer that brought together the concerns of how a particular data stream would be directed. Other layers would identify other conceptual levels of the problem. These layers would outline their story of the system. 
 
-Still dont really understand this but:
-
 > These layers were not modules. They were an overarching set of rules that constrained the boundaries and relationships of any particular module or object throughout the design, even at interfaces with other systems.
 
-* Okay, I don't get this shit. I'm not quite sure what this "layered" stuff is supposed to mean
-* but let's discuss it and try to digest it.
 * As a result of this new layered system, people knew where to find stuff
 * People were able to work independently on this large system on different parts.
 
@@ -77,8 +82,12 @@ LOL
 * so much for coming up with an example. 
 * this is a silly section. why talk about it if its rarely ever useful? 
 * in fact, Evans doesn't even give an example for this. No cargo shipping. No accounting example. Nothing. 
+* needless to say - coming up with a **System metaphor** might not be a great idea
 
-# 2. Responsibility Layers
+> When a concrete analogy to the system emerges that captures the imagination of team members and seems to lead thinking in a useful direction, adopt it as a large-scale structure. [...] But because all metaphors are inexact, continually reexamine the metaphor for overextension or inaptness, and be ready to drop it if it gets in the way.
+
+
+# 2. Responsibility Layers -> Layering = Categories
 
 He kicks off this section with some bolded advice:
 
@@ -90,17 +99,11 @@ He kicks off this section with some bolded advice:
 * these layers are more broad  than typically assigned to individual objects.
 * more broad than Modules and Aggregates
 
-Hopefully this clears things up because i still don't get it:
-
 > layers are partitions of a system in which the members of each partition are aware of and are able to use the service layers "below" - but unaware of and independent of the layers "above"
-
-Here's his bolded advice:
 
 Therefore:
 
 > Look at the conceptual dependencies in your model and the varying rates and sources of change of different parts of your domain. If you identify natural strata in the domain, cast them as broad abstract responsibilities. These responsibilites should tell a story of the high level purpose and design of your system. Refactor the model so that the responsibilities should tell a story of the high level purpose and design of your system. Refactor the model so that the responsibilities of each domain object, aggregate, and module fit neatly within the responsibility of one layer
-
-* even Evans says this shit is fucking ambiguous. and hopes to clear this up with some examples....
 
 __Example: In depth: layering a shipping system__
 
@@ -133,11 +136,11 @@ __Capability Responsibilities__
 
 ---
 
-Lets say the team runs across the issue of having part of the model not fit into these layers 
+* Lets say the team runs across the issue of having part of the model not fit into these layers 
 
-Well -- thank god we can just make more layers
+* Well -- thank god we can just make more layers
 
-For example, the `Router` doesn't fit into current `operational` realities. Therefore, the team decides on another layer:
+* For example, the `Router` doesn't fit into current `operational` realities. Therefore, the team decides on another layer:
 
 __Decision Support Responsibilities__
 
@@ -152,22 +155,49 @@ Bottom line: think about the different kinds of responsibilities in your app. Th
 
 Some useful characteristics to look out for:
 
-1. storytelling: layers should communicate the basic realitities or priorities of the domain. 
-2. conceptual dependency: concepts in the upper layers should have meaning against the back drop of the lower layers
-3. conceptual contours: if objects of different layers should have different rates of change or different sources of change, the layer accomodates the shearing between them
+__Big takeaway from this section = storytelling__
+
+> finding good responsibility layers is a matter of understanding the problem domain and experimenting
+
+* layers should communicate the basic realitities or priorities of the domain.
+* know that layers will get switched out, merged, split, redefined, etc
+* maybe we can come up with an example on the spot?
+* in my opinion, it's hard because ive never worked on a large scale project
+
+    http://dddcommunity.org/uncategorized/ch16_17/
+
+Quote from evans:
+
+> "Yes, you get pressed into these things. You don’t seek large-scale structure in a 6-object model. But when you have a 600-object model, you desperately need ways of understanding it as a whole. All the strategic design techniques help with this problem, but the large-scale structure directly addresses it."
 
 ---
 
-__Potential vs Operation__
-
-* 
-
 # 3. Knowledge Level
+*  groups of objects that describe how other groups of objects should behave
+*  general models don't serve the customer's needs
+*  fully customized models don't serve the customer's needs
+*  you might end up with classes  that have the same data and behavior
 
+* here is a metaphor for this - think of a company's structure:
+* at the top you have C-level execs
+* then you have managers
+* then you have direct reports to those managers
+* each person reports to their higher up according to their **role**. for example, a graphic designer wouldn't be reporting to the CTO for a UX question
+
+> Create a distinct set of objects that can be used to describe and constrain the structure and behavior of the basic model. Keep these concerns separate as two “levels,” one very concrete, the other reflecting rules and knowledge that a user or super-user is able to customize.
+
+__Why is this important?__
+
+This lets us avoid having objects that have too much responsibility - or do too many things. Remember, we want classes with a **single responsibility**
 
 
 #4. Pluggable Component Framework
+* when a model is deep and distilled, a pluggable component framework might come into play
+* basically the **bounded contexts** that you define become like "pluggable components" that you can plop in and replace when need be
+* HOWEVER - the problem with this is that interfaces should be defined beforehand and this requires intense knowledge of the domain
+* and we all know that DDD is about iteration. this goes back to the idea of large scale structure being like a strait jacket
 
+> Distill an abstract core of interfaces and interactions and create a framework that allows diverse implementations of those interfaces to be freely substituted. Likewise, allow any application to use those components, so long as it operates strictly through the interfaces of the abstract core.
 
 
 
@@ -178,10 +208,9 @@ __Potential vs Operation__
 * minimalism: don't attempt to be comprehensive. a minimal loose structure can provide enough guidelines
 * communication and self discipline: structure must be understood by the entire team. ubiq. language
 * restructuring = supple design: every time the structure changes, the entire system should be changed to reflect that structure change
-* distillation lightens the load: continuous distillation?
+* distillation lightens the load: continuous distillation is key
 
 
-
-
-
-399 / 412
+# Picks 
+- John: [IFTTT](https://ifttt.com/) - Connect any two services on the web
+- JP: [tmux](https://github.com/tmux/tmux)
