@@ -25,7 +25,7 @@ __Tips__
 ## Tip 1: Care about your craft
 ## Tip 2: Think about your work - never run on auto pilot
 
-"great lawns need small amounts of dialy care, and so do great programmers."
+"great lawns need small amounts of daily care, and so do great programmers."
 
 * kaizen - continuous small improvements
 
