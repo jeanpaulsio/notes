@@ -8,7 +8,6 @@
 
 > What kind of design are you trying to arrive at? What kind of experiments should you try along the way? That is what this chapter is about
 
----
 
 > A lot of overengineering has been justified in the name of flexibility. [...] Look at the design of software that really empowers the people who handle it; you will usually see something simple. Simple is not easy.
 
@@ -21,7 +20,7 @@
 
 * side effect free functions
 * intention revealing interfaces
-* ubiquituos language
+* ubiquitous language
 * standalone classes
 * model driven design
 
@@ -53,7 +52,7 @@ A program for paint stores that can show a customer the result of mixing standar
 class Paint
   def paint(paint)
     v += paint.get_v           # volume is summed
-    
+
     # complex paint mixing logic omitted
 
     r, b, y = [255, 255, 255]  # ends with assignment of r, b, y values
@@ -77,7 +76,7 @@ In plain english, we write a test with a ton of comments that provides a tiny bi
 
 Commands and queries
 
-* queries obtain information from the system, possibly by simply accessing data in a variable, possibly by performing a calcuation based on that data
+* queries obtain information from the system, possibly by simply accessing data in a variable, possibly by performing a calculation based on that data
 * commands are operations that affect some change to the system
 
 consider that a "side effect" is any effect on the state of the system - we narrow this to any change in the state of the system that will affect future operations
@@ -90,10 +89,10 @@ consider that a "side effect" is any effect on the state of the system - we narr
 
 * it's not like you can completely avoid commands
 * ensure that the methods that cause changes do not return domain data and are kept as simple as possible
-* there are ways to not modify an exisiting object. *instead, you can create a new value object that represents the result of the computation and return that instead of mutating*
+* there are ways to not modify an existing object. *instead, you can create a new value object that represents the result of the computation and return that instead of mutating*
 
 1. Value object created
-2. value object handed ouff
+2. value object handed off
 3. value object forgotten
 
 This is much unlike an entity where the life cycle is regulated
@@ -102,7 +101,7 @@ Hey.... __this is kind of like functional programming__
 
 OKAY - imagine an application with a class called `Paint` that takes a method called `mix_in`
 
-`mix_in` will take Paint colors as a parameter and spit out a new color. so if you feed it `yellow` and `blue`, you get `green`. 
+`mix_in` will take Paint colors as a parameter and spit out a new color. so if you feed it `yellow` and `blue`, you get `green`.
 
 The idea here is that the `green` value is stored in a new **value object** versus mutating the original data
 
@@ -136,20 +135,20 @@ Write tests that explicitly assert what `mix_in` does and this can serve as your
 
 > breaking down classes and methods can **pointlessly** complicate the client, forcing objects to understand how tiny pieces fit together. worse, a concept can be lost completely
 
-* this is one reason that repeated refactoring leads to **suppleness** 
+* this is one reason that repeated refactoring leads to **suppleness**
 * the "conceptual contours" emerge as the code is adapted to newly understood concepts or requirements
 
-> decompose design elements into cohesive units, taking into consideration your intuition of the important divisions in the domain [...] The goal is a simple set of interfaces that combine logically to make sensible statements in the uniquitious language, and without the distraction and maintenance burden of irrelevant options
+> decompose design elements into cohesive units, taking into consideration your intuition of the important divisions in the domain [...] The goal is a simple set of interfaces that combine logically to make sensible statements in the ubiquitous language, and without the distraction and maintenance burden of irrelevant options
 
 # Standalone Classes
 
-> Interdependencies make models and designs hard to understand. They also make them hard to test and maintain. [...] Every association is, of course, a dependency. [...] With one dependency, you have to think about two classes at the same time. [...] With two dependencies, you ahve to think about each of the three classes, the nature of the class' relationship to each of them, and any relationship they might have to each other. etc
+> Interdependencies make models and designs hard to understand. They also make them hard to test and maintain. [...] Every association is, of course, a dependency. [...] With one dependency, you have to think about two classes at the same time. [...] With two dependencies, you have to think about each of the three classes, the nature of the class' relationship to each of them, and any relationship they might have to each other. etc
 
 > Both modules and aggregates are aimed at limiting the web of interdependencies
 
 > In an important subset, the number of dependencies can be reduced to zero, resulting in a class that can be fully understood all by itself, along with a few primitives and basic library concepts
 
-> Low coupling is fundamental to the object design. WHen you can, go all the way. Eliminate all other concepts from the picture. Then the class will be completely self-contained and can be studied and understood alone. 
+> Low coupling is fundamental to the object design. When you can, go all the way. Eliminate all other concepts from the picture. Then the class will be completely self-contained and can be studied and understood alone.
 
 * in our example, we can decouple `Paint` and `PigmentColor` into two separate classes
 
@@ -165,29 +164,24 @@ Write tests that explicitly assert what `mix_in` does and this can serve as your
 
 `1 + 1 = 2`
 
-* if your input arguments are of class `Paint` ... be sure that your return value is of class `Paint` ...
-
+* if your input arguments are of class `Paint` ... be sure that your return value is of class `Paint`
 
 **IMPORTANT SHIT ALERT**
 
 > these patterns presented in this chapter illustrate a general style of design and a way of thinking about design. Making software obvious, predictable, and communicative makes abstraction and encapsulation effective. Models can be factored so that the objects are simple to use and understand yet still rich, high-level interfaces.
 
----
 
 # Declarative Design
 
 Definition: Indicates a way to write a program, or some part of a program, as a kind of executable specification. A very precise description of properties actually controls the software.
 
-## Domain-Specific Languages 
+## Domain-Specific Languages
 
 * this is kind of interesting. client code is written in a programming langauge **tailored** to a particular model of a particular domain
 * then the program is compiled into a conventional OO language
 
----
-
 > Once your design has intention-revealing interfaces, side-effect free functions, and assertions, you are edging into declarative territory
 
----
 
 # Angles of attack
 
@@ -196,4 +190,6 @@ Definition: Indicates a way to write a program, or some part of a program, as a 
 1. Carve off subdomains. Don't tackle the whole design at once
 2. "Draw on established formalisms when you can" wtf does this even mean dude. something about math
 
-
+### Picks
+- JP: [Exercism  - Practice writing code](http://exercism.io/)
+- John: [John Skeet - Stack overflow badass](https://stackoverflow.blog/2018/01/15/thanks-million-jon-skeet/)

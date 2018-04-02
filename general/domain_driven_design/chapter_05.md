@@ -11,7 +11,7 @@ https://stackoverflow.com/questions/3562272/what-is-the-difference-between-messa
 https://www.quora.com/What-is-the-difference-between-message-passing-versus-calling-a-function-method-invocation
 
 * In a dynamically typed language like Ruby, message passes are disguised as method invocations
-* Whiz Tutor at a high level: 
+* Whiz Tutor at a high level:
 * You might have a few instances of certain objects
   - Tutor
   - Student
@@ -70,7 +70,7 @@ __These are the building blocks which embody the model in software. [...] Framin
 
 ex.) an application for booking seats in a stadium might treat seats and attendees as *entities* because each ticket has a seat number. these object representations need to be identified by a unique characteristic. contrast this to a stadium that has first come, first serve general seating
 
-This makes me really appreciate Rails' use of the Active Record pattern. As a Rails developer, creating these entities is pretty straight forward from a technical standpoint because we're able to assign a unique id to every object upon instantiation. 
+This makes me really appreciate Rails' use of the Active Record pattern. As a Rails developer, creating these entities is pretty straight forward from a technical standpoint because we're able to assign a unique id to every object upon instantiation.
 
 If you're not a fan of having an id save as 1... then 2... then 3, it's super simple to implement a UUID:
 
@@ -87,11 +87,11 @@ From a higher level, the concept of an __entity__ makes you think about the defi
 * some objects don't have a conceptual identity
 * these objects describe some characteristic of a thing
 
-> Colors are an example of VALUE OBJECTS that are provided in the base libraries of many modern developement systems; so are strings and numbers. 
+> Colors are an example of VALUE OBJECTS that are provided in the base libraries of many modern developement systems; so are strings and numbers.
 
 * a value object can be an asssemblage of other objects. in software for designing house plans, an object could be created for each window style. this window style could be incorporated into a window object along with height and width
 
-> When you only care about the attributes of an element of the model, classify it as a VALUE OBJECT. Make it express the meaning of the attributes it conveys and give it related functionality. Treat the value object as immutable. 
+> When you only care about the attributes of an element of the model, classify it as a VALUE OBJECT. Make it express the meaning of the attributes it conveys and give it related functionality. Treat the value object as immutable.
 
 > WE DON'T CARE WHICH INSTANCE WE HAVE OF A VALUE OBJECT
 
@@ -99,7 +99,7 @@ ex.) outfit predictor - value objects would be the articles of clothing. for exa
 
 # Services
 
-> A SERVICE is an operation offered as an interface that stands alone in the model, without encapsulating state, as ENTITIES and VALUE OBJECTS do. 
+> A SERVICE is an operation offered as an interface that stands alone in the model, without encapsulating state, as ENTITIES and VALUE OBJECTS do.
 
 * emphasizs the relationship with other objects
 * can be named after an activity
@@ -123,7 +123,7 @@ Domain Layer -
 * interacts with necessary account and ledger objects
 * supplies confirmation of result
 
-Infrastructure Layer - 
+Infrastructure Layer -
 *send notification service*
 * sends email as directed by the application
 
@@ -165,6 +165,3 @@ for (var i = 1; i <= 5; i++) {
     setTimeout(function(x) { return function() { console.log(x); }; }(i), 1000*i);
     // 1 2 3 4 5
 }
-
-
-

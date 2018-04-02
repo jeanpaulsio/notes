@@ -14,6 +14,8 @@ This chapter is truly about a "pragmatic" approach to development
 
 ## Tip 11: Don't Repeat Yourself
 
+
+
 ---
 
 ## Tip 12: Make it easy to reuse

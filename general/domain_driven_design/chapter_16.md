@@ -9,25 +9,21 @@
 
 # Chapter 16 - Large-Scale Structure
 
-John: Welcome to Iteration: a weekly podcast about development and design through the lens of amazing books, chapter-by-chapter
-
-Introductions
-
 Today we will be continuing our talk about scaling large applications and some of the problems you might face scaling BIG apps
 
 ---
 
 Discussing a big project:
 
-> The lead devs were uneasy. THe problem was inherently complex. [...] They had decomposed the design into coherent modules of a manageable size. Now there were a LOT of modules. Which package should a dev look in to find a particular aspect of functionality. Where should a new class be placed? What did some of these little packages really mean? How did they all fit together? And there was still more to build. 
+> The lead devs were uneasy. The problem was inherently complex. [...] They had decomposed the design into coherent modules of a manageable size. Now there were a LOT of modules. Which package should a dev look in to find a particular aspect of functionality. Where should a new class be placed? What did some of these little packages really mean? How did they all fit together? And there was still more to build.
 
-How do they approach this? 
+How do they approach this?
 
-> They brainstormed. [...] Alternative packaging schemes were proposed. Maybe some document could give an overviefw of the system, or some new views of the class diagram in the modeling tool could guide a developer to the right module. But the project leaders weren't satisfied with these gimmicks. 
+> They brainstormed. [...] Alternative packaging schemes were proposed. Maybe some document could give an overview of the system, or some new views of the class diagram in the modeling tool could guide a developer to the right module. But the project leaders weren't satisfied with these gimmicks.
 
 Solution:
 
-> They would impose a structure on the design. The entire simulator would be viewed as a series of layers related to aspects of the communication system. The bottom layer would represent the physical infrastructure, the basic ability to transmit bits from one node to another. Then there would be a packet routing layer that brought together the concerns of how a particular data stream would be directed. Other layers would identify other conceptual levels of the problem. These layers would outline their story of the system. 
+> They would impose a structure on the design. The entire simulator would be viewed as a series of layers related to aspects of the communication system. The bottom layer would represent the physical infrastructure, the basic ability to transmit bits from one node to another. Then there would be a packet routing layer that brought together the concerns of how a particular data stream would be directed. Other layers would identify other conceptual levels of the problem. These layers would outline their story of the system.
 
 > These layers were not modules. They were an overarching set of rules that constrained the boundaries and relationships of any particular module or object throughout the design, even at interfaces with other systems.
 
@@ -40,23 +36,23 @@ Advice:
 
 Bottom line:
 
-Resonsibility Layers
+Responsibility Layers
 
-Model Driven Design -> Responsibility Layers -> [names enter] Ubiq. language
+Model Driven Design -> Responsibility Layers -> [names enter] ubiquitous language
 
 ---
 
 ## Evolving Order
 
-Problem: to avoid anarachy in large scale project,s some technical architecture patterns become extremely limiting in that they prevent devs from creating designs and models that work well for the specifics of the problem.
+Problem: to avoid anarchy in large scale projects, some technical architecture patterns become extremely limiting in that they prevent devs from creating designs and models that work well for the specifics of the problem.
 
-> Architectures can straitjacket a project with up-front design assumptions and take too much pwer away from the devs / designers of particular parts of the application. Soon, devs will dumb down the application to fit the structure, or they will subvert it and have no structure at all, bringing back the problems of uncoordinated development
+> Architectures can straitjacket a project with up-front design assumptions and take too much power away from the devs / designers of particular parts of the application. Soon, devs will dumb down the application to fit the structure, or they will subvert it and have no structure at all, bringing back the problems of uncoordinated development
 
 Therefore:
 
 * basically, don't let this happen
 * let the "structure" evolve with the app
-* you don't have to follow it to a T - so much that it cripples you. duh. 
+* you don't have to follow it to a T - so much that it cripples you. duh.
 * don't use a large scale structure if you don't have to
 
 > An ill-fitting structure is worse than none, it is best not to shoot for comprehensiveness, but rather to find a minimal set that solves the problems that have emerged. less is more
@@ -75,21 +71,14 @@ Here's a little disclaimer from the author:
 * the metaphor shapes the system
 * it should be loose and easily understood
 
-LOL
-
 > unfortunately, few projects have found really useful metaphors and people have tried to push the idea into domains where it is counterproductive
 
-* so much for coming up with an example. 
-* this is a silly section. why talk about it if its rarely ever useful? 
-* in fact, Evans doesn't even give an example for this. No cargo shipping. No accounting example. Nothing. 
 * needless to say - coming up with a **System metaphor** might not be a great idea
 
 > When a concrete analogy to the system emerges that captures the imagination of team members and seems to lead thinking in a useful direction, adopt it as a large-scale structure. [...] But because all metaphors are inexact, continually reexamine the metaphor for overextension or inaptness, and be ready to drop it if it gets in the way.
 
 
 # 2. Responsibility Layers -> Layering = Categories
-
-He kicks off this section with some bolded advice:
 
 > When each individual object has handcrafted responsibilities, there are no guidelines, no uniformity, and no ability to handle large swaths of the domain together. To give a coherence to a large model, it is useful to impose some structure on the assignment of those responsibilities
 
@@ -103,11 +92,10 @@ He kicks off this section with some bolded advice:
 
 Therefore:
 
-> Look at the conceptual dependencies in your model and the varying rates and sources of change of different parts of your domain. If you identify natural strata in the domain, cast them as broad abstract responsibilities. These responsibilites should tell a story of the high level purpose and design of your system. Refactor the model so that the responsibilities should tell a story of the high level purpose and design of your system. Refactor the model so that the responsibilities of each domain object, aggregate, and module fit neatly within the responsibility of one layer
+> Look at the conceptual dependencies in your model and the varying rates and sources of change of different parts of your domain. If you identify natural strata in the domain, cast them as broad abstract responsibilities. These responsibilities should tell a story of the high level purpose and design of your system. Refactor the model so that the responsibilities should tell a story of the high level purpose and design of your system. Refactor the model so that the responsibilities of each domain object, aggregate, and module fit neatly within the responsibility of one layer
 
 __Example: In depth: layering a shipping system__
 
-* let's revisit this cargo shipping app
 * at this point we can assume that a model driven design is applied to the core design of this app
 * let's also assume we have this problem of coordinating how all the parts fit together
 * as a reminder, here are some models - as displayed in UML that don't translate well on an audio format:
@@ -136,10 +124,7 @@ __Capability Responsibilities__
 
 ---
 
-* Lets say the team runs across the issue of having part of the model not fit into these layers 
-
-* Well -- thank god we can just make more layers
-
+* Lets say the team runs across the issue of having part of the model not fit into these layers
 * For example, the `Router` doesn't fit into current `operational` realities. Therefore, the team decides on another layer:
 
 __Decision Support Responsibilities__
@@ -159,14 +144,14 @@ __Big takeaway from this section = storytelling__
 
 > finding good responsibility layers is a matter of understanding the problem domain and experimenting
 
-* layers should communicate the basic realitities or priorities of the domain.
+* layers should communicate the basic realities or priorities of the domain.
 * know that layers will get switched out, merged, split, redefined, etc
 * maybe we can come up with an example on the spot?
-* in my opinion, it's hard because ive never worked on a large scale project
+* in my opinion, it's hard because I've never worked on a large scale project
 
     http://dddcommunity.org/uncategorized/ch16_17/
 
-Quote from evans:
+Quote from Evans:
 
 > "Yes, you get pressed into these things. You don’t seek large-scale structure in a 6-object model. But when you have a 600-object model, you desperately need ways of understanding it as a whole. All the strategic design techniques help with this problem, but the large-scale structure directly addresses it."
 
@@ -211,6 +196,6 @@ This lets us avoid having objects that have too much responsibility - or do too 
 * distillation lightens the load: continuous distillation is key
 
 
-# Picks 
+# Picks
 - John: [IFTTT](https://ifttt.com/) - Connect any two services on the web
 - JP: [tmux](https://github.com/tmux/tmux)
