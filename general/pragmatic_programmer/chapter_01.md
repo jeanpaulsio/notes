@@ -2,6 +2,8 @@
 
 # Preface (Chapter 1)
 
+> Welcome to Iteration: a weekly podcast about development and design through the lens of amazing books, chapter-by-chapter
+
 > This book will help you become a better programmer
 
 * this book was written in freaking 1999! I was 7.
