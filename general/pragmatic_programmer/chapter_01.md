@@ -4,6 +4,9 @@
 
 > Welcome to Iteration: a weekly podcast about programing, development and design through the lens of amazing books, chapter-by-chapter
 
+# NEW BOOK Pragmatic Programer 
+by Andy Hunt and Dave Thomas
+
 > This book will help you become a better programmer
 
 * this book was written in freaking 1999! I was 7.
