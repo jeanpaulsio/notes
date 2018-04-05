@@ -2,6 +2,11 @@
 
 # Preface (Chapter 1)
 
+> Welcome to Iteration: a weekly podcast about programing, development and design through the lens of amazing books, chapter-by-chapter
+
+# NEW BOOK Pragmatic Programer 
+by Andy Hunt and Dave Thomas
+
 > This book will help you become a better programmer
 
 * this book was written in freaking 1999! I was 7.
@@ -23,9 +28,14 @@ __What makes a pragmatic programmer__
 __Tips__
 
 ## Tip 1: Care about your craft
+
+> "We who cut mere stones must always be envisioning cathedrals."
+
 ## Tip 2: Think about your work - never run on auto pilot
 
-"great lawns need small amounts of dialy care, and so do great programmers."
+> "great lawns need small amounts of daily care, and so do great programmers."
+
+"1% better every day. 365% bettere every year" 
 
 * kaizen - continuous small improvements
 
@@ -58,6 +68,13 @@ This is a great metaphor:
 ---
 
 ## Tip 5: Be a catalyst for change (gradual deception and you can get what you want haha)
+
+
+"The three soldiers returning home from war were hungry. When they saw the village ahead their spirits lifted—they were sure the villagers would give them a meal. But when they got there, they found the doors locked and the windows closed. After many years of war, the villagers were short of food, and hoarded what they had. Undeterred, the soldiers boiled a pot of water and carefully placed three stones into it. The amazed villagers came out to watch. "This is stone soup," the soldiers explained. 
+
+"Is that all you put in it?" asked the villagers. "Absolutely—although some say it tastes even better with a few carrots...." A villager ran off, returning in no time with a basket of carrots from his hoard. A couple of minutes later, the villagers again asked "Is that it?" "Well," said the soldiers, "a couple of potatoes give it body." Off ran another villager."
+
+
 
 ---
 
@@ -92,6 +109,7 @@ __Challenges__
 3. balance portfolio regularly between high risk, high reward investments
 4. buy low and sell high
 5. reviewed and rebalanced periodically
+
 
 
 * the same can be said for your KNOWLEDGE portfolio
