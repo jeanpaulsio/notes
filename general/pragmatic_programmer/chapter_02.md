@@ -30,6 +30,8 @@ we call these the "four i's"
 * you need good communication to quell number 4
 * READ DOCS
 
+* Tip: Lean on code and programmatically generated things to prevent repeating yourself. 
+
 ---
 
 ## Tip 12: Make it easy to reuse
@@ -60,6 +62,8 @@ bottom line: non-orthogonal systems are hard to maintain
 * you want: independent, single, well defined components
 * you want: single, independent components that don't need no man
 
+> You get two major benefits if you write orthogonal systems: increased productivity and reduced risk.
+
 __ways orthogonality can be applied to your work__
 
 * teams can be more efficient if each major infrastructure component gets its own subteam: database, communications interface, middleware layer, etc
@@ -82,12 +86,15 @@ Testing
 * building unit tests is a TEST of orthogonality.
 * easy unit tests == orthogonal
 
+Reversability 
+
+> Nothing is more dangerous than an idea if it's the only one you have.
+
+Writing more orthogonal code allows you to more easily reverse changess or eb and flow with the needs of the project. 
 
 Bottom line: orthognality is about reduction of interdependency among system components
 
 ---
-
-## Tip 14: There are no final decisions
 
 * problem: critical decisions aren't easily reversable
 * imagine switching a codebase to use Mongo after having tens of thousands of records in a Postgres db
