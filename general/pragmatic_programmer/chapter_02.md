@@ -96,6 +96,8 @@ Bottom line: orthognality is about reduction of interdependency among system com
 
 ---
 
+## Tip 14: There are no final decisions
+
 * problem: critical decisions aren't easily reversable
 * imagine switching a codebase to use Mongo after having tens of thousands of records in a Postgres db
 * HOWEVER - if you REALLY abstracted the idea of a "database" out - you should have the flexibility to make that change, should you need to
