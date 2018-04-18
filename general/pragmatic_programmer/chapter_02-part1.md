@@ -18,7 +18,7 @@ This chapter is truly about a "pragmatic" approach to development
 
 Duplicated code arises differently:
 
-1. imposed: devs feel they have no choice 
+1. imposed: devs feel they have no choice
 2. inadvertent: devs don't realize they are duplicating
 3. impatient: devs got lazy because it seems easier
 4. interdeveloper: multiple people on a team duplicate a piece of info
@@ -30,7 +30,7 @@ we call these the "four i's"
 * you need good communication to quell number 4
 * READ DOCS
 
-* Tip: Lean on code and programmatically generated things to prevent repeating yourself. 
+* Tip: Lean on code and programmatically generated things to prevent repeating yourself.
 
 ---
 
@@ -40,7 +40,7 @@ we call these the "four i's"
 * __orthogonality__
 * borrowed from geometry
 * two lines are orthogonal if they meet at right angles - think axes on a graph
-* move along (or parallel to the x-axis) and theres no change to the y-axis 
+* move along (or parallel to the x-axis) and theres no change to the y-axis
 * in computing, "orthogonality" has come to mean independence / decoupling
 
 TWO OR MORE THINGS are orthogonal if changes in one do not affect any of the others
@@ -86,11 +86,11 @@ Testing
 * building unit tests is a TEST of orthogonality.
 * easy unit tests == orthogonal
 
-Reversability 
+Reversability
 
 > Nothing is more dangerous than an idea if it's the only one you have.
 
-Writing more orthogonal code allows you to more easily reverse changess or eb and flow with the needs of the project. 
+Writing more orthogonal code allows you to more easily reverse changess or eb and flow with the needs of the project.
 
 Bottom line: orthognality is about reduction of interdependency among system components
 
@@ -105,7 +105,7 @@ Bottom line: orthognality is about reduction of interdependency among system com
 
 > instead of carving decisions in stone, think of them mroe as being written in the sand at the beach. A big wave can come along and wipe them out at any time.
 
-* this is also why i love the Adapter pattern. 
+* this is also why i love the Adapter pattern.
 * for example - making a folder called "Adapters" when making external http requests in a rails app.
 * you might have an "geocoordinates_adapter" that has code that calls the google maps api. but because you have encapsulated this idea of geo-coding to it's own class, you're not TIED to using google maps. you can swap this out at any time. pretty dope
 
@@ -116,7 +116,7 @@ Bottom line: orthognality is about reduction of interdependency among system com
 when firing a machine gun in the dark, you either:
 
 1. calculate everything and make a precise shot
-2. or use tracel bullets. 
+2. or use tracel bullets.
 
 Tracer ammunition (tracers) are bullets or cannon caliber projectiles that are built with a small pyrotechnic charge in their base. Ignited by the burning powder, the pyrotechnic composition burns very brightly, making the projectile visible to the naked eye. This enables the shooter to follow the projectile trajectory to make aiming corrections.
 
@@ -140,6 +140,7 @@ Tracer ammunition (tracers) are bullets or cannon caliber projectiles that are b
 ---
 
 ## Tip 16: Prototype to learn
+
 
 ---
 
