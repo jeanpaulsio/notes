@@ -34,5 +34,5 @@ __JP__: Keep an open line of communication about expectations for scheduling
 
 ## Picks 
 
-- **JP:**
+- **JP:** - [Todoist](https://en.todoist.com/app?lang=en)
 - **John:** [text expander](https://textexpander.com/) - TextExpander lets you instantly insert snippets of text from a repository of emails, boilerplate and other content, as you type. 
