@@ -1,6 +1,6 @@
 # Chapter 2 - Designing Classes with a Single Responsibility
 
-> A class should do the smallest possible useful t hing; that is, it should have a single responsibility
+> A class should do the smallest possible useful thing; that is, it should have a single responsibility
 
 A naive attempt at calculating a gear's ratio
 
@@ -186,3 +186,5 @@ def diameter(wheel)
 end
 ```
 
+
+See the final `Wheel` and `Gear` classes in the `lib` folder
