@@ -34,7 +34,7 @@ JP: don't waste energy denying that a bug is possible. clearly, it is. just brea
 
 **Picks**
 
-JP: git course on front end masters
+JP: Grit by Angela Duckworth
 
 ----
 
@@ -49,3 +49,7 @@ JP: git course on front end masters
 ## Tip 28: learn a text manipulation language
 
 ## Tip 29: Write code that writes code
+
+**Picks**
+
+JP: git course on front end masters
