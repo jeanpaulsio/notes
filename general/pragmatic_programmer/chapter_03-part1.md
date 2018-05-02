@@ -37,6 +37,7 @@ JP: don't waste energy denying that a bug is possible. clearly, it is. just brea
 **Picks**
 
 JP: Grit by Angela Duckworth
+adam cuppy
 
 ----
 
