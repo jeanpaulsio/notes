@@ -1,3 +1,5 @@
+*NO LIKES - NO JUMP IN*
+
 # Chapter 3 - The Basic Tools
 
 > Every craftsman starts his or her journey with a basic set of good quality tools
