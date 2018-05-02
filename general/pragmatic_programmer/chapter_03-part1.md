@@ -1,5 +1,3 @@
-*NO LIKES - NO JUMP IN*
-
 # Chapter 3 - The Basic Tools
 
 > Every craftsman starts his or her journey with a basic set of good quality tools
@@ -30,6 +28,8 @@ JP: the front end devs at my job don't check their files into git and it blows m
 
 JP: "it doesn't really matter whether the bug is your fault or someone else's. it is still your problem". suck it up!
 
+-  John: There is no User Error - The design of everyday things. - Industrial deaths. 
+
 ## Tip 25: Don't panic when debugging
 
 JP: don't waste energy denying that a bug is possible. clearly, it is. just breathe
@@ -55,3 +55,5 @@ JP: Grit by Angela Duckworth
 **Picks**
 
 JP: git course on front end masters
+
+John: swappa.com 
