@@ -28,7 +28,7 @@ JP: the front end devs at my job don't check their files into git and it blows m
 
 JP: "it doesn't really matter whether the bug is your fault or someone else's. it is still your problem". suck it up!
 
--  John: There is no User Error - The design of everyday things. - Industrial deaths. 
+-  John: There is no User Error - The design of everyday things. - Industrial deaths.
 
 ## Tip 25: Don't panic when debugging
 
@@ -46,18 +46,46 @@ adam cuppy
 
 # Part 2
 
-## Tip 26: "select" isn't broken
+## Tip 26: "select" isn't broken (debugging strategies)
 
-(starting with debugging strategies)
+* tracing
+* rubber ducking
+
+JP: "what does your program think is going on": DON'T BLAME EXTERNAL FACTORS FIRST. It's probably *your* code haha!
 
 ## Tip 27: Don't assume it - prove it
+JP: "routine" code isn't infallible! did you test all of the edge cases?
+
+I really like the debugging checklist so here it is:
+
+1. Is the problem being reported a direct result of the underlying bug, or merely a symptom?
+2. Is the bug really in the compiler? Is it in the OS? Is it in your code?
+3. If you explained this problem in detail to a coworker, what would you say?
+4. If the suspect code passes its unit tests, are the tests complete enough?
+5. Do the conditions that caused this bug exist anywhere else in the system?
 
 ## Tip 28: learn a text manipulation language
 
+examples of text manipulation:
+
+* generating web docs
+* test data generation
+* book writing
+* etc
+
+JP: Funny enough, Hunt and Thomas like using Ruby (and Perl) to quickly hack short scripts
+
 ## Tip 29: Write code that writes code
+
+passive vs active code generators
+
+passive = run once to produce a result
+active = run every time you need a result. results are then thrown away
+
+JP: meta programming? code gen doesnt have to be meta
 
 **Picks**
 
-JP: git course on front end masters
+JP: Sergei Rachmaninoff: Piano Concertos Nos. 2 & 3. Good classic music lolz
 
-John: swappa.com 
+John: swappa.com
