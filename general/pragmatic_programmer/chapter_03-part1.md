@@ -44,7 +44,9 @@ adam cuppy
 
 ----
 
-# Part 2
+# Part 2 - Recording May 8 @ 5:30pm
+
+Reminder: Go over stubs/doubles vs mocks
 
 ## Tip 26: "select" isn't broken (debugging strategies)
 
