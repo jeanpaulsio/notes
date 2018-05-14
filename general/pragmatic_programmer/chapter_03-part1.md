@@ -48,6 +48,11 @@ adam cuppy
 
 Reminder: Go over stubs/doubles vs mocks
 
+Stub is simple fake object. It just makes sure test runs smoothly.
+Mock is smarter stub. You verify Your test passes through it.
+
+https://stackoverflow.com/questions/3459287/whats-the-difference-between-a-mock-stub
+
 ## Tip 26: "select" isn't broken (debugging strategies)
 
 * tracing
