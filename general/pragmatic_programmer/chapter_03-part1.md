@@ -116,4 +116,13 @@ John: Refactoring methods to "Find common resources" based on "Model" name - Red
 
 JP: Sergei Rachmaninoff: Piano Concertos Nos. 2 & 3. Good classic music lolz
 
-John: 
+John: iOS Keyboard push down
+
+LINKS! 
+
+https://www.facebook.com/TheScienceScoop/posts/1959743480725582
+
+https://twitter.com/johnsalzarulo/status/995401501169217536
+
+
+
