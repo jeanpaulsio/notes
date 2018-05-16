@@ -44,7 +44,14 @@ adam cuppy
 
 ----
 
-# Part 2
+# Part 2 - Recording May 8 @ 5:30pm
+
+Reminder: Go over stubs/doubles vs mocks
+
+Stub is simple fake object. It just makes sure test runs smoothly.
+Mock is smarter stub. You verify Your test passes through it.
+
+https://stackoverflow.com/questions/3459287/whats-the-difference-between-a-mock-stub
 
 ## Tip 26: "select" isn't broken (debugging strategies)
 
@@ -52,6 +59,8 @@ adam cuppy
 * rubber ducking
 
 JP: "what does your program think is going on": DON'T BLAME EXTERNAL FACTORS FIRST. It's probably *your* code haha!
+
+John: why, when faced with a "surprising" failure, you must realize that one or more of your assumptions is wrong.
 
 ## Tip 27: Don't assume it - prove it
 JP: "routine" code isn't infallible! did you test all of the edge cases?
@@ -64,6 +73,8 @@ I really like the debugging checklist so here it is:
 4. If the suspect code passes its unit tests, are the tests complete enough?
 5. Do the conditions that caused this bug exist anywhere else in the system?
 
+John: Duplicate the problem in tests. 
+
 ## Tip 28: learn a text manipulation language
 
 examples of text manipulation:
@@ -75,6 +86,9 @@ examples of text manipulation:
 
 JP: Funny enough, Hunt and Thomas like using Ruby (and Perl) to quickly hack short scripts
 
+John: I want to push more into this - Just barely experimenting with self-creating API docs. Even just things like in ruby: writing a rake task to pull out all your custom objects and methods to start docs and get a clear picture has been helpful for me. 
+
+
 ## Tip 29: Write code that writes code
 
 passive vs active code generators
@@ -84,8 +98,31 @@ active = run every time you need a result. results are then thrown away
 
 JP: meta programming? code gen doesnt have to be meta
 
+John: Refactoring methods to "Find common resources" based on "Model" name - Reducess code significantly. 
+
+````
+  def find_resource
+    model = self.controller_name.classify.constantize
+    @resource = model.find_by_id(params[:id])
+    if @resource.nil?
+      redirect_to timeline_program_path(@program), alert: 'Item not Found' and return
+      return true
+    end
+    @resource
+  end
+````
+
 **Picks**
 
 JP: Sergei Rachmaninoff: Piano Concertos Nos. 2 & 3. Good classic music lolz
 
-John: swappa.com
+John: iOS Keyboard push down
+
+LINKS! 
+
+https://www.facebook.com/TheScienceScoop/posts/1959743480725582
+
+https://twitter.com/johnsalzarulo/status/995401501169217536
+
+
+
