@@ -5,20 +5,84 @@
 * perfect software doesn't exist
 * "defensive driving" analogy
 * for a programmer, you shouldn't trust YOURSELF either, haha
-* idea of "designing by contract" - a program should do more and no less than promised
 
 ---
 
-# Tip 31: Design with Contracts
+# Tip 31: Design with Contracts (long section alert)
 
-> be strict in what you will accept before you begin, and promise as little as possible in returna
+https://github.com/egonSchiele/contracts.ruby
 
+"You can think of contracts as `assert` on steroids"
+
+This says that double expects a number and returns a number. Here's the full code:
+
+
+```ruby
+require 'contracts'
+
+class Example
+  include Contracts::Core
+  include Contracts::Builtin
+
+  Contract Num => Num
+  def double(x)
+    x * 2
+  end
+end
+
+puts Example.new.double("oops")
+```
+
+
+
+> be strict in what you will accept before you begin, and promise as little as possible in return. Remember, if your contract indicates that you'll accept anything and promise the world in return, then you've got a lot of code to write!
+
+What is a "correct" program?
+
+* idea of "designing by contract" - a program should do more and no less than promised
+* this is kind of like testing. Ruby doesn't have a "contract" system built into its design
+* obviously, we have a Ruby gem for it! hah
+* the reason this is supposedly more powerful than plain ol assertions is that contracts can propagate down the inheritance hierarchy
+* given some __precondition__ that must be true (i.e. must be a positive integer) -> the __postcondition__ will be satisifed
 
 ---
 
 # Tip 32: Crash Early
+
+* don't have, "it can't happen mentality"
+* code defensively
+* a pragmatic progammer tells themself that if there is an error, something very bad has happened
+* err on the side of crashing earlier! - when you don't, your program may continue with corrupted data
+
+> When your code discovers that something that was something to be impossible just happened, your program is no longer viable
+
+> A dead program normally does a lot less damage than a crippled one
+
+* this brings into discussion being able to handle errors gracefully - this is very much a UX question as well
+
+---
+
 # Tip 33: If it can't happen, use assertions to ensure that it won't
+
+"This application will never be used abroad, so why internationalize it?"
+
+
+__Let's not practice this kind of self-deception, particularly when coding__
+
+* this cuts me deep
+* when you're this confident, you should write tests to _absolutely_ ensure that you're right
+
 # Tip 34: Use exceptions for exceptional problems
+
+* our good friend, the javascript `try...catch` - ask yourself: "will this code still run if I remove all of the exception handlers". if the answer is, "no" then maybe exceptions are being used in nonexceptional circumstances
+
+> Programs that use exceptions as part of their normal processing suffer from all the readability and maintainability problems of classic spaghetti code. These programs break encapsulation routines and their callers are more tighlting coupled via exception handling
+
 # Tip 35: Finish what you start
 
-
+* resources that devs manage: memory, transactions, threads, files, timers
+* these resources need memory allocated, THEN deallocated
+* the problem is that devs don't have a plan for dealing with allocation AND deallocation
+* basically, __don't forget to garbage collect__
+* not doing so may lead to memory leaks
+* don't forget to do things like close files
