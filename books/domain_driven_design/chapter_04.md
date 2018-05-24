@@ -6,7 +6,7 @@
 
 > We need to decouple the domain objects from other functions of the system, so we can avoid confusing the domain concepts with other concepts related only to software technology or losing sight of the domain altogether in the mass of the system
 
-Layered Architechture 
+Layered Architecture
 
 ```
 User Interface
@@ -29,7 +29,7 @@ Let's take an example from Whiz Tutor.
 
 __Simple Act of Booking a Tutor__
 
-There is program code that 
+There is program code that
 1. generates a map based on location
 2. generates a list of subjects
 3. queries database for tutors based on location and subject
