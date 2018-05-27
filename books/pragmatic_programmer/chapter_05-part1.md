@@ -55,7 +55,12 @@ __making a pina colada__
 
 Think about how imperative this is. First do this... then do this...
 
-BUT, think about what you can do concurrently: 1, 2, 4, 10, 11. These can happen all at the same time and up front. Next, 3, 5, and 6 can happen concurrently afterwards. These would be big optimizations  
+BUT, think about what you can do concurrently: 1, 2, 4, 10, 11. These can happen all at the same time and up front. Next, 3, 5, and 6 can happen concurrently afterwards. These would be big optimizations
+
+### Picks
+
+JP: [Pocket Developer Die](https://pretendstore.co/products/pocket-developer)
+
 
 ---
 
@@ -64,3 +69,29 @@ BUT, think about what you can do concurrently: 1, 2, 4, 10, 11. These can happen
 ### Tip 41: Always Design for Concurrency
 ### Tip 42: Separate Views from Models
 ### Tip 43: Use Blackboards to Coordinate Workflow
+
+### Picks
+
+JP: Programming Elixir by Dave Thomas
+
+Seriously... just look how cool this is.
+
+```elixir
+defmodule MyList do
+  def flatten([ [sub_head | sub_tail] | tail]) do
+    flatten(sub_head) ++ flatten(sub_tail) ++ flatten(tail)
+  end
+
+  def flatten([ head | tail]) do
+    flatten(head) ++ flatten(tail)
+  end
+
+  def flatten([]), do: []
+
+  def flatten(head), do: [head]
+end
+
+
+IO.inspect MyList.flatten [ 1, [ 2, 3, [ 4 ] ], 5, [ [ [ [ 6 ] ] ] ] ]
+# [1, 2, 3, 4, 5, 6]
+```
