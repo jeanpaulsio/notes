@@ -3,6 +3,10 @@
 John:
 Welcome to Iteration: A weekly podcast about programming, development, and design through the lens of amazing books, chapter-by-chapter.
 
+**SMALL TALK**
+
+**Quick update: Sketch Color Spaces**
+
 JP:
 Today we'll be going through Chapter 5, "Bend or Break" - where we talk about writing flexible code. This is especially important for software engineers in a profession where things are constantly changing. (insert joke about JavaScript frameworks). We will largely focus on different ways we can decouple our code!
 
