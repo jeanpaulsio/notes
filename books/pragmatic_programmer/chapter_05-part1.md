@@ -6,6 +6,11 @@ Welcome to Iteration: A weekly podcast about programming, development, and desig
 JP:
 Today we'll be going through Chapter 5, "Bend or Break" - where we talk about writing flexible code. This is especially important for software engineers in a profession where things are constantly changing. (insert joke about JavaScript frameworks). We will largely focus on different ways we can decouple our code!
 
+John: 
+I love this quote: 
+
+> Life doesn't stand still. Neither can the code that we write. In order to keep up with today's near-frantic pace of change, we need to make every effort to write code that's as loose—as flexible—as possible.
+
 ## Part 1
 ### Tip 36: Minimize Coupling Between Modules
 
@@ -17,11 +22,15 @@ What is shy?
 
 * JP: shy doesn't reveal itself to others and doesn't interact with too many people. __write shy code__. you don't want this: `selection.getRecorder().getLocation().getTimeZone()`
 
+* John: What does this loo lie practically? Short methods? How do I avoid "coupling?"
+
 ### Tip 37: Configure, Don't Integrate
 
 Implement technology choices for an application as configuration options, not through integration or engineering
 
 * JP: algo choices, database products, middleware -> these should be configuration options. doing so makes our code more flexible. this is described as "soft" - aka easy to change
+
+* John: Example: Platform fee, or simple basic shared defaults. 
 
 ### Tip 38: Put Abstractions in Code, Details in Metadata
 
@@ -29,6 +38,9 @@ Program for the general case, and put the specifics outside the compiled code ba
 
 * JP: think declaratively - not imperatively. specify __what__, not _how_. Think about how you write your business logic and business critical things. Think about where you would call these functions or methods. it should be declarative
 
+* John: leave the details as soft—as easy to change—as we can. - "Weekend" automated emails example - `valid_send_days`
+
+* John: Challenge from book: For your current project, consider how much of the application might be moved out of the program itself to metadata.
 
 ### Tip 39: Analyze Workflow to Improve Concurrency
 
@@ -60,7 +72,7 @@ BUT, think about what you can do concurrently: 1, 2, 4, 10, 11. These can happen
 ### Picks
 
 JP: [Pocket Developer Die](https://pretendstore.co/products/pocket-developer)
-
+John: [AppSignal](https://appsignal.com/) - Drop Rollbar + Scout into one. 
 
 ---
 
@@ -95,3 +107,4 @@ end
 IO.inspect MyList.flatten [ 1, [ 2, 3, [ 4 ] ], 5, [ [ [ [ 6 ] ] ] ] ]
 # [1, 2, 3, 4, 5, 6]
 ```
+
