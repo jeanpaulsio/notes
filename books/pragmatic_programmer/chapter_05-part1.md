@@ -66,9 +66,22 @@ JP: [Pocket Developer Die](https://pretendstore.co/products/pocket-developer)
 
 ## Part 2
 ### Tip 40: Design Using Services
+
+* JP: This is spoken in the context of concurrency (going back to temporal coupling); These service objects are behind well defined interfaces
+
 ### Tip 41: Always Design for Concurrency
+
+* JP: Thinking linear-ly leads to assumptions and sloppy code and mysterious bugs. Concurrency gives you flexibility
+
 ### Tip 42: Separate Views from Models
+
+* JP: Separate your data from your view logic. This buys you a lot of flexibility. You can use common viewers on many different data models. You can support multiple controllers to provide nontraditional input. Your model encapsulates your data and all the common operations with manipulating it.
+
+> The view is an interpretation of the model. It doesn't need to be graphical. The controller is more of a coordination mechanism, and doesn't have to be related to any sort of input device.
+
 ### Tip 43: Use Blackboards to Coordinate Workflow
+
+JP: Use blackboards to coordinate disparate facts and agents, while maintaining independence and isolation among participants
 
 ### Picks
 
