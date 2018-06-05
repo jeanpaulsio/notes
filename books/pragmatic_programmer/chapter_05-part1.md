@@ -85,9 +85,12 @@ John: [AppSignal](https://appsignal.com/) - Drop Rollbar + Scout into one.
 
 * JP: This is spoken in the context of concurrency (going back to temporal coupling); These service objects are behind well defined interfaces
 
+* John: "services—independent, concurrent objects behind well-defined, consistent interfaces."
+
 ### Tip 41: Always Design for Concurrency
 
 * JP: Thinking linear-ly leads to assumptions and sloppy code and mysterious bugs. Concurrency gives you flexibility
+* John: concurrency forces you to think through things a bit more carefully—you're not alone at the party anymore. 
 
 ### Tip 42: Separate Views from Models
 
@@ -95,13 +98,18 @@ John: [AppSignal](https://appsignal.com/) - Drop Rollbar + Scout into one.
 
 > The view is an interpretation of the model. It doesn't need to be graphical. The controller is more of a coordination mechanism, and doesn't have to be related to any sort of input device.
 
+* John: Each view should have its own controller. 
+* John: Debugging View - interesting concept. 
+
 ### Tip 43: Use Blackboards to Coordinate Workflow
 
 JP: Use blackboards to coordinate disparate facts and agents, while maintaining independence and isolation among participants
+John: The blackboard style of programming removes the need for so many interfaces, making for a more elegant and consistent system.
+John: "Feed" concept 
 
 ### Picks
 
-JP: Programming Elixir by Dave Thomas
+* JP: Programming Elixir by Dave Thomas
 
 Seriously... just look how cool this is.
 
@@ -124,4 +132,6 @@ end
 IO.inspect MyList.flatten [ 1, [ 2, 3, [ 4 ] ], 5, [ [ [ [ 6 ] ] ] ] ]
 # [1, 2, 3, 4, 5, 6]
 ```
+
+* John: Sketch Mirror + Sketch Prototyping 
 
