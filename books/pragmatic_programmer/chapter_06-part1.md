@@ -35,14 +35,3 @@ JP: "Be wary of premature optimization. It's always a good idea to make sure an 
 PICKS
 
 JP: browserstack.com
-
-
-## Part 2
-
-### Tip 47 Refactor Early, Refactor Often
-
-### Tip 48 Design to Test
-
-### Tip 49 Test Your Software, or Your Users Will
-
-### Tip 50 Don't Use Wizard Code You Don't Understand
