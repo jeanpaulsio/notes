@@ -2,6 +2,8 @@
 
 John: Welcome to Iteration: A weekly podcast about programming, development, and design through the lens of amazing books, chapter-by-chapter.
 
+### Small talk - We were off for the 4th - yada yada yada 
+
 JP: This is part 2 of chapter 6, "While you are coding". Last week we talked about pragmatic practices while you are coding.
 
 ## Part 2
@@ -15,7 +17,6 @@ JP: This is part 2 of chapter 6, "While you are coding". Last week we talked abo
 
 > Time pressure is often used as an excuse for not refactoring. But his excuse just doesn't hold up: fail to refactor now, and there'll be far greater time investment to fix the problem down the road - when there are more dependencies to reckon with. Will there be more time available then? Not in our experience
 
-
 Advice:
 
 > Keep track of the things that need to be refactored. If you cna't refactor something immediately, make sure that it gets placed on the schedule. Make sure that users of the affected code know that it is scheduled to be refactored and how it might affect them.
@@ -28,6 +29,9 @@ Martin Fowler's tips for refactoring
 
 What's your tolerance for pain?
 
+- John: **Real-World Complications** You go to your boss or client and say, "This code works, but I need another week to refactor it." We can't print their reply.
+
+
 ### Tip 48 Design to Test
 
 > Start thinking about testing before you write a line of code
@@ -35,6 +39,8 @@ What's your tolerance for pain?
 * unit testing: testing a module in isolation to verify its behavior
 * designing against a contract - code should fulfill its contract
 * where do we place our tests? Rails proj. vs React Proj
+
+> John: If your tests are hard to write - the design of your system is probably inelegant. It's a "design smell" if you are thinking - how the hell am I going to test this? 
 
 ### Tip 49 Test Your Software, or Your Users Will
 
@@ -54,6 +60,9 @@ __HOT QUOTE ALERT__
 
 > Testing is more cultural than technical: we can instill this testing culture in a project regardless of the language being used.
 
+> John: Related: Re-create bugs in tests when debugging. **every. time.**
+
+
 ### Tip 50 Don't Use Wizard Code You Don't Understand
 
 > Wizards can generate reams of code. Make sure you understand all of it before you incorporate it into your project
@@ -68,3 +77,4 @@ __HOT QUOTE ALERT__
 PICKS
 
 JP: https://www.howtographql.com/
+John: [Jesus Castello - Ruby Guides on YouTube](https://www.youtube.com/user/matuXIV)
