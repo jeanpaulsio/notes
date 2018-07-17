@@ -17,11 +17,15 @@ freelance client soon!
 
 # 51 - Don't Gather Requirements - Dig For Them
 
+John: 
+> "Perfection is achieved, not when there is nothing left to add, but when there is nothing left to take away...."
+
 > Requirements rarely lie on the surface. They're buried deep beneath the layers
 > of assumptions, misconceptions, and politics
 
 JP: You can't just "gather" requirements as if they exist. You must do RESEARCH.
 Remember that **you're solving business problems**
+
 
 # 52 - Work with a User to Think like a user
 
@@ -31,7 +35,18 @@ JP: **OBSERVE** users for a week - this is much different than "thinking" like a
 user. I think that if you do the latter, you end up with preconceived notions
 based on your own assumptions.
 
+John: 
+
+> "It's important to discover the underlying reason why users do a particular thing, rather than just the way they currently do it."
+
+- Learn understand business processes development
+- Consider the politics (You write code + people get fired)
+
 # 53 - Abstractions Live Longer than Details
+
+John: 
+> "...the simplest statement that accurately reflects the business need is best."
+- John: Distilling real-world processes and people down into the most elegant and concise definition
 
 > Invest in the abstraction, not the implementation. Abstractions can survive
 > the barrage of changes from different implementations and new technologies
@@ -55,6 +70,9 @@ that is but this is what the author's recommend for serious projects
 
 # 55 - Don't think outside the box - find the box
 
+John: 
+> Gordius, the King of Phrygia, once tied a knot that no one could untie. It was said that he who solved the riddle of the Gordian Knot would rule all of Asia. So along comes Alexander the Great, who chops the knot to bits with his sword. Just a little different interpretation of the requirements, that's all... and he did end up ruling most of Asia.
+
 > When faced with an impossible problem, identify the _real_ constraints. Ask
 > yourself: "Does it have to be done this way? Does it have to be done at all?"
 
@@ -68,6 +86,7 @@ solutions. I really like this:
 
 * Think of the most restrictive constraints first, and fit the remaining
   constraints within them.
+ 
 
 **Too many quotes alert**
 
@@ -82,4 +101,4 @@ solutions. I really like this:
 JP: Swift - The Big Nerd Ranch Guide. Plenty of reasons why I want to learn
 Swift.
 
-John:
+John: Pusher - Websockets as a service. 
