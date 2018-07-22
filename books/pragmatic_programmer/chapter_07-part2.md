@@ -12,20 +12,59 @@ JP: Welcome to **PART 2** of Chapter 7: "Before The Project"
 > You've been building experience experience all your life. Don't ignore
 > niggling doubts.
 
+JP: Follow you're instincts when starting a project - **but don't
+procrastinate** - you can do this by prototyping. Proof of concepts are nice
+when you tackle the "hard" thing first. _Prototype to discover_
+
 # 57 - Some Things Are Better Done than Described
 
 > Don't fall into the specification spiral - at some point you need to start
 > coding.
+
+JP: "Program specification is the process of taking a requirement and reducing
+it down to the point where a programmer's skill can take over." -
+
+**more than 1 bullet point alert**
+
+* specs will _never_ capture every detail and nuance of the system and it's
+  important to recognize this
+* "A design that leaves the coder no room for interpretation robs the
+  programming effort of any skill and art" - you may unearth some insights by
+  beginning to code
+* "Distrust environments where requirements are gathered, specifications are
+  written, and then coding starts, **all in isolation**."
+  * there should be no artificial boundaries
+  * a healthy dev process encourages feedback from implementation and testing
+    into the spec process
+* there is a **point of diminishing returns when specs get too details**
+* this reminds me of the early days of Whiz when I was a designer. everything
+  was terribly isolated
 
 # 58 - Don't Be a Slave to Formal Methods
 
 > Don't blindly adopt any technique without putting it into the context of your
 > development practices and capabilities
 
+This shows how dated the book is. examples of formal methods: CASE tools,
+waterfall development, "the spiral model", **to today's UML diagrams**.
+
+If this were written today, we'd talk about lean methodology, agile development,
+SCRUM
+
+* don't get caught up in methodology. this is bad because it encourages
+  isolation. "us vs. them" mentality between designers and programmers. the
+  process should be more collaborative
+* that's not to say you SHOULDN'T use formal methods. just remember that they're
+  another tool
+
+> You should work constantly to refine and improve your process
+
 # 59 - Costly Tools Don't Produce Better Designs
 
 > Beware of vendor hype, industry dogma, and the aura of the price tag. Judge
 > tools on their merits.
+
+* There are a lot of expensive project management tools. Are they worth it?
 
 ---
 
