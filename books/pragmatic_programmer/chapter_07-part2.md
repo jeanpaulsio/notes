@@ -10,11 +10,15 @@ JP: Welcome to **PART 2** of Chapter 7: "Before The Project"
 # 56 - Start When You're Ready
 
 > You've been building experience experience all your life. Don't ignore
-> niggling doubts.
+> nagging doubts.
+
 
 JP: Follow you're instincts when starting a project - **but don't
 procrastinate** - you can do this by prototyping. Proof of concepts are nice
 when you tackle the "hard" thing first. _Prototype to discover_
+
+John: Prototpe prototype! 
+> "as the prototype progresses you may have one of those moments of revelation when you suddenly realize that some basic premise was wrong." 
 
 # 57 - Some Things Are Better Done than Described
 
@@ -23,6 +27,11 @@ when you tackle the "hard" thing first. _Prototype to discover_
 
 JP: "Program specification is the process of taking a requirement and reducing
 it down to the point where a programmer's skill can take over." -
+
+John: 
+> "natural language is really not up to the job." 
+
+- John: Even if it's just a screen recording and an ugly sketch prototype - manually scrolling around - WAAAY better than a written requriment doc. I rarely define work through written requirments. 
 
 **more than 1 bullet point alert**
 
@@ -56,6 +65,7 @@ SCRUM
   process should be more collaborative
 * that's not to say you SHOULDN'T use formal methods. just remember that they're
   another tool
+  
 
 > You should work constantly to refine and improve your process
 
@@ -65,6 +75,9 @@ SCRUM
 > tools on their merits.
 
 * There are a lot of expensive project management tools. Are they worth it?
+
+John: 
+> Try not to think about how much a tool cost when you look at its output.
 
 ---
 
@@ -100,3 +113,5 @@ you didn’t have to know any of it. All that complexity was hidden inside of me
 and we were able to interact at a very high level of abstraction. That’s what
 objects are. They encapsulate complexity, and the interfaces to that complexity
 are high level.
+
+John: Time Timer - https://www.timetimer.com/ - Pomodoro - Physical Device
