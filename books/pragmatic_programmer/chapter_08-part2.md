@@ -36,6 +36,6 @@ JP: This is part 2 of Chapter 8 - THE FINAL CHAPTER!
 
 Picks
 
-JP: 
+JP: database design for mere mortals
 
 John:
