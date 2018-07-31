@@ -50,5 +50,5 @@ JP: lol, git blame
 
 Picks
 
-JP: database design for mere mortals
+JP: https://github.com/sindresorhus/refined-github
 John:
