@@ -1,4 +1,4 @@
-### Tip 1: Care about your craft
+### Tip 1: Care about your craft 💚
 ### Tip 2: Think about your work - never run on auto pilot
 ### Tip 3: Provide Options, Don't make lame excuses
 ### Tip 4: don't leave broken windows
@@ -53,7 +53,7 @@
 ### Tip 53: Abstractions Live Longer than Details
 ### Tip 54: Use a Project Glossary
 ### Tip 55: Don't think outside the box - find the box
-### Tip 56: Start When You're Ready
+### Tip 56: Start When You're Ready 💚
 ### Tip 57: Some Things Are Better Done than Described
 ### Tip 58: Don't Be a Slave to Formal Methods
 ### Tip 59: Costly Tools Don't Produce Better Designs
