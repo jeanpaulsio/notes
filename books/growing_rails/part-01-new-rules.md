@@ -53,3 +53,10 @@ end
 
 ## User interactions without a database
 
+
+* not all user interactions need an _active record_ model
+* example: sign in form that uses sessions. when the form is submitted, you don't end up inserting a row in a table in your db
+* start taking your controllers from hell -> putting that logic in your model (models from hell?)
+* you know things are a pain when you have to use `form_tag` and can't use `form_for`
+* one thing to note is that the example sends notifications (i.e. sms, email) in their model and not their controller
+
