@@ -1,3 +1,5 @@
+A weekly podcast about programming, development, and design through the lens of amazing books, chapter-by-chapter.
+
 # Creating a system for growth
 
 ## Dealing with fat models
