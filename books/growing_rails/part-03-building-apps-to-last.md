@@ -12,6 +12,8 @@ Ask yourself:
 2.  how did the complexity increase or decrease
 3.  did you run into any new issues?
 
+- John: If you keep changing with the trends “your codebase will be a patchwork of different styles making it very hard to understand or change” 
+
 **there are no silver bullets**
 
 ## Surviving the upgrade pace of Rails
@@ -27,7 +29,10 @@ Ask yourself:
 - idea of maxing out your current toolbox _first_
 - should you use redis? or can you just use another sql table?
 
+- John: When you pull in dependencies - YOU OWN IT. IT’S YOUR CODE NOW.
+
 ## The value of tests
 
 - we're a broken record here. one thing to point out is that this lets you release often!
 - you can also work on one part of the app in isolation without having to worry about the rest
+- John: Test suite is like a light in a dark house - give you enough coverage so you know there isn’t a monster lurking 
