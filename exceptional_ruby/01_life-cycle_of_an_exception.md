@@ -58,3 +58,7 @@ end
 * I can see how this might be useful for making API calls
 * Be super careful that your 'giving up' criteria will eventually be met
 * Retry is nice for things that are unreliable
+
+Picks:
+
+JP: Overcast https://overcast.fm/
