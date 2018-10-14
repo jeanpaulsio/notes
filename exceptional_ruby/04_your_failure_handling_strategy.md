@@ -4,5 +4,6 @@ GRAB BAG ALERT!
 
 ## Picks
 
-JP: https://modalzmodalzmodalz.com/
-https://github.com/drcmda/react-spring/blob/master/readme.md
+JP:
+* https://modalzmodalzmodalz.com/
+* https://github.com/drcmda/react-spring/blob/master/readme.md
