@@ -1,5 +1,12 @@
 # Alternatives to Exceptions
 
+---
+- Multiple return values in failures can be helpful - 
+- Represent a process as an object “Download Provisionment” - This is a really interesting idea…. “MessageSend.new” - would actually handle a lot of the issues in the SMS interface concept we’ve been talking through. 
+- “It’s tempting to raise an exception every time you get an answer you don’t like. But exception handling interrupts and obscures the flow of your busi- ness logic. Consider carefully whether a situation is truly unusual before raising an Exception.”
+- Diagnostics- don’t fail SO aggressively early that you don’t capture the diagnostics.
+---
+
 Examples of when to not "fail fast":
 
 1.  test suites
