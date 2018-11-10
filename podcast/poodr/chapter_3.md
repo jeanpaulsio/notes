@@ -28,4 +28,4 @@ Gear.new(52, 11, 26, 1.5).gear_inches
 
 ## Picks
 
-JP:
+JP:https://mtlynch.io/good-developers-bad-tests/
