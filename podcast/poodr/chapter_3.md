@@ -193,6 +193,8 @@ Wheel.new(26, 1.5, 52, 11).gear_inches
 
 - you should depend on things that change less
 
+http://netengine.com.au/blog/dependency-direction/
+
 ---
 
 ## Picks
