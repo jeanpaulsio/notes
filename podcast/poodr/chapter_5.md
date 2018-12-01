@@ -1,4 +1,4 @@
-# Chapter 5 - Reducing Costs with Duck Typing
+# Chapter 5 - Reducing Costs with Duck Typing 🦆
 
 > Duck types are public interfaces that are not tied to any specific class
 
