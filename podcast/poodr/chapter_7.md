@@ -1,10 +1,13 @@
 # Chapter 7 - Sharing Role Behavior with Modules
 
-> Honor the contract
+## Understanding Roles
 
+## Writing inheritable Code
+
+## Summary
 
 ---
 
 # Picks
 
-JP:
+JP:https://scrimba.com/g/gintrototypescript
