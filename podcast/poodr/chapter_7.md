@@ -12,6 +12,8 @@ From the previous chapter, we talked about classical inheritance. We started out
 
 ## Understanding Roles
 
+> Some problems require sharing behavior among otherwise unrelated objects. This common behavior is orthogonal to class; it’s a role an object plays.
+
 ## Writing inheritable Code
 
 ## Summary
