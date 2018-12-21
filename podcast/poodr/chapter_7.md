@@ -14,6 +14,10 @@ From the previous chapter, we talked about classical inheritance. We started out
 
 > Some problems require sharing behavior among otherwise unrelated objects. This common behavior is orthogonal to class; it’s a role an object plays.
 
+__Finding Roles__
+
+* remember our ducks from a few chapters ago?
+
 ## Writing inheritable Code
 
 ## Summary
