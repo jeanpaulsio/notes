@@ -103,6 +103,8 @@ end
 
 **Looking up methods**
 
+- meh, there's some pretty gritty details about method lookup that probably aren't worth talking about
+
 ## Writing inheritable Code
 
 When do you write inheritable code?
