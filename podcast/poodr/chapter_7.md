@@ -105,6 +105,14 @@ end
 
 ## Writing inheritable Code
 
+When do you write inheritable code?
+
+__Recognizing Antipatterns__
+
+* an object that uses a variable name with `type` or `category` to determine which message to send to `self` - this probably benefits from inheritance. ... hmm... `tour_vibe`
+
+> Code like this can be rearranged to use classical inheritance by putting the common code in an abstract superclass and creating subclasses for the different types. 
+
 ## Summary
 
 > Modules, therefore, should use the template method pattern to invite those that include them to supply specializations, and should implement hook methods to avoid forcing includers to send super (and thus know the algorithm).
