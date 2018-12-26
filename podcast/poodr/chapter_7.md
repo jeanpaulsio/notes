@@ -104,6 +104,7 @@ end
 **Looking up methods**
 
 - meh, there's some pretty gritty details about method lookup that probably aren't worth talking about
+- basically, the moral of the story is that you can write truly frightening, hard to debug code. Imagine having a crazy classical hierarchy with overwritten methods where you have a ton of included modules. The point is to understand inheritance to know how to design well
 
 ## Writing inheritable Code
 
@@ -115,9 +116,24 @@ __Recognizing Antipatterns__
 
 > Code like this can be rearranged to use classical inheritance by putting the common code in an abstract superclass and creating subclasses for the different types. 
 
+__Insist on abstraction__
+
+If there's one quote you take away from this chapter, this should be it:
+
+🚨🚨🚨🚨🚨
+
+> All of the code in an abstract superclass should apply to every class that inherits it. Superclasses should not contain code that applies to some, but not all, subclasses. This restriction also applies to modules: the code in a module must apply to all who use it.
+
+....
+
+> Subclasses that override a method to raise an exception like “does not implement” are a symptom of this problem
+
 ## Summary
 
 > Modules, therefore, should use the template method pattern to invite those that include them to supply specializations, and should implement hook methods to avoid forcing includers to send super (and thus know the algorithm).
+
+* basically, rely on the template method pattern
+* create shallow, narrow class hierarchies. wide and deep is harder to follow
 
 ---
 
