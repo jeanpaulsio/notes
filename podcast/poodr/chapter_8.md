@@ -24,5 +24,7 @@
 
 Picks
 
-JP: https://www.amazon.com/Refactoring-Improving-Existing-Addison-Wesley-Signature/dp/0134757599
-JP: https://www.khanacademy.org/math
+JP:
+- https://www.amazon.com/Refactoring-Improving-Existing-Addison-Wesley-Signature/dp/0134757599
+- https://www.khanacademy.org/math
+- Tandem App
