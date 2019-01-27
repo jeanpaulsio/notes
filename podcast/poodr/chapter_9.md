@@ -32,4 +32,4 @@ Writing Changeable code requires 3 skills
 
 __Picks__
 
-JP: 
+JP: Smash Bros Ultimate?
