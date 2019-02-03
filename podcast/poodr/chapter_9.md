@@ -10,13 +10,13 @@ Writing Changeable code requires 3 skills
 
 # Intentional Testing
 
-> Intentionally depending on interfaces allows you to use tests to put off design decisions safely and without penalty
+- What to test?
 
-> If a test requires painful setup, the code expects too much context. If testing one object drags a bunch of others into the mix, the code has too many dependencies. If the test is hard to write, other objects will find the code difficult to reuse. [...] Your goal is to gain all of the benefits of testing for the least cost possible. The best way to acheive this goal is to write loosely coupled tests about __only the things that matter__
-
-* What to test?
+> Here are guidlines for what to test: Incoming messges should be tested for the state they return. Outgoing messages should be tested to ensure they get sent. Outgoing query messages should not be tested.
 
 # Testing Incoming Messages
+
+-
 
 # Testing Private Methods
 
@@ -26,10 +26,10 @@ Writing Changeable code requires 3 skills
 
 # Testing Inherited Code
 
-# 
+#
 
 ---
 
-__Picks__
+**Picks**
 
 JP: Smash Bros Ultimate?
