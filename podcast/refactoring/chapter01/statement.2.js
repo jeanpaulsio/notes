@@ -1,4 +1,4 @@
-// Decomposing the function statement
+// Splitting the phase of calculation and formatting
 function statement(invoice, plays) {
   let result = `Statement for ${invoice.customer}\n`;
 
@@ -11,12 +11,6 @@ function statement(invoice, plays) {
   result += `Amount owed is ${usd(totalAmount())}\n`;
   result += `You earned ${totalVolumeCredits()} credits\n`;
   return result;
-
-  /**
-   *
-   * Extracted functions
-   *
-   */
 
   function totalAmount() {
     let result = 0;
