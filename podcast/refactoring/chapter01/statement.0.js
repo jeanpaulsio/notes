@@ -36,7 +36,7 @@ function statement(invoice, plays) {
 
     // add extra credit for every ten attendees
     if ("comedy" === play.type) {
-      volumeCredits += Math.floor(perf.audiennce / 5);
+      volumeCredits += Math.floor(perf.audience / 5);
     }
 
     // print line for this order
