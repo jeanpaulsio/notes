@@ -1,20 +1,3 @@
-var PLAYS = {
-  hamlet: { name: "Hamlet", type: "tragedy" },
-  "as-like": { name: "As You Like It", type: "comedy" },
-  othello: { name: "Othello", type: "tragedy" },
-};
-
-var INVOICES = [
-  {
-    customer: "BigCo",
-    performances: [
-      { playID: "hamlet", audience: 55 },
-      { playID: "as-like", audience: 35 },
-      { playID: "othello", audience: 40 },
-    ],
-  },
-];
-
 function statement(invoice, plays) {
   let totalAmount = 0;
   let volumeCredits = 0;
@@ -26,7 +9,7 @@ function statement(invoice, plays) {
     minimumFractionDigits: 2,
   }).format;
 
-  for (let perf of invoice.performance) {
+  for (let perf of invoice.performances) {
     const play = plays[perf.playID];
     let thisAmount = 0;
 
@@ -67,3 +50,30 @@ function statement(invoice, plays) {
   result += `You earned ${volumeCredits} credits \n`;
   return result;
 }
+
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+
+var PLAYS = {
+  hamlet: { name: "Hamlet", type: "tragedy" },
+  "as-like": { name: "As You Like It", type: "comedy" },
+  othello: { name: "Othello", type: "tragedy" },
+};
+
+var INVOICES = [
+  {
+    customer: "BigCo",
+    performances: [
+      { playID: "hamlet", audience: 55 },
+      { playID: "as-like", audience: 35 },
+      { playID: "othello", audience: 40 },
+    ],
+  },
+];
+
+console.log(statement(INVOICES[0], PLAYS));
