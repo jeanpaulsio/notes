@@ -95,3 +95,14 @@ export function coordinateToValue({ coordinate, axisLength, values }) {
 ```
 
 In this library, I changed all instances of `position` to `coordinate` - because everything is represented on a number line. Coordinate seemed more appropriate
+
+Library I refactored:
+https://github.com/ptomasroos/react-native-multi-slider/blob/master/converters.js
+
+Mine:
+https://github.com/jeanpaulsio/rn-multislider/blob/master/helpers.js
+
+---
+
+Picks:
+https://thanosjs.org/
