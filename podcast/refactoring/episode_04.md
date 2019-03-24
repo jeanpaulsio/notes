@@ -11,9 +11,47 @@ Previously:
 
 ## Introduce Parameter Object (140)
 
+```javascript
+function amountInvoiced(startDate, endDate) {}
+```
+
+becomes ⬇️
+
+```javascript
+function amountInvoiced(aDateRange) {}
+```
+
+with ES6 sugar ⬇️
+
+```javascript
+function amountInvoiced({ startDate, endDate }) {}
+```
+
+- grouping data into a structure is valuable because it makes explicit the relationship between data items
+- allows deeper changes to code
+- admittedly, this is nice with TypeScript
+
 ## Combine Functions Into Class (144)
 
-## Split Phase (154)
+```javascript
+function add() {}
+function subtract() {}
+```
+
+becomes ⬇️
+
+```javascript
+class Math {
+  add() {}
+  subtract() {}
+}
+```
+
+> When I see a group of functions that operate closely together on a common body of data (usually passed as arguemnts to the function call), I see an opportunity to form a class
+
+- timeslot / timezone utilities
+
+## Combine Functions Into Transform (149)
 
 ---
 
