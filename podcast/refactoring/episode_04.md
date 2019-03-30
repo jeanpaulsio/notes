@@ -1,4 +1,4 @@
-# Episode 3 - More Code Examples
+# Episode 4 - More Code Examples
 
 Previously:
 
@@ -58,3 +58,8 @@ class Math {
 Picks
 
 - JP: https://github.com/jezen/is-thirteen
+- https://www.reddit.com/r/cscareerquestions/comments/b6xzr0/how_do_you_keep_from_burning_out_at_your_job/
+
+ > Find hobbies not CS related
+
+
