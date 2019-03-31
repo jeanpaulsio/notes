@@ -50,6 +50,7 @@ class Math {
 > When I see a group of functions that operate closely together on a common body of data (usually passed as arguemnts to the function call), I see an opportunity to form a class
 
 - timeslot / timezone utilities
+- interesting take - we have a propensity to create `*_helper.rb` files but I like this idea 
 
 ## Combine Functions Into Transform (149)
 
