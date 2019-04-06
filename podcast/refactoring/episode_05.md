@@ -1,1 +1,47 @@
-# Chapter 3
+# Chapter 3 - Bad Smells in Code
+
+## Mysterious Name
+
+## Duplicated Code
+
+## Long Functions
+
+## Long Parameter List
+
+## Global Data
+
+## Mutable Data
+
+## Divergent Change
+
+## Shotgun Surgery
+
+## Feature Envy
+
+## Data Clumps
+
+## Primitive Obsession
+
+## Repeated Switches
+
+## Loops
+
+## Lazy Element
+
+## Speculative Generality
+
+## Temporary Field
+
+## Message Chains
+
+## Middle Man
+
+## Insider Trading
+
+## Large Class
+
+## Alternative Classes with Different Interfaces
+
+## Data Class
+
+## Refused Bequest
