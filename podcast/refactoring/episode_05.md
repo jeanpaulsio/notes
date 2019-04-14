@@ -79,6 +79,8 @@ _editor choice_
 
 ## Large Class
 
+- class is doing too much
+
 ## Alternative Classes with Different Interfaces
 
 ## Data Class
