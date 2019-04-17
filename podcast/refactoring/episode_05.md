@@ -8,19 +8,19 @@ Theme of this chapter: just because you know **how** to refactor, doesn't mean y
 
 - there can be ambiguity in your naming in many places: variable, class, function, method, database field, etc
 
-## Duplicated Code
+## Duplicated Code 🔥
 
 - keep it dry
 
-## Long Functions
+## Long Functions 🔥
 
 - Since the early days of programming, people have realized that the longer a function is, the more difficult it is to understand
 
-## Long Parameter List
+## Long Parameter List 🔥
 
 - long parameter lists can be confusing
 
-## Global Data
+## Global Data 🔥
 
 - the problem with global data is that it can be modified from anywhere in the codebase, making it harder to figure out which code touched it should you need to debug it
 
@@ -29,13 +29,13 @@ Theme of this chapter: just because you know **how** to refactor, doesn't mean y
 - changes to data often lead to unexpected consequences and tricky bugs
 - mutable data that can be calculated elsewhere is particularly pungent
 
-## Divergent Change
+## Divergent Change ✅
 
 - if you look at a module and say, "well, I will have to change these three functions every time -------- happens" - this is an indication of divergent change
 - divergent change occurs when one module is often changed in different ways for different reasons
 - can be solved with split phase, extract function, extract class, move function
 
-## Shotgun Surgery
+## Shotgun Surgery ✅
 
 - similar to divergent change.
 - every you make a change, you need to make a ton of little edits to a lot of _different_ classes
@@ -48,7 +48,7 @@ Theme of this chapter: just because you know **how** to refactor, doesn't mean y
 
 - grouping data together when it really should be it's own object
 
-## Primitive Obsession
+## Primitive Obsession ✅
 
 - programmers are often hesitant to create their own types and rely only on primitives. i.e. representing a phone number as a string instead of as it's own type
 
@@ -60,7 +60,7 @@ Theme of this chapter: just because you know **how** to refactor, doesn't mean y
 
 - use pipelines instead, i.e. filter, map, each, reduce
 
-## Speculative Generality
+## Speculative Generality ✅
 
 _editor choice_
 
@@ -77,7 +77,7 @@ _editor choice_
 
 ## Insider Trading
 
-## Large Class
+## Large Class ✅
 
 - class is doing too much
 
