@@ -126,6 +126,17 @@ function newGetItemPrice(item) {
 
 ```
 
+
+### Extract Class (182) 🥴
+
+- Talk through HUGE applicant model (in Ruby)
+- Broke this into child objects 
+   - Applicant Health History
+   - Applicant Habits 
+   - Applicant Lifestyle 
+   - Applicant Method 
+   - Applicant Legal Release
+
 ---
 
 ## Picks
