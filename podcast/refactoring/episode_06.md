@@ -90,8 +90,45 @@ orders.filter(o => o.priority.higherThan(new Priority("normal")));
 - at first, the class does very little. in fact it probably only wraps a primitive
 - but now you have a place to put behavior specific to its needs
 
+### Inline Function (115) 🥴
+Sometimes it's better to not try to split things apart, sometimes it just complicates things. 
+
+```javascript
+// before refactor: 
+
+function getItemPrice(item) {
+  if (itemOnSale(item) == true) {
+    return item.price - 5
+  } else {
+    return item.price
+  }
+};
+
+function itemOnSale(product) {
+  if (product.onSale == true) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+let original = getItemPrice(sweatshirt);
+
+// after refactor: 
+
+function newGetItemPrice(item) {
+  if (item.onSale == true) {
+    return item.price - 5
+  } else {
+    return item.price
+  }
+};
+
+```
+
 ---
 
 ## Picks
 
 - JP: None :(
+- John: Quad Lock phone mount - bikes
