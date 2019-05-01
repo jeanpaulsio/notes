@@ -2,6 +2,8 @@
 
 - Drawing from Chapter 7 - Encapsulation
 
+A weekly podcast about programming, development, and design through the lens of amazing books, chapter-by-chapter.
+
 ## Encapsulate Record (162)
 
 ```javascript
