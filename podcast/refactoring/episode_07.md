@@ -20,4 +20,4 @@
 
 ## Picks
 
-- JP:
+- JP: Taking time off
