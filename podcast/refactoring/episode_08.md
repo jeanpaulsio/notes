@@ -4,4 +4,4 @@
 
 ## Picks
 
-- JP:
+- JP: How to win friends and influence people
