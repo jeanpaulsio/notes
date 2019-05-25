@@ -5,3 +5,4 @@
 ## Picks
 
 - JP: How to win friends and influence people
+- JP: Radical Candor
