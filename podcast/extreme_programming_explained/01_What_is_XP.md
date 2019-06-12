@@ -17,9 +17,14 @@ By Kent Beck
 
 - John — Humanity and productivity. Pomodoro timers, too much coffee, pushing weekends. 
 
-> "How would you do it if you had enough time? — Fussing about the constraints distracts you from your goals. Your clear self does the best work no matter what the constraints are" 
+> "How would you do it if you had enough time? — Fussing about the constraints distracts you from your goals. Your clear self does the best work no matter what the constraints are" 🔥
 
-- John — Riff on Time Constraints — Time is always my blocker. Is that a good one? 
+- John — Riff on Time Constraints — Time is always my blocker. Is that a good one?
+
+- Short development cycles
+- Well communicated tests and source code
+
+> "XP assumes that you see yourself as part of a team, ideally one with clear goals and a plan of execution"
 
 **Final Summary — What is XP?** 
 
@@ -38,5 +43,6 @@ Picks:
   - Action Method 
   - Seinfeld's chain 
   
+ - JP: Elegant Puzzle: https://lethain.com/elegant-puzzle/
   
 
