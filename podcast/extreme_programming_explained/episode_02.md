@@ -37,7 +37,9 @@
 Chapters 2 and 3 are small introductory sections, here is the TLDR:
 
 ```
-Software, teams, and requirements change. We need to be able to adapt to such change. The next 3 sections will be about values, practices, and principles of Extreme Programming
+Software, teams, and requirements change. We need to be able to adapt
+to such change. The next 3 sections will be about values, practices,
+and principles of Extreme Programming
 ```
 
 ---
