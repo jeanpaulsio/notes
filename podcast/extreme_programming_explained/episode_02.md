@@ -6,6 +6,10 @@
 
 ---
 
+# 5 Essential Values in Extreme Programing
+
+Extreme Programing By Kent Beck - Chapters 2,3 and 4
+
 ## Chapter 2 - Learning to Drive
 
 * frequent, small corrections
