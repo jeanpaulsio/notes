@@ -1,6 +1,8 @@
 # Season 7 Episode 3
 
-## Recording July 24, 2019
+_Reminder: Topics im going to  avoid for a beat —  we talk about them a lot: being agile, testing, small incremental changes, iterating on ideas_
+
+## Recording July 24, 2019 (Scheduled release 8/19) 
 
 > A weekly podcast about programming, development, and design through the lens of amazing books, chapter-by-chapter
 
@@ -59,6 +61,19 @@ Interestingly, satisfying these requisites meets both business and human needs.
 
 * Searching for practices that benefit me now, me later, and my customer as well: i.e. writing automated, self-documenting tests; writing simpler code; choosing coherent variable names and an explicit set of metaphors
 
+## Self-Similarity 👻
+"Fractal Nature of geology" When nature finds a whape that works, she uses it wherver she can. 
+A crystal is a material whose constituents, such as atoms, molecules or ions, are arranged in a highly ordered microscopic structure — the same arrangment all the way to an atomic level. The same shape, makes up arrangments that make the same shape, that makes up arrangements that make the same shape. 
+
+All's to say - I've found that many things that prove useful at a small scale, work at larger scales 
+
+Concepts like
+- **Good names** work for funcitons, methods, models, controllers, variables and namespaces  
+— **breaking things up** into smaller peices, methods, funcitons, models controllers, etc 
+- **process** If it works to break up a method, it will probably work to break up a controler
+- **extraction** Definining data in one organized place (switch statment Javascript example?) 
+- **Simplicity** 
+
 
 ## Diversity
 
@@ -66,6 +81,28 @@ Interestingly, satisfying these requisites meets both business and human needs.
 
 
 > The principle of diversity suggets that the programmers should work together on the problem and both opinions should be valued.
+
+## Oppourtunity 👻
+
+"Learn to see problems as opportunities for change."
+
+To reach exellence, problems need to turn into opportunities for learning and improvment, not just survival. 
+
+Conciously choose to transform each problem into an opportunity. Good book on this [the obsticle is the way](https://www.amazon.com/Obstacle-Way-Timeless-Turning-Triumph/dp/1591846358)
+
+Example: `.env` files for all of our projects got posted to a public repo. We migrated toward a better more secure system, credentials that would be harder to leak and are easier to rotate. We used the problem as an oppourtunity to improve our architecture. 
+
+## Quality 👻
+Sacrificing quality is not effective as a means of control... Quality should not be a control variable. 
+
+- These are the variables you should change: Time, Cost, Money and Scope. **Never quality**
+
+This is really extreme. 
+
+Author makes the aurgument that when you skimp on quality you end up spending even more time or money. This rings true, I have often taken the wrong approach in projects of skipming on design, testing or refacting and it doesn't really help in the long run. 
+
+We'd all like to get more features out the door for less money, it's just not doable. Less is less. 
+
 
 ## Failure
 
@@ -85,3 +122,4 @@ Conclusion:
 # Picks
 
 * JP: Burke Williams deep tissue massage. I'm all about the self-care
+* John: App called "Mood" free app that helped me be more mindful of my emotions. It's been really insightful and helpful. I've moved from an average of 44% negative emotions to 55% positive emotions in just about 2 weeks. Just stoping and noticing my humanity, how some things make me feel has made a big impact in my overall mental wellness. I'm finding really interesting corollaries between my activities and diet and my overall happiness. 
