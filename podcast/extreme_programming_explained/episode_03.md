@@ -38,7 +38,7 @@ Now obviously we aren't going to bore you with discussion on all 14 of these pri
 
 ---
 
-## Humanity - noun, the characteristics that make us human
+## Humanity - noun, the characteristics that make us human 🐸
 
 __Copy and paste alert__
 
@@ -52,12 +52,8 @@ What do people need to be good developers? What are some basic human needs?
 
 Interestingly, satisfying these requisites meets both business and human needs.
 
-## Mutual Benefit
-
-* Searching for practices that benefit me now, me later, and my customer as well: i.e. writing automated, self-documenting tests; writing simpler code; choosing coherent variable names and an explicit set of metaphors
-
 ## Self-Similarity 👻
-"Fractal Nature of geology" When nature finds a whape that works, she uses it wherver she can. 
+"Fractal Nature of geology" When nature finds a shape that works, she uses it wherever she can. 
 A crystal is a material whose constituents, such as atoms, molecules or ions, are arranged in a highly ordered microscopic structure — the same arrangment all the way to an atomic level. The same shape, makes up arrangments that make the same shape, that makes up arrangements that make the same shape. 
 
 All's to say - I've found that many things that prove useful at a small scale, work at larger scales 
@@ -70,10 +66,9 @@ Concepts like
 - **Simplicity** 
 
 
-## Diversity
+## Diversity 🐸
 
 > Software development teams where everyone is alike, while comfotable, are not effective. Teams need to bring together a variety of skills, attitudes, and perspectives to see problems and pitfalls, to think of multiple ways to solve problems, and to implement the solutions. Teams need diversity
-
 
 > The principle of diversity suggets that the programmers should work together on the problem and both opinions should be valued.
 
@@ -99,7 +94,7 @@ Author makes the aurgument that when you skimp on quality you end up spending ev
 We'd all like to get more features out the door for less money, it's just not doable. Less is less. 
 
 
-## Failure
+## Failure 🐸
 
 > If you're having trouble succeeding, fail. Don't know which of the three ways to implement a story? Try it all three ways.
 
