@@ -1,6 +1,6 @@
 # Season 7 Episode 3
 
-_Reminder: Topics im going to  avoid for a beat —  we talk about them a lot: being agile, testing, small incremental changes, iterating on ideas_
+_Reminder: Topics im going to  avoid for a beat — we talk about them a lot: being agile, testing, small incremental changes, iterating on ideas_
 
 ## Recording July 24, 2019 (Scheduled release 8/19) 
 
@@ -17,7 +17,7 @@ Today we will be going through chapter 5 and continuing our discussion about the
 
 > Values are too abstract to directly guide behavior. (This is why we discuss things in the context of principles)
 
-_____Other principles may guide your team, but these are the principles that guide XP__
+__Other principles may guide your team, but these are the principles that guide XP:
 
 * Humanity
 * Economics
@@ -51,11 +51,6 @@ What do people need to be good developers? What are some basic human needs?
 * Intimacy - ability to understand and be understood by others
 
 Interestingly, satisfying these requisites meets both business and human needs.
-
-## Economics
-
-* Make sure what you're doing has business value, meets business goals, and serves busines needs
-* Decisions (investments) today should pay off _tomorrow_
 
 ## Mutual Benefit
 
