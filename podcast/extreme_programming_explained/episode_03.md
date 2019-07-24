@@ -17,7 +17,7 @@ Today we will be going through chapter 5 and continuing our discussion about the
 
 > Values are too abstract to directly guide behavior. (This is why we discuss things in the context of principles)
 
-__Other principles may guide your team, but these are the principles that guide XP:
+__Other principles may guide your team, but these are the principles that guide XP:__
 
 * Humanity
 * Economics
