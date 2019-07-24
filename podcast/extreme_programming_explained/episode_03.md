@@ -15,6 +15,13 @@ Today we will be going through chapter 5 and continuing our discussion about the
 
 ---
 
+## Recap:
+
+* values are the roots of things we like and don't like in a situation
+    - communication, simplicity, feedback, courage, respect
+* practices are evidence of values
+* principles bridge the gap between values and practices
+
 > Values are too abstract to directly guide behavior. (This is why we discuss things in the context of principles)
 
 __Other principles may guide your team, but these are the principles that guide XP:__
