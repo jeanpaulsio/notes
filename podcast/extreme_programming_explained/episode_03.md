@@ -67,7 +67,7 @@ All's to say - I've found that many things that prove useful at a small scale, w
 
 Concepts like
 - **Good names** work for functions, methods, models, controllers, variables and namespaces  
-— **breaking things up** into smaller peices, methods, funcitons, models controllers, etc 
+— **breaking things up** into smaller peices, methods, functions, models controllers, etc 
 - **process** If it works to break up a method, it will probably work to break up a controler
 - **extraction** Definining data in one organized place (switch statment Javascript example?) 
 - **Simplicity** 
