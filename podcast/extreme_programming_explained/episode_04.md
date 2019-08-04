@@ -133,6 +133,5 @@ REMEMBER! XP is a way to improve both your development process and your experien
 
 # Picks
 
-- JP: [Visualize Recursion Trees](https://practicum.tech/recurser/)
-  - https://www.reddit.com/r/learnprogramming/comments/clx6tn/i_built_a_tool_to_help_people_understand_recursion/
+- JP: http://www.pythontutor.com/visualize.html#mode=edit - so cool!
 - John:
