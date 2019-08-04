@@ -31,7 +31,7 @@ Practices that do not serve a purpose or have values are empty. For example, pai
 
 # Primary Practices (Chapter 7)
 
-- Sit together
+## Sit together
 
 > XP predicts that the more face time you have, the more humane and productive the project.
 
@@ -39,15 +39,16 @@ Practices that do not serve a purpose or have values are empty. For example, pai
 👨‍🏫 improvment
 👨‍🏫 quality
 
-- Whole team
-- Informative workspace
+## Whole team
+
+## Informative workspace
 
 > Make your workspace about work. An interested observer should be able to walk into the team space and get a general idea of how the project is going in 15 seconds.
 
 👨‍🏫 mutual benefit - doing stuff today that benefits me now and in the future
 👨‍🏫 flow
 
-- Energized work 🔥
+## Energized work 🔥
 
 > Work only as many hours as you can be productive and only as many hours as you can sustain. Burning yourself out unproductively today and spoiling the next two days' work isn't good for you or for the team.
 
@@ -66,8 +67,9 @@ Hot tips:
 ➡️️️️️ block off 2 hours at a time in your calendar just for coding
 ➡️ turn off phone, email, and slack notifications
 
-- Pair programming
-- Stories
+## Pair programming
+
+## Stories
 
 > Plan using customer-visible functionality. "Handle vie times the traffic with the same response time". As soon as the story is written, try to estimate the development effort necessary to implement it.
 
@@ -77,9 +79,11 @@ Hot tips:
 👨‍🏫 reflection
 👨‍🏫 quality
 
-- Weekly cycle (hehe, sprints)
-- Quarterly cycle
-- Slack
+##- Weekly cycle (hehe, sprints)
+
+## Quarterly cycle
+
+## Slack
 
 > In any plan, include some minor tasks that can be dropped if you get behind.
 
@@ -92,13 +96,15 @@ Under promise, over deliver!
 👨‍🏫 improvment
 👨‍🏫 quality
 
-- Ten-minute build
-- Continuous integration
-- Test-first programming 🙅‍♀️
+## Ten-minute build
+
+## Continuous integration
+
+## Test-first programming 🙅‍♀️
 
 **I, JP Sio, am not allowed to talk about this subject**
 
-- Incremental design
+## Incremental design
 
 > Invest in the design of the system every day. Strive to make the design of the system an excellent fit for the needs of the system that day.
 
