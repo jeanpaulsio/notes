@@ -98,7 +98,7 @@ Hot tips:
 
 👨‍🏫 quality
 
-##- Weekly cycle (hehe, sprints)
+## Weekly cycle (hehe, sprints)
 
 ## Quarterly cycle
 
