@@ -85,12 +85,12 @@ Hot tips:
 
 ## Stories
 
-> Plan using customer-visible functionality. "Handle vie times the traffic with the same response time". As soon as the story is written, try to estimate the development effort necessary to implement it.
+> Plan using customer-visible functionality. As soon as the story is written, try to estimate the development effort necessary to implement it.
 
 > Write stories on index cards and put them on a frequently passed wall. Every attempt I've seen to computerize stories has failed to provide a fraction of the value of having real cards on a real wall.
 
 - 🐶 Small discrete shippable changes. Should fit on an index card.
-- 🐶 I've written my share of stories that are 2.0 Messaging tool. That's waaaay to open ended. 
+- 🐶 I've written my share of stories that are 2.0 Messaging tool. That's waaaay too open ended. 
 
 👨‍🏫 flow
 
