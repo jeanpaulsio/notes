@@ -25,7 +25,7 @@ TLDR: Walk before you run
 
 ## Root Cause Analysis
 
-> (After you write tests and fix the bug...) Once the defect is resolved, figure out _why_ the defect was created and wasn't caught. Initiate the necesssary changes to precvent this kind of defect in the future
+> (After you write tests and fix the bug...) Once the defect is resolved, figure out _why_ the defect was created and wasn't caught. Initiate the necesssary changes to prevent this kind of defect in the future
 
 - Five Whys
 - 🌵 **Five whys**
