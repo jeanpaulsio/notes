@@ -20,5 +20,5 @@ Here are some fun questions we can talk about:
 
 # Picks
 
-- JP:
+- JP: Heroku! Review Apps (spins up a new app every time a PR is opened); Pipelines
 - John:
