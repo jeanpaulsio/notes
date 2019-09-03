@@ -1,37 +1,35 @@
-# Season 7 Episode 6 - Chapter 11-16
+# Season 7 Episode 6
 
 ## Recording September 4, 2019
 
+> Welcome to Iteration: a weekly podcast about programming, development, and design through the lens of amazing books, chapter by chapter
+
+> My name is John, and I am joined by JP
+
+> Today we will be covering a topic that we can all relate to: planning.
+
 ## Chapter 12 - Planning: Managing Scope
 
-> Planning makes goals and directions clear and explicit. Planning in XP starts with putting the current goals, assumptions, and facts on the table. With current, explicit information, you can work towards agreement abuot what's in scope, what's out of scope, and waht to do next.
+> Planning is an exercise in listening, speaking, and aligning goals for a specific time period. It is valuable input for each team member. Without planning, we are individuals with haphazard connections and effectiveness. We are a team when we plan and work in harmony.
 
-- Planning is like shopping for groceries and only having a 100 dollar bill. What would happen if you were rang up for 101 dollars?
+XP recommends planning at _any_ timescale with these four steps.
 
-> Planning is complicated because the estimates of the cost and value of stories are uncertain. [...] We use feedback to improve our estimates and make decisions as late as possible so they are based on the best possible information.
+1.) List the items of work that may need to be done.
+2.) Estimate the items.
+3.) Set a budget for the planning cycle.
+4.) Agree on the work that nees to be done within the budget. As you negotiate, don't change the estimates or the budget.
 
-## Chapter 13 - Testing Early, Often, and Automated
+## Questions for discussion
 
-> Here is the dilemma in software development: defects are expensive, but eliminating defects is also expensive.
+- **Question 1:** Walk us through how you plan a new feature. In other words, how do you bring a new idea from concept to reality?
 
-Instead of talking about having a kick-ass automated test suite, frequently testing code, and all of that good stuff, we should talk about something a little different.
+- **Question 2:** How do you decide when a feature is in scope vs. out of scope?
 
-We don't need to bore you by talking about tests.
-
-Here are some fun questions we can talk about:
-
-- What was the last big bug you can think of? How did you handle it?
-- What was the reason for the latest big bug?
-- How do you handle bugs in general?
-
-## Chapter 14 - Designing: The value of time
-
-> Incremental design is a way to deliver functionality early and continue delivering functionality weekly for the life of the project. XP pushes incrementalism of design to its limit, suggesting that projects run more smoothly if design is part of daily business.
+- **Question 3:** Talk about a time when planninng failed and scope creep was real. How do you think this could have been prevented?
 
 ---
 
-## Chapter 16 - Some Interview Thing
+# Picks
 
-"What advice do you have for other execs wh oare considering XP?"
-
-> Plan by features. THe items in the plan should be features that customers care about. Plan releases once a quarter. Plan iterations more frequently. We have two-week iterations. Make the iterations absolutely fixed. Have the customers sit with the team. Put the team in an open space.
+- JP: [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- John:
