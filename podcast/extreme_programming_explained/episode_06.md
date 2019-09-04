@@ -6,7 +6,7 @@
 
 > My name is John, and I am joined by JP
 
-> Today we will be covering a topic that we can all relate to: planning.
+> Today we are using Extreeme Programing by Kent Beck as a guide to our conversation - will be covering a topic that we can all relate to: planning.
 
 ## Chapter 12 - Planning: Managing Scope
 
